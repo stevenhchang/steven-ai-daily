@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Steven学长的每日AI日报</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "PingFang SC", "Microsoft YaHei", sans-serif;
+    background: #f0f2f5;
+    color: #333;
+    line-height: 1.6;
+  }
+  .container { max-width: 900px; margin: 0 auto; padding: 0 16px 40px; }
+  .header {
+    background: linear-gradient(135deg, #1a1a2e 0%, #6c5ce7 100%);
+    padding: 48px 20px 40px;
+    text-align: center;
+    margin-bottom: 28px;
+  }
+  .header h1 { color: #fff; font-size: 32px; font-weight: 700; letter-spacing: 1px; margin-bottom: 10px; }
+  .header .subtitle { color: rgba(255,255,255,0.85); font-size: 18px; }
+  .header .stats { margin-top: 16px; color: rgba(255,255,255,0.7); font-size: 14px; }
+  .nav { text-align: center; margin: 20px 0; }
+  .nav a {
+    display: inline-block; margin: 4px 6px; padding: 6px 16px;
+    background: #6c5ce7; color: #fff; border-radius: 20px;
+    text-decoration: none; font-size: 14px; transition: opacity 0.2s;
+  }
+  .nav a:hover { opacity: 0.85; }
+  .nav a.current { background: #1a1a2e; }
+  .empty {
+    text-align: center; padding: 60px 20px; color: #999; font-size: 16px;
+  }
+  .footer {
+    text-align: center; padding: 32px 20px; color: #999; font-size: 13px; line-height: 1.8;
+  }
+</style>
+</head>
+<body>
+<div class="header">
+  <h1>Steven学长的每日AI日报</h1>
+  <div class="subtitle">每日精选 AI 领域重要资讯</div>
+  <div class="stats">自动采集 | 中文精华摘要 | 卡片式阅读</div>
+</div>
+<div class="container">
+  <div class="nav" id="nav">
+    <!-- 日报链接会在这里动态生成 -->
+  </div>
+  <div class="empty" id="empty">
+    <p>正在加载日报列表...</p>
+  </div>
+</div>
+<div class="footer">
+  Steven学长的每日AI日报 &copy; 2026<br>
+  <a href="https://github.com/stevenhchang/steven-ai-daily" style="color:#6c5ce7;">GitHub Repo</a>
+</div>
+<script>
+  // 从 reports.json 加载日报列表
+  fetch('reports.json')
+    .then(r => r.json())
+    .then(reports => {
+      const nav = document.getElementById('nav');
+      const empty = document.getElementById('empty');
+      if (reports.length === 0) {
+        empty.innerHTML = '<p>暂无日报，敬请期待！</p>';
+        return;
+      }
+      empty.style.display = 'none';
+      reports.reverse().forEach(r => {
+        const a = document.createElement('a');
+        a.href = r.file;
+        a.textContent = r.date;
+        nav.appendChild(a);
+      });
+      // 自动跳转到最新日报
+      if (reports.length > 0) {
+        window.location.href = reports[0].file;
+      }
+    })
+    .catch(() => {
+      document.getElementById('empty').innerHTML = '<p>暂无日报，敬请期待！</p>';
+    });
+</script>
+</body>
+</html>

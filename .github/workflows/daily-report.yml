@@ -1,0 +1,85 @@
+name: Generate Daily AI Report
+
+on:
+  schedule:
+    # 每天北京时间早上 8:00 运行（UTC 0:00）
+    - cron: '0 0 * * *'
+  workflow_dispatch: # 支持手动触发
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+jobs:
+  generate-report:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install Claude Code
+        run: npm install -g @anthropic-ai/claude-code
+
+      - name: Generate AI Daily Report
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+        run: |
+          DATE=$(date +%Y-%m-%d)
+
+          claude -p "你是Steven学长的每日AI日报生成器。请执行以下任务：
+
+          1. 使用 WebSearch 搜索最近24小时的AI领域重要新闻（搜索6-10次，覆盖 TechCrunch, Hacker News, The Verge, VentureBeat, MIT Technology Review 等来源）
+          2. 筛选8-12条最有价值的资讯
+          3. 为每条生成：中文标题、100-150字中文摘要、2-4个关键词标签、原文链接、来源名称
+          4. 生成一个完整的自包含HTML文件，要求：
+             - 标题：Steven学长的每日AI日报-【${DATE}】
+             - 渐变标题栏（#1a1a2e → #6c5ce7）
+             - 白色圆角卡片设计，悬停上浮动画
+             - 每张卡片可点击跳转原文
+             - 关键词胶囊标签（浅蓝底蓝字）
+             - 响应式设计
+             - 底部显示收录条数和生成时间
+          5. 将HTML内容直接输出（不要用代码块包裹），我会保存为文件
+
+          重要：只输出完整的HTML代码，不要任何额外说明。" --output-format text > reports/${DATE}.html
+
+          echo "Report generated for ${DATE}"
+
+      - name: Update reports index
+        run: |
+          DATE=$(date +%Y-%m-%d)
+          FILE="reports/${DATE}.html"
+
+          if [ -f "$FILE" ] && [ -s "$FILE" ]; then
+            # 更新 reports.json
+            node -e "
+              const fs = require('fs');
+              const data = JSON.parse(fs.readFileSync('reports.json', 'utf8'));
+              const date = '${DATE}';
+              if (!data.find(r => r.date === date)) {
+                data.push({date: date, file: 'reports/${DATE}.html'});
+                data.sort((a, b) => a.date.localeCompare(b.date));
+              }
+              fs.writeFileSync('reports.json', JSON.stringify(data, null, 2) + '\n');
+            "
+            echo "Index updated"
+          else
+            echo "Report file is empty or missing, skipping index update"
+            exit 1
+          fi
+
+      - name: Commit and push
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add reports/ reports.json
+          git diff --staged --quiet || {
+            git commit -m "Add daily AI report for $(date +%Y-%m-%d)"
+            git push
+          }
