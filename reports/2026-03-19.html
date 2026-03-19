@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Steven学长的每日AI日报 - 2026年3月19日</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+    background: #f0f2f5;
+    color: #333;
+    line-height: 1.6;
+  }
+  .container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+  .header {
+    background: linear-gradient(135deg, #1a1a2e 0%, #6c5ce7 100%);
+    color: #fff;
+    text-align: center;
+    padding: 40px 20px;
+    border-radius: 16px;
+    margin-bottom: 24px;
+    box-shadow: 0 4px 20px rgba(108, 92, 231, 0.3);
+  }
+  .header h1 {
+    font-size: 28px;
+    font-weight: 700;
+    margin-bottom: 8px;
+    letter-spacing: 1px;
+  }
+  .header .subtitle {
+    font-size: 16px;
+    opacity: 0.85;
+    font-weight: 400;
+  }
+  .header .stats {
+    margin-top: 16px;
+    font-size: 13px;
+    opacity: 0.7;
+  }
+  .card-link {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+    margin-bottom: 16px;
+  }
+  .card {
+    background: #fff;
+    border-radius: 12px;
+    padding: 24px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+  .card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+  }
+  .card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 12px;
+  }
+  .source-tag {
+    display: inline-block;
+    padding: 2px 10px;
+    border-radius: 10px;
+    font-size: 12px;
+    font-weight: 600;
+    color: #fff;
+  }
+  .source-nvidia { background: #76b900; }
+  .source-bloomberg { background: #472a91; }
+  .source-cnbc { background: #005594; }
+  .source-a16z { background: #1a1a2e; }
+  .source-rankiteo { background: #e53935; }
+  .source-mistral { background: #ff6f00; }
+  .source-apple { background: #333; }
+  .source-pentagon { background: #1b5e20; }
+  .source-nasdaq { background: #0288d1; }
+  .source-guangdong { background: #c62828; }
+  .source-micron { background: #0d47a1; }
+  .source-tmtpost { background: #ff5722; }
+  .time-tag {
+    font-size: 12px;
+    color: #999;
+  }
+  .card-title {
+    font-size: 18px;
+    font-weight: 700;
+    color: #1a1a2e;
+    margin-bottom: 10px;
+    line-height: 1.5;
+  }
+  .card-summary {
+    font-size: 14px;
+    color: #666;
+    margin-bottom: 14px;
+    line-height: 1.8;
+  }
+  .card-tags {
+    margin-bottom: 10px;
+  }
+  .tag {
+    display: inline-block;
+    padding: 2px 10px;
+    border-radius: 12px;
+    font-size: 12px;
+    background: #e8f4fd;
+    color: #2196F3;
+    margin-right: 6px;
+    margin-bottom: 4px;
+  }
+  .card-footer {
+    text-align: right;
+  }
+  .read-more {
+    font-size: 13px;
+    color: #6c5ce7;
+    font-weight: 600;
+  }
+  .footer {
+    text-align: center;
+    padding: 30px 20px;
+    color: #999;
+    font-size: 13px;
+  }
+  .footer .divider {
+    width: 60px;
+    height: 3px;
+    background: linear-gradient(135deg, #1a1a2e, #6c5ce7);
+    margin: 0 auto 16px;
+    border-radius: 2px;
+  }
+  @media (max-width: 600px) {
+    .container { padding: 10px; }
+    .card { padding: 16px; }
+    .header { padding: 30px 16px; }
+    .header h1 { font-size: 22px; }
+    .card-title { font-size: 16px; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <div class="header">
+    <h1>Steven学长的每日AI日报</h1>
+    <div class="subtitle">【2026年03月19日】</div>
+    <div class="stats">AI领域每日精选资讯 · 智能采集 · 精华提炼</div>
+  </div>
+
+  <!-- 1 -->
+  <a href="https://blogs.nvidia.com/blog/gtc-2026-news/" target="_blank" class="card-link">
+    <div class="card">
+      <div class="card-header">
+        <span class="source-tag source-nvidia">NVIDIA</span>
+        <span class="time-tag">2026-03-19</span>
+      </div>
+      <h3 class="card-title">GTC 2026收官日：Vera Rubin平台发布，推理成本降至Blackwell十分之一</h3>
+      <p class="card-summary">NVIDIA GTC 2026大会于3月16-19日在圣何塞举行，超3万人参会。核心发布Vera Rubin NVL72平台：集成72颗Rubin GPU（台积电3nm、3360亿晶体管、288GB HBM4），FP4推理算力50 PFLOPS，每瓦推理吞吐量较Blackwell提升10倍，单Token成本降至1/10。同时预告下一代Feynman架构（1.6nm制程），预计2028年量产，推理性能再提5倍。</p>
+      <div class="card-tags">
+        <span class="tag">#NVIDIA</span>
+        <span class="tag">#GTC</span>
+        <span class="tag">#Vera Rubin</span>
+        <span class="tag">#芯片</span>
+      </div>
+      <div class="card-footer">
+        <span class="read-more">点击查看原文 →</span>
+      </div>
+    </div>
+  </a>
+
+  <!-- 2 -->
+  <a href="https://www.cnbc.com/2026/03/16/nvidia-gtc-2026-ceo-jensen-huang-keynote-blackwell-vera-rubin.html" target="_blank" class="card-link">
+    <div class="card">
+      <div class="card-header">
+        <span class="source-tag source-cnbc">CNBC</span>
+        <span class="time-tag">2026-03-18</span>
+      </div>
+      <h3 class="card-title">黄仁勋GTC宣布：Blackwell与Vera Rubin到2027年订单将达1万亿美元</h3>
+      <p class="card-summary">英伟达CEO黄仁勋在GTC主题演讲中表示，Blackwell与Vera Rubin系列到2027年底预计创造至少1万亿美元收入，远超去年5000亿美元的预测。英伟达还引入Groq 3 LPU推理芯片（单颗500MB片上SRAM、带宽150TB/s），Groq 3 LPX机架配256颗LPU，推理吞吐功耗比提升35倍。英伟达市值已达约4.5万亿美元。</p>
+      <div class="card-tags">
+        <span class="tag">#黄仁勋</span>
+        <span class="tag">#Groq</span>
+        <span class="tag">#万亿营收</span>
+      </div>
+      <div class="card-footer">
+        <span class="read-more">点击查看原文 →</span>
+      </div>
+    </div>
+  </a>
+
+  <!-- 3 -->
+  <a href="https://www.bloomberg.com/news/articles/2026-03-18/is-an-ai-bubble-set-to-burst-navigating-the-artificial-intelligence-boom" target="_blank" class="card-link">
+    <div class="card">
+      <div class="card-header">
+        <span class="source-tag source-bloomberg">Bloomberg</span>
+        <span class="time-tag">2026-03-18</span>
+      </div>
+      <h3 class="card-title">彭博深度：AI泡沫是否即将破裂？华尔街激辩三年AI牛市</h3>
+      <p class="card-summary">AI热潮进入第三年，华尔街对人工智能的前景产生严重分歧——颠覆性是太强还是不够？彭博报道指出，AI技术已从聊天机器人演化为可承担研究、演示、视频剪辑和编码等高价值工作，头部AI公司正竞相扩展至金融和法律服务，威胁传统软件厂商。OpenAI年化收入超250亿美元，Anthropic逼近190亿，但当前定价高度依赖风投补贴，IPO前夕价格或大幅上调。</p>
+      <div class="card-tags">
+        <span class="tag">#AI泡沫</span>
+        <span class="tag">#华尔街</span>
+        <span class="tag">#投资</span>
+      </div>
+      <div class="card-footer">
+        <span class="read-more">点击查看原文 →</span>
+      </div>
+    </div>
+  </a>
+
+  <!-- 4 -->
+  <a href="https://blog.rankiteo.com/gooantope1773736050-anthropic-openai-google-vulnerability-march-2026/" target="_blank" class="card-link">
+    <div class="card">
+      <div class="card-header">
+        <span class="source-tag source-rankiteo">Rankiteo</span>
+        <span class="time-tag">2026-03-18</span>
+      </div>
+      <h3 class="card-title">重大安全漏洞：README文件中的隐藏指令可让AI智能体泄露数据，成功率高达85%</h3>
+      <p class="card-summary">安全研究人员发现一种"语义注入"攻击：在README文件中嵌入伪装成普通设置步骤的恶意指令，可诱骗Claude、GPT和Gemini等AI编程智能体将本地敏感文件外传。在500个仓库的测试中，直接攻击成功率84%，间接攻击（隐藏在两层链接后）成功率高达91%。15名人类审查者100%未能识别隐藏指令。该发现对AI智能体安全敲响警钟。</p>
+      <div class="card-tags">
+        <span class="tag">#安全漏洞</span>
+        <span class="tag">#AI智能体</span>
+        <span class="tag">#Claude</span>
+        <span class="tag">#GPT</span>
+      </div>
+      <div class="card-footer">
+        <span class="read-more">点击查看原文 →</span>
+      </div>
+    </div>
+  </a>
+
+  <!-- 5 -->
+  <a href="https://www.a16z.news/p/top-100-gen-ai-consumer-apps-march" target="_blank" class="card-link">
+    <div class="card">
+      <div class="card-header">
+        <span class="source-tag source-a16z">a16z</span>
+        <span class="time-tag">2026-03-18</span>
+      </div>
+      <h3 class="card-title">a16z发布3月Gen AI消费应用Top 100：ChatGPT周活9亿，三大生态鼎立</h3>
+      <p class="card-summary">a16z最新报告显示，ChatGPT以9亿周活用户稳居第一（全球10%人口每周使用），但Claude和Gemini付费用户年增长分别达200%和258%。三大地理生态正在形成：西方（ChatGPT/Claude/Gemini）、中国（DeepSeek/豆包）、俄罗斯（Yandex/GigaChat）。值得关注的是，OpenAI于2月收购的OpenClaw代表了"能办事"的智能体新方向，新加坡人均AI采用率全球第一，美国仅排第20。</p>
+      <div class="card-tags">
+        <span class="tag">#a16z</span>
+        <span class="tag">#ChatGPT</span>
+        <span class="tag">#消费AI</span>
+        <span class="tag">#排名</span>
+      </div>
+      <div class="card-footer">
+        <span class="read-more">点击查看原文 →</span>
+      </div>
+    </div>
+  </a>
+
+  <!-- 6 -->
+  <a href="https://www.tmtpost.com/7916531.html" target="_blank" class="card-link">
+    <div class="card">
+      <div class="card-header">
+        <span class="source-tag source-tmtpost">钛媒体</span>
+        <span class="time-tag">2026-03-18</span>
+      </div>
+      <h3 class="card-title">GTC重磅：英伟达发布Nemotron 3 Super开源模型与NemoClaw智能体平台</h3>
+      <p class="card-summary">英伟达在GTC上发布1200亿参数（激活120亿）的开源模型Nemotron 3 Super，专为复杂智能体系统设计，吞吐量提升5倍。同步推出NemoClaw智能体平台，集成隐私护栏和策略引擎，支持从消费级RTX PC到企业级DGX的全系列硬件。还发布Dynamo 1.0开源推理平台和Nemotron联盟，联合六大前沿模型家族覆盖语言、视觉、机器人等领域。</p>
+      <div class="card-tags">
+        <span class="tag">#Nemotron</span>
+        <span class="tag">#开源模型</span>
+        <span class="tag">#NemoClaw</span>
+        <span class="tag">#智能体</span>
+      </div>
+      <div class="card-footer">
+        <span class="read-more">点击查看原文 →</span>
+      </div>
+    </div>
+  </a>
+
+  <!-- 7 -->
+  <a href="https://www.androidheadlines.com/2026/03/anthropic-vs-openai-businesses-market-share-2026-analysis.html" target="_blank" class="card-link">
+    <div class="card">
+      <div class="card-header">
+        <span class="source-tag" style="background:#7c4dff;">Android Headlines</span>
+        <span class="time-tag">2026-03-18</span>
+      </div>
+      <h3 class="card-title">企业市场大逆转：Anthropic Claude在新客户争夺中以70%胜率击败ChatGPT</h3>
+      <p class="card-summary">最新分析显示，在首次采购AI服务的企业中，Anthropic现以约70%的胜率在正面交锋中击败OpenAI。Anthropic年化收入近190亿美元，较去年底增长近3倍。五角大楼事件后，Claude首次登顶美国App Store，#QuitGPT运动吸引超250万支持者。ChatGPT虽仍以9亿周活领先消费端，但企业端格局正在快速重塑。</p>
+      <div class="card-tags">
+        <span class="tag">#Anthropic</span>
+        <span class="tag">#企业AI</span>
+        <span class="tag">#市场份额</span>
+      </div>
+      <div class="card-footer">
+        <span class="read-more">点击查看原文 →</span>
+      </div>
+    </div>
+  </a>
+
+  <!-- 8 -->
+  <a href="https://seekingalpha.com/article/4882807-sandisk-this-nvidia-gtc-2026-announcement-could-be-a-gamechanger" target="_blank" class="card-link">
+    <div class="card">
+      <div class="card-header">
+        <span class="source-tag source-micron">Seeking Alpha</span>
+        <span class="time-tag">2026-03-18</span>
+      </div>
+      <h3 class="card-title">美光18亿美元完成力积电晶圆厂收购，全力扩产HBM满足AI需求</h3>
+      <p class="card-summary">美光科技完成对力积电位于中国台湾P5晶圆厂的收购，交易金额18亿美元，将用于支持HBM等先进DRAM产品供应。AI数据中心对存储芯片的需求持续暴涨，供应紧缺推动价格居高不下。美光将于3月18日公布2026财年Q2业绩，过去一年股价飙升323%。Jabil同步将2026年AI收入预期上调至121亿美元，同比增长35%。</p>
+      <div class="card-tags">
+        <span class="tag">#美光</span>
+        <span class="tag">#HBM</span>
+        <span class="tag">#AI芯片</span>
+        <span class="tag">#收购</span>
+      </div>
+      <div class="card-footer">
+        <span class="read-more">点击查看原文 →</span>
+      </div>
+    </div>
+  </a>
+
+  <!-- 9 -->
+  <a href="https://www.gurufocus.com/news/8723112/reply-announces-a-partnership-with-mistral-ai-to-develop-sovereign-and-enterprisegrade-artificial-intelligence-solutions" target="_blank" class="card-link">
+    <div class="card">
+      <div class="card-header">
+        <span class="source-tag source-mistral">GuruFocus</span>
+        <span class="time-tag">2026-03-18</span>
+      </div>
+      <h3 class="card-title">Reply与Mistral AI达成合作，加速欧洲主权AI和企业级解决方案落地</h3>
+      <p class="card-summary">意大利IT咨询巨头Reply宣布与法国AI独角兽Mistral AI达成战略合作，共同开发本地化、可定制、安全且企业级的生成式AI解决方案。合作核心是"主权AI"愿景——让企业在使用前沿AI的同时确保数据控制、敏感信息保护和法规合规。Mistral 3家族（含675B参数Large 3）以GPT-5.2约15%的成本实现92%的性能，性价比优势显著。</p>
+      <div class="card-tags">
+        <span class="tag">#Mistral</span>
+        <span class="tag">#主权AI</span>
+        <span class="tag">#欧洲</span>
+        <span class="tag">#企业AI</span>
+      </div>
+      <div class="card-footer">
+        <span class="read-more">点击查看原文 →</span>
+      </div>
+    </div>
+  </a>
+
+  <!-- 10 -->
+  <a href="https://www.executivegov.com/articles/michelle-aten-nga-ai-summit-keynote-cia-data-geospatial" target="_blank" class="card-link">
+    <div class="card">
+      <div class="card-header">
+        <span class="source-tag source-pentagon">ExecutiveGov</span>
+        <span class="time-tag">2026-03-18</span>
+      </div>
+      <h3 class="card-title">美国防部2026财年AI预算创纪录130亿美元，NGA首席AI官发表AI峰会演讲</h3>
+      <p class="card-summary">美国国家地理空间情报局（NGA）首席AI官Michelle Aten在2026 AI峰会上发表主题演讲。五角大楼2026财年在AI和自主系统方面的支出达到创纪录的130亿美元，系该部门首次为AI技术设立专项预算。此前Google已宣布通过Gemini for Government的"Agent Designer"功能，为五角大楼300万军职人员提供自建AI智能体工具。</p>
+      <div class="card-tags">
+        <span class="tag">#国防AI</span>
+        <span class="tag">#五角大楼</span>
+        <span class="tag">#130亿预算</span>
+      </div>
+      <div class="card-footer">
+        <span class="read-more">点击查看原文 →</span>
+      </div>
+    </div>
+  </a>
+
+  <!-- 11 -->
+  <a href="https://llm-stats.com/ai-news" target="_blank" class="card-link">
+    <div class="card">
+      <div class="card-header">
+        <span class="source-tag" style="background:#7c3aed;">LLM Stats</span>
+        <span class="time-tag">2026-03-19</span>
+      </div>
+      <h3 class="card-title">Apple全面重构Siri：接入Google 1.2万亿参数Gemini模型，iOS 26.4即将推送</h3>
+      <p class="card-summary">Apple宣布全面重构Siri，将其从简单语音助手升级为具备"屏幕感知"能力的上下文智能助手。Apple选择与Google合作，接入其1.2万亿参数的Gemini模型作为底层引擎。更新将随iOS 26.4于2026年3月推送。此举标志着Apple正式加入大模型竞赛，但选择合作而非自研的路线引发了行业对AI平台控制权的讨论。</p>
+      <div class="card-tags">
+        <span class="tag">#Apple</span>
+        <span class="tag">#Siri</span>
+        <span class="tag">#Gemini</span>
+        <span class="tag">#iOS</span>
+      </div>
+      <div class="card-footer">
+        <span class="read-more">点击查看原文 →</span>
+      </div>
+    </div>
+  </a>
+
+  <div class="footer">
+    <div class="divider"></div>
+    <p>由 AI 自动采集整理 | 共收录 11 条资讯</p>
+    <p style="margin-top:6px;">生成时间：2026年3月19日 | Powered by Claude</p>
+  </div>
+
+</div>
+</body>
+</html>
