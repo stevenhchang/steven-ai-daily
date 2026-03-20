@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Steven学长的每日AI日报 - 2026年03月20日</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Hiragino Sans GB', sans-serif;
+    background: #f0f2f5;
+    min-height: 100vh;
+    padding: 20px;
+  }
+  .container { max-width: 900px; margin: 0 auto; }
+
+  /* Header */
+  .header {
+    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 40%, #6c5ce7 100%);
+    border-radius: 20px;
+    padding: 40px 36px;
+    margin-bottom: 24px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .header::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(108,92,231,0.15) 0%, transparent 60%);
+    animation: pulse 4s ease-in-out infinite;
+  }
+  @keyframes pulse {
+    0%, 100% { transform: scale(1); opacity: 0.5; }
+    50% { transform: scale(1.1); opacity: 1; }
+  }
+  .header-emoji { font-size: 48px; margin-bottom: 12px; position: relative; z-index: 1; }
+  .header h1 {
+    font-size: 28px;
+    font-weight: 800;
+    color: #ffffff;
+    letter-spacing: 1px;
+    position: relative;
+    z-index: 1;
+    text-shadow: 0 2px 10px rgba(0,0,0,0.3);
+  }
+  .header-date {
+    display: inline-block;
+    margin-top: 12px;
+    background: rgba(255,255,255,0.15);
+    backdrop-filter: blur(10px);
+    color: #e0d9ff;
+    font-size: 15px;
+    font-weight: 600;
+    padding: 6px 18px;
+    border-radius: 20px;
+    border: 1px solid rgba(255,255,255,0.2);
+    position: relative;
+    z-index: 1;
+  }
+  .header-subtitle {
+    margin-top: 10px;
+    color: rgba(255,255,255,0.6);
+    font-size: 13px;
+    position: relative;
+    z-index: 1;
+  }
+
+  /* Section label */
+  .section-label {
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    color: #8892a4;
+    text-transform: uppercase;
+    margin: 28px 0 12px 4px;
+  }
+
+  /* Card */
+  .card {
+    display: block;
+    background: #ffffff;
+    border-radius: 14px;
+    padding: 22px 24px;
+    margin-bottom: 14px;
+    text-decoration: none;
+    color: inherit;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+    border: 1px solid rgba(0,0,0,0.04);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    cursor: pointer;
+  }
+  .card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 32px rgba(0,0,0,0.12);
+    border-color: rgba(108,92,231,0.2);
+  }
+  .card-meta {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 10px;
+    flex-wrap: wrap;
+  }
+  .source-badge {
+    font-size: 11px;
+    font-weight: 700;
+    padding: 3px 10px;
+    border-radius: 20px;
+    color: #fff;
+  }
+  .badge-nvidia { background: #76b900; }
+  .badge-anthropic { background: #d4692e; }
+  .badge-google { background: #4285f4; }
+  .badge-openai { background: #10a37f; }
+  .badge-apple { background: #555555; }
+  .badge-vcnews { background: #e84393; }
+  .badge-research { background: #7c3aed; }
+  .badge-industry { background: #0891b2; }
+  .badge-china { background: #dc2626; }
+  .badge-startup { background: #f59e0b; }
+
+  .card-time {
+    font-size: 11px;
+    color: #94a3b8;
+    font-weight: 500;
+  }
+  .card-number {
+    margin-left: auto;
+    font-size: 13px;
+    font-weight: 800;
+    color: #e2e8f0;
+  }
+  .card h2 {
+    font-size: 17px;
+    font-weight: 700;
+    color: #1a202c;
+    line-height: 1.5;
+    margin-bottom: 10px;
+  }
+  .card p {
+    font-size: 14px;
+    color: #4a5568;
+    line-height: 1.8;
+    margin-bottom: 14px;
+  }
+  .card-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  .tags { display: flex; gap: 6px; flex-wrap: wrap; }
+  .tag {
+    font-size: 11px;
+    padding: 3px 10px;
+    border-radius: 20px;
+    background: #f1f5f9;
+    color: #64748b;
+    font-weight: 600;
+    border: 1px solid #e2e8f0;
+  }
+  .read-more {
+    font-size: 12px;
+    font-weight: 700;
+    color: #6c5ce7;
+    white-space: nowrap;
+  }
+
+  /* Hot badge */
+  .hot-badge {
+    display: inline-block;
+    background: linear-gradient(90deg, #ff416c, #ff4b2b);
+    color: white;
+    font-size: 10px;
+    font-weight: 800;
+    padding: 2px 7px;
+    border-radius: 4px;
+    letter-spacing: 0.5px;
+    vertical-align: middle;
+    margin-left: 6px;
+  }
+
+  /* Footer */
+  .footer {
+    text-align: center;
+    padding: 28px 20px;
+    color: #94a3b8;
+    font-size: 12px;
+    line-height: 2;
+  }
+  .footer strong { color: #6c5ce7; }
+  .divider {
+    border: none;
+    border-top: 1px solid #e2e8f0;
+    margin: 28px 0;
+  }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <!-- Header -->
+  <div class="header">
+    <div class="header-emoji">🤖</div>
+    <h1>Steven学长的每日AI日报</h1>
+    <div class="header-date">【2026年03月20日 · 星期五】</div>
+    <div class="header-subtitle">每日精选 · AI前沿资讯 · 自动采集整理</div>
+  </div>
+
+  <div class="section-label">🔥 今日头条</div>
+
+  <!-- Card 1: NVIDIA GTC 2026 -->
+  <a class="card" href="https://blogs.nvidia.com/blog/gtc-2026-news/" target="_blank" rel="noopener">
+    <div class="card-meta">
+      <span class="source-badge badge-nvidia">NVIDIA Blog</span>
+      <span class="card-time">2026-03-19</span>
+      <span class="card-number">#01</span>
+    </div>
+    <h2>NVIDIA GTC 2026圆满落幕：Vera Rubin平台亮相，黄仁勋宣布$1万亿AI订单<span class="hot-badge">HOT</span></h2>
+    <p>3月16–19日在圣何塞举行的GTC 2026上，NVIDIA CEO Jensen Huang宣布Blackwell与Vera Rubin两代平台的采购订单将在2027年前突破$1万亿。Vera Rubin系统正式进入量产，能效是Grace Blackwell的10倍，专为推理与Agent工作负载设计。同期发布的OpenClaw/NemoClaw开源Agent框架被比作AI时代的Linux，CUDA迎来20周年。NVIDIA今年Q1营收预计同比增长77%至约$780亿，连续11个季度实现55%以上增长。</p>
+    <div class="card-footer">
+      <div class="tags">
+        <span class="tag">NVIDIA</span>
+        <span class="tag">Vera Rubin</span>
+        <span class="tag">AI芯片</span>
+        <span class="tag">GTC2026</span>
+      </div>
+      <span class="read-more">点击查看原文 →</span>
+    </div>
+  </a>
+
+  <!-- Card 2: Anthropic vs Pentagon -->
+  <a class="card" href="https://techcrunch.com/2026/03/09/openai-and-google-employees-rush-to-anthropics-defense-in-dod-lawsuit/" target="_blank" rel="noopener">
+    <div class="card-meta">
+      <span class="source-badge badge-anthropic">Anthropic / TechCrunch</span>
+      <span class="card-time">2026-03-19</span>
+      <span class="card-number">#02</span>
+    </div>
+    <h2>Anthropic起诉五角大楼，OpenAI与Google900名员工联名声援<span class="hot-badge">HOT</span></h2>
+    <p>五角大楼将Anthropic列为"供应链风险"，原因是Anthropic拒绝允许DoD将Claude用于大规模监控美国公民或自主发动攻击。Anthropic随即提起诉讼并寻求紧急禁令。OpenAI与Google DeepMind员工迅速声援，近900人联署公开信"We Will Not Be Divided"。事件引发Anthropic CEO Dario Amodei与OpenAI CEO Sam Altman公开互怼，Google则趁机扩大五角大楼合作，Gemini付费用户同比增长258%。</p>
+    <div class="card-footer">
+      <div class="tags">
+        <span class="tag">Anthropic</span>
+        <span class="tag">AI监管</span>
+        <span class="tag">军事AI</span>
+        <span class="tag">OpenAI</span>
+      </div>
+      <span class="read-more">点击查看原文 →</span>
+    </div>
+  </a>
+
+  <div class="section-label">🚀 模型与产品</div>
+
+  <!-- Card 3: Google Gemini Workspace -->
+  <a class="card" href="https://blog.google/products-and-platforms/products/workspace/gemini-workspace-updates-march-2026/" target="_blank" rel="noopener">
+    <div class="card-meta">
+      <span class="source-badge badge-google">Google Blog</span>
+      <span class="card-time">2026-03-20</span>
+      <span class="card-number">#03</span>
+    </div>
+    <h2>Google Gemini全面升级Workspace：今日起Beta开放Docs/Sheets/Slides AI写作与创作</h2>
+    <p>Google今日开始向Google AI Ultra和Pro订阅用户推送Gemini在Workspace中的全面升级Beta版本。Gemini可直接在Docs中起草和改写文档，在Sheets中实现自然语言电表生成（SpreadsheetBench成功率70.48%），在Slides中生成演示文稿，并跨Drive智能搜索文件。这标志着Google将其最强前沿模型能力直接嵌入办公生产力工具，与Microsoft 365 Copilot的竞争进入白热化阶段。</p>
+    <div class="card-footer">
+      <div class="tags">
+        <span class="tag">Google</span>
+        <span class="tag">Gemini</span>
+        <span class="tag">Workspace</span>
+        <span class="tag">办公AI</span>
+      </div>
+      <span class="read-more">点击查看原文 →</span>
+    </div>
+  </a>
+
+  <!-- Card 4: Apple Siri AI -->
+  <a class="card" href="https://www.crescendo.ai/news/latest-ai-news-and-updates" target="_blank" rel="noopener">
+    <div class="card-meta">
+      <span class="source-badge badge-apple">Apple / Crescendo AI</span>
+      <span class="card-time">2026-03-20</span>
+      <span class="card-number">#04</span>
+    </div>
+    <h2>苹果携手Google重磅改造Siri：上下文感知AI助手随iOS 26.4推送</h2>
+    <p>Apple正式宣布全新AI版Siri将随iOS 26.4于本月发布。新Siri采用Google 1.2万亿参数Gemini模型驱动，具备"屏幕感知"能力，可跨App无缝协同完成复杂任务，同时通过Apple Private Cloud Compute确保隐私。此次合作标志着苹果放弃独自研发大模型路线，转向与Google战略联盟，被业界视为AI手机时代苹果生态的重大转折点。</p>
+    <div class="card-footer">
+      <div class="tags">
+        <span class="tag">Apple</span>
+        <span class="tag">Siri</span>
+        <span class="tag">iOS 26</span>
+        <span class="tag">端侧AI</span>
+      </div>
+      <span class="read-more">点击查看原文 →</span>
+    </div>
+  </a>
+
+  <!-- Card 5: Claude solves Knuth problem -->
+  <a class="card" href="https://juliangoldie.com/ai-news-march-2026/" target="_blank" rel="noopener">
+    <div class="card-meta">
+      <span class="source-badge badge-research">Research / Julian Goldie</span>
+      <span class="card-time">2026-03-18</span>
+      <span class="card-number">#05</span>
+    </div>
+    <h2>计算机科学传奇Knuth发文"震惊"：Claude Opus 4.6解开困扰他数周的图论难题</h2>
+    <p>图灵奖得主、计算机科学奠基人Donald Knuth在3月初发表论文《Claude's Cycles》，记录了Anthropic的Claude Opus 4.6解决一个他本人研究数周未果的复杂图论开放问题的全过程。Knuth写道，这是"自动演绎与创造性问题解决的戏剧性进步"，令他"Shock! Shock!"。这是AI在顶尖数学研究领域获得权威科学家公开背书的最具代表性案例之一。</p>
+    <div class="card-footer">
+      <div class="tags">
+        <span class="tag">Claude</span>
+        <span class="tag">数学推理</span>
+        <span class="tag">AI研究</span>
+        <span class="tag">图论</span>
+      </div>
+      <span class="read-more">点击查看原文 →</span>
+    </div>
+  </a>
+
+  <div class="section-label">💰 投融资动态</div>
+
+  <!-- Card 6: Yann LeCun AMI Labs -->
+  <a class="card" href="https://www.bloomberg.com/news/articles/2026-03-10/yann-lecun-s-new-ai-startup-raises-1-billion-in-seed-funding" target="_blank" rel="noopener">
+    <div class="card-meta">
+      <span class="source-badge badge-vcnews">Bloomberg</span>
+      <span class="card-time">2026-03-10</span>
+      <span class="card-number">#06</span>
+    </div>
+    <h2>AI大神Yann LeCun创业：AMI Labs获$10.3亿种子轮，挑战LLM范式</h2>
+    <p>Meta首席AI科学家Yann LeCun创立的Advanced Machine Intelligence（AMI）Labs完成$10.3亿种子轮融资，估值$35亿，由Nvidia和Bezos Expeditions领投。AMI Labs核心赌注在于抛弃传统大语言模型，转而构建"世界模型"（World Models）——一种通过理解物理世界运行规律来学习的架构。目标场景为机器人和制造业，这些领域恰恰是现有LLM最薄弱的方向。</p>
+    <div class="card-footer">
+      <div class="tags">
+        <span class="tag">AMI Labs</span>
+        <span class="tag">World Models</span>
+        <span class="tag">机器人</span>
+        <span class="tag">融资</span>
+      </div>
+      <span class="read-more">点击查看原文 →</span>
+    </div>
+  </a>
+
+  <!-- Card 7: Replit $400M -->
+  <a class="card" href="https://aifundingtracker.com/ai-startup-funding-news-today/" target="_blank" rel="noopener">
+    <div class="card-meta">
+      <span class="source-badge badge-startup">AI Funding Tracker</span>
+      <span class="card-time">2026-03-18</span>
+      <span class="card-number">#07</span>
+    </div>
+    <h2>Vibe Coding独角兽Replit完成$4亿融资，估值飙至$90亿</h2>
+    <p>AI编程平台Replit宣布完成$4亿新一轮融资，估值达$90亿，成为本月AI融资浪潮中的明星案例。Replit以"vibe coding"概念走红——用户只需用自然语言描述需求，AI即可自动生成、调试并部署完整应用。3月以来已涌现超过历史同期的$1亿+AI融资案例，其中还包括：法律AI Legora获$5.5亿、AI云基础设施Nscale获$20亿（估值$146亿）。</p>
+    <div class="card-footer">
+      <div class="tags">
+        <span class="tag">Replit</span>
+        <span class="tag">Vibe Coding</span>
+        <span class="tag">AI编程</span>
+        <span class="tag">融资</span>
+      </div>
+      <span class="read-more">点击查看原文 →</span>
+    </div>
+  </a>
+
+  <div class="section-label">🏭 行业与企业</div>
+
+  <!-- Card 8: McKinsey AI Interview -->
+  <a class="card" href="https://juliangoldie.com/ai-news-march-2026/" target="_blank" rel="noopener">
+    <div class="card-meta">
+      <span class="source-badge badge-industry">Industry News</span>
+      <span class="card-time">2026-03-19</span>
+      <span class="card-number">#08</span>
+    </div>
+    <h2>麦肯锡招聘加入"AI面试"：要求应届生与AI工具协作解决商业问题</h2>
+    <p>麦肯锡在校招最终轮新增"AI面试"环节，要求候选人使用内部AI工具"Lilli"作为"思维伙伴"共同解决商业情景题。CEO Bob Sternfels透露，公司当前拥有4万名人类员工和2万名AI Agent的"混合劳动力"。此举被解读为顶级咨询公司公开承认AI对知识工作冲击的里程碑信号，预计将引发其他管理咨询、金融和法律公司跟进。</p>
+    <div class="card-footer">
+      <div class="tags">
+        <span class="tag">麦肯锡</span>
+        <span class="tag">AI招聘</span>
+        <span class="tag">AI Agent</span>
+        <span class="tag">未来工作</span>
+      </div>
+      <span class="read-more">点击查看原文 →</span>
+    </div>
+  </a>
+
+  <!-- Card 9: MiniMax IPO report -->
+  <a class="card" href="https://www.qbitai.com/2026/03/383276.html" target="_blank" rel="noopener">
+    <div class="card-meta">
+      <span class="source-badge badge-china">量子位</span>
+      <span class="card-time">2026-03-19</span>
+      <span class="card-number">#09</span>
+    </div>
+    <h2>MiniMax发布全球首份大模型年报：2月ARR破$1.5亿，毛利同比增437%</h2>
+    <p>MiniMax作为全球首家发布完整年报的大模型公司，交出亮眼成绩单：2026年2月年化营收（ARR）突破$1.5亿，2025年全年营收同比增长158.9%，毛利率大幅改善，同比增长437%，亏损率显著收窄。MiniMax预判2026年将出现三大超级PMF（Product-Market Fit）方向：AI陪伴、AI创作工具和AI企业服务。这份报告为AI行业商业模式讨论提供了难得的量化参照系。</p>
+    <div class="card-footer">
+      <div class="tags">
+        <span class="tag">MiniMax</span>
+        <span class="tag">大模型商业化</span>
+        <span class="tag">国内AI</span>
+        <span class="tag">年报</span>
+      </div>
+      <span class="read-more">点击查看原文 →</span>
+    </div>
+  </a>
+
+  <!-- Card 10: AI Chips Environment -->
+  <a class="card" href="https://www.healthcaredive.com/news/ai-advancement-healthcare-regulation-himss-2026/814268/" target="_blank" rel="noopener">
+    <div class="card-meta">
+      <span class="source-badge badge-research">Healthcare Dive</span>
+      <span class="card-time">2026-03-19</span>
+      <span class="card-number">#10</span>
+    </div>
+    <h2>AI芯片产能飙升的代价：半导体碳排放2030年或增三分之一至2.47亿吨</h2>
+    <p>新研究警告，为满足AI训练和推理的算力需求，内存芯片大规模扩产将推动半导体制造业碳排放到2030年上升约三分之一，达到约2.47亿吨CO₂当量，相当于当前荷兰全国年排放量。与此同时，AI在医疗领域的监管体系同样严重滞后——FDA正面对自主进化的Agentic AI系统前所未有的审批困境，各州零散立法造成监管碎片化，而联邦层面则趋向放松管制以优先保障AI采用速度。</p>
+    <div class="card-footer">
+      <div class="tags">
+        <span class="tag">AI环境</span>
+        <span class="tag">芯片碳排放</span>
+        <span class="tag">AI监管</span>
+        <span class="tag">医疗AI</span>
+      </div>
+      <span class="read-more">点击查看原文 →</span>
+    </div>
+  </a>
+
+  <hr class="divider">
+
+  <!-- Footer -->
+  <div class="footer">
+    <div>由 <strong>AI 自动采集整理</strong> | 共收录 <strong>10</strong> 条资讯</div>
+    <div>生成时间：2026-03-20 · <strong>Steven学长的每日AI日报</strong></div>
+    <div style="margin-top:6px;color:#cbd5e1;">数据来源：NVIDIA Blog · TechCrunch · Google Blog · Bloomberg · 量子位 等</div>
+  </div>
+
+</div>
+</body>
+</html>
