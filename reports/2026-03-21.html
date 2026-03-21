@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Steven学长的每日AI日报 — 2026年03月21日</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+    background: #f0f2f5;
+    color: #1a1a2e;
+    line-height: 1.6;
+  }
+  .container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 24px 16px 48px;
+  }
+  .header {
+    background: linear-gradient(135deg, #1a1a2e 0%, #6c5ce7 100%);
+    border-radius: 20px;
+    padding: 48px 40px 40px;
+    margin-bottom: 32px;
+    text-align: center;
+    color: #fff;
+    position: relative;
+    overflow: hidden;
+  }
+  .header::before {
+    content: "";
+    position: absolute;
+    top: -60px; right: -60px;
+    width: 220px; height: 220px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.06);
+  }
+  .header::after {
+    content: "";
+    position: absolute;
+    bottom: -80px; left: -40px;
+    width: 280px; height: 280px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.04);
+  }
+  .header-badge {
+    display: inline-block;
+    background: rgba(255,255,255,0.15);
+    border: 1px solid rgba(255,255,255,0.25);
+    border-radius: 30px;
+    padding: 6px 20px;
+    font-size: 13px;
+    letter-spacing: 1px;
+    margin-bottom: 16px;
+    backdrop-filter: blur(4px);
+  }
+  .header h1 {
+    font-size: 2.2rem;
+    font-weight: 800;
+    letter-spacing: -0.5px;
+    margin-bottom: 10px;
+    position: relative;
+    z-index: 1;
+  }
+  .header .date-label {
+    font-size: 1.1rem;
+    opacity: 0.85;
+    position: relative;
+    z-index: 1;
+  }
+  .header .date-label span {
+    background: rgba(255,255,255,0.2);
+    padding: 4px 14px;
+    border-radius: 20px;
+    font-weight: 600;
+  }
+  .cards-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  .card {
+    background: #fff;
+    border-radius: 12px;
+    padding: 28px 28px 22px;
+    text-decoration: none;
+    color: inherit;
+    display: block;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    transition: transform 0.22s ease, box-shadow 0.22s ease;
+    border: 1px solid rgba(0,0,0,0.04);
+  }
+  .card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 32px rgba(108,92,231,0.13);
+  }
+  .card-meta {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 14px;
+    flex-wrap: wrap;
+  }
+  .source-badge {
+    font-size: 11px;
+    font-weight: 700;
+    padding: 3px 12px;
+    border-radius: 20px;
+    color: #fff;
+    letter-spacing: 0.5px;
+  }
+  .s-openai   { background: #10a37f; }
+  .s-google   { background: #4285f4; }
+  .s-anthropic{ background: #c97b4b; }
+  .s-nvidia   { background: #76b900; }
+  .s-meta     { background: #0866ff; }
+  .s-samsung  { background: #1428a0; }
+  .s-china    { background: #e63946; }
+  .s-policy   { background: #6c5ce7; }
+  .s-industry { background: #fd79a8; }
+  .s-security { background: #636e72; }
+  .card-time {
+    font-size: 12px;
+    color: #adb5bd;
+  }
+  .card h2 {
+    font-size: 1.18rem;
+    font-weight: 700;
+    margin-bottom: 10px;
+    color: #1a1a2e;
+    line-height: 1.45;
+  }
+  .card p {
+    font-size: 0.92rem;
+    color: #495057;
+    line-height: 1.75;
+    margin-bottom: 16px;
+  }
+  .tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-bottom: 14px;
+  }
+  .tag {
+    font-size: 11px;
+    background: #f0f2f5;
+    color: #6c5ce7;
+    border-radius: 20px;
+    padding: 3px 12px;
+    font-weight: 600;
+  }
+  .read-more {
+    font-size: 12px;
+    color: #6c5ce7;
+    font-weight: 600;
+    letter-spacing: 0.3px;
+  }
+  .footer {
+    text-align: center;
+    margin-top: 40px;
+    padding: 28px 20px;
+    background: #fff;
+    border-radius: 12px;
+    border: 1px solid rgba(0,0,0,0.04);
+    box-shadow: 0 2px 12px rgba(0,0,0,0.05);
+  }
+  .footer p {
+    font-size: 13px;
+    color: #868e96;
+    line-height: 1.8;
+  }
+  .footer .count {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: #6c5ce7;
+  }
+</style>
+</head>
+<body>
+<div class="container">
+  <div class="header">
+    <div class="header-badge">🤖 AI Daily Briefing</div>
+    <h1>Steven学长的每日AI日报</h1>
+    <div class="date-label"><span>【2026年03月21日】</span></div>
+  </div>
+
+  <div class="cards-grid">
+
+    <a class="card" href="https://llm-stats.com/ai-news" target="_blank">
+      <div class="card-meta">
+        <span class="source-badge s-openai">OpenAI</span>
+        <span class="card-time">2026-03-21</span>
+      </div>
+      <h2>OpenAI 发布 GPT-5.4 Thinking：百万 Token 上下文，征服 OS 级自动化任务</h2>
+      <p>GPT-5.4 Thinking 成为 OpenAI 最新旗舰模型，支持高达 100 万 Token 上下文窗口，并整合增强推理、编程与 Agent 工作流能力。在模拟真实桌面生产力任务的 OSWorld-V 基准测试中，模型得分 75%，略超人类基线的 72.4%，标志 AI 从对话工具正式演变为自主数字协作者。ChatGPT 同步上线 Excel 插件（美加澳地区），用户可在 Excel 内直接构建和分析电子表格。</p>
+      <div class="tags">
+        <span class="tag">GPT-5.4</span>
+        <span class="tag">长上下文</span>
+        <span class="tag">AI Agent</span>
+        <span class="tag">桌面自动化</span>
+      </div>
+      <span class="read-more">点击查看原文 →</span>
+    </a>
+
+    <a class="card" href="https://techcrunch.com/2026/03/09/openai-and-google-employees-rush-to-anthropics-defense-in-dod-lawsuit/" target="_blank">
+      <div class="card-meta">
+        <span class="source-badge s-anthropic">Anthropic</span>
+        <span class="card-time">2026-03-20</span>
+      </div>
+      <h2>Anthropic 被五角大楼列为"供应链风险"：拒绝大规模监控合同引发行业震荡</h2>
+      <p>美国国防部（DoD）因 Anthropic 拒绝允许其 AI 用于对美国公民的大规模监控及自主武器系统，将其列为"供应链风险"——这一标签通常仅用于外国对手。Anthropic 随即提起诉讼寻求撤销该认定。讽刺的是，DoD 在同一时间与 OpenAI 签署协议，引发 OpenAI 内部员工强烈抗议，#QuitGPT 运动吸引逾 250 万支持者，ChatGPT 卸载量单日飙升 295%，Claude 随之登顶美国 App Store。</p>
+      <div class="tags">
+        <span class="tag">AI 伦理</span>
+        <span class="tag">国防合同</span>
+        <span class="tag">Anthropic</span>
+        <span class="tag">#QuitGPT</span>
+      </div>
+      <span class="read-more">点击查看原文 →</span>
+    </a>
+
+    <a class="card" href="https://www.aljazeera.com/news/2026/3/20/three-charged-in-the-us-with-smuggling-ai-chips-into-china" target="_blank">
+      <div class="card-meta">
+        <span class="source-badge s-security">安全监管</span>
+        <span class="card-time">2026-03-20</span>
+      </div>
+      <h2>美司法部起诉 Super Micro 联合创始人：价值 25 亿美元 AI 芯片走私案曝光</h2>
+      <p>美国司法部对包括 Super Micro Computer 联合创始人在内的三人提起诉讼，指控其通过东南亚中转渠道，以伪造文件和虚假服务器掩护，将至少 25 亿美元价值的高端 AI 服务器（内含 Nvidia 先进芯片）非法出口至中国，绕过出口管制。这是迄今为止涉案金额最大的 AI 技术走私案，AI 算力的地缘政治属性再度引发广泛关注。</p>
+      <div class="tags">
+        <span class="tag">出口管制</span>
+        <span class="tag">Nvidia 芯片</span>
+        <span class="tag">中美科技博弈</span>
+        <span class="tag">Super Micro</span>
+      </div>
+      <span class="read-more">点击查看原文 →</span>
+    </a>
+
+    <a class="card" href="https://www.neuralbuddies.com/p/ai-news-recap-march-20-2026" target="_blank">
+      <div class="card-meta">
+        <span class="source-badge s-google">Google</span>
+        <span class="card-time">2026-03-20</span>
+      </div>
+      <h2>Google Gemini 个人智能功能向所有美国免费用户开放：接入 Gmail、Photos、Chrome</h2>
+      <p>Google 宣布将 Gemini 的"Personal Intelligence"功能扩展至全体美国免费用户，该功能此前仅限付费订阅者使用。Gemini 现可连接用户的 Gmail、Google Photos 和 Chrome，基于个人上下文（如邮件中的酒店预订记录）提供个性化回答。默认处于关闭状态，Google 承诺 Gemini 不会直接利用用户数据训练模型。同步上线的还有 Docs、Sheets、Slides 多项 AI 新功能。</p>
+      <div class="tags">
+        <span class="tag">Gemini</span>
+        <span class="tag">个人 AI</span>
+        <span class="tag">Google 生态</span>
+        <span class="tag">隐私</span>
+      </div>
+      <span class="read-more">点击查看原文 →</span>
+    </a>
+
+    <a class="card" href="https://www.fool.com/investing/2026/03/20/nvidia-millionaire-artificial-intelligence-stock/" target="_blank">
+      <div class="card-meta">
+        <span class="source-badge s-nvidia">NVIDIA</span>
+        <span class="card-time">2026-03-20</span>
+      </div>
+      <h2>Nvidia 市值达 4.3 万亿美元，Jensen Huang：芯片订单积压即将突破 1 万亿</h2>
+      <p>Nvidia 市值升至 4.3 万亿美元，跻身全球最有价值公司之列。CEO 黄仁勋本周预测，公司的芯片订单积压金额即将突破 1 万亿美元，较一年前预估翻倍。与此同时，英伟达宣布未来五年将投入 260 亿美元用于构建全球顶尖开源 AI 大模型，首批模型预计于 2026 年底至 2027 年初问世，其中已完成一个参数量达 5500 亿的超大规模预训练模型。</p>
+      <div class="tags">
+        <span class="tag">Nvidia</span>
+        <span class="tag">AI 芯片</span>
+        <span class="tag">开源大模型</span>
+        <span class="tag">市值</span>
+      </div>
+      <span class="read-more">点击查看原文 →</span>
+    </a>
+
+    <a class="card" href="https://www.upi.com/Top_News/World-News/2026/03/20/samsung-electronics-largest-investment-union-warns-strike/2241773981468/" target="_blank">
+      <div class="card-meta">
+        <span class="source-badge s-samsung">Samsung</span>
+        <span class="card-time">2026-03-20</span>
+      </div>
+      <h2>三星宣布史上最大规模投资：820 亿美元押注 AI 芯片与机器人</h2>
+      <p>三星电子宣布 2026 年资本支出与研发投入合计超过 110 万亿韩元（约 820 亿美元），为历史最高年度投资规模，重点方向为 AI 半导体、先进制程及机器人领域。然而劳资关系紧张，代表三星工人的工会已警告将于 5 月发动罢工，可能在半导体产业竞争关键节点冲击生产。三星此举意在追赶台积电并在 AI 算力供应链中夺得更大份额。</p>
+      <div class="tags">
+        <span class="tag">三星</span>
+        <span class="tag">AI 半导体</span>
+        <span class="tag">资本支出</span>
+        <span class="tag">机器人</span>
+      </div>
+      <span class="read-more">点击查看原文 →</span>
+    </a>
+
+    <a class="card" href="https://www.qbitai.com/2026/03/383276.html" target="_blank">
+      <div class="card-meta">
+        <span class="source-badge s-china">国内动态</span>
+        <span class="card-time">2026-03-20</span>
+      </div>
+      <h2>MiniMax 发布全球首份大模型年报：ARR 突破 1.5 亿美元，毛利同比飙升 437%</h2>
+      <p>MiniMax 港交所上市仅 52 天便交出 IPO 后首份年报，成为全球首家披露正式财务报告的大模型公司。2026 年 2 月年化经常性收入（ARR）突破 1.5 亿美元，2025 年营收同比增长 158.9%，毛利同比大增 437%，亏损率显著收窄。目前拥有覆盖 100 余个国家和地区的 21.4 万企业客户与开发者，海外市场贡献开发平台收入逾 50%，国际化成绩亮眼。</p>
+      <div class="tags">
+        <span class="tag">MiniMax</span>
+        <span class="tag">大模型商业化</span>
+        <span class="tag">港股 IPO</span>
+        <span class="tag">出海</span>
+      </div>
+      <span class="read-more">点击查看原文 →</span>
+    </a>
+
+    <a class="card" href="https://www.chinaflashmarket.com/newsflash/36769" target="_blank">
+      <div class="card-meta">
+        <span class="source-badge s-china">阿里巴巴</span>
+        <span class="card-time">2026-03-19</span>
+      </div>
+      <h2>阿里统一 AI 品牌为"千问"（Qwen），成为史上首个奥运官方大模型</h2>
+      <p>阿里巴巴宣布将旗下 AI 技术品牌全面统一为"千问"（英文：Qwen），终结此前通义千问、千问、Qwen 等多个品牌并存带来的混乱。更具标志意义的是，国际奥委会（IOC）基于阿里千问大模型打造了奥运史上首个官方 AI 大模型，正式宣告中国大模型进入全球顶级赛事舞台。千问系列模型目前已成为海外开发者使用最广泛的中国开源模型之一。</p>
+      <div class="tags">
+        <span class="tag">阿里巴巴</span>
+        <span class="tag">Qwen</span>
+        <span class="tag">奥运 AI</span>
+        <span class="tag">品牌整合</span>
+      </div>
+      <span class="read-more">点击查看原文 →</span>
+    </a>
+
+    <a class="card" href="https://www.transparencycoalition.ai/news/ai-legislative-update-march20-2026" target="_blank">
+      <div class="card-meta">
+        <span class="source-badge s-policy">AI 监管</span>
+        <span class="card-time">2026-03-20</span>
+      </div>
+      <h2>白宫发布国家 AI 框架；美国《AI 问责法》正式通过，要求强制偏见审计</h2>
+      <p>白宫本周发布新版国家 AI 框架，为联邦层面 AI 治理奠定政策基础。同期，美国国会通过《AI 问责法》（AI Accountability Act），要求在招聘、贷款、医疗、刑事司法等高风险场景中部署 AI 的企业，必须定期开展并公开发布偏见审计报告，正式终结多年来依赖行业自律的局面。华盛顿州同步通过五项 AI 相关法案，涵盖内容披露、儿童聊天机器人安全、健康保险 AI 应用及深度伪造监管。</p>
+      <div class="tags">
+        <span class="tag">AI 立法</span>
+        <span class="tag">偏见审计</span>
+        <span class="tag">白宫</span>
+        <span class="tag">EU AI Act</span>
+      </div>
+      <span class="read-more">点击查看原文 →</span>
+    </a>
+
+    <a class="card" href="https://www.crescendo.ai/news/latest-ai-news-and-updates" target="_blank">
+      <div class="card-meta">
+        <span class="source-badge s-anthropic">Anthropic</span>
+        <span class="card-time">2026-03-18</span>
+      </div>
+      <h2>Claude Opus 4.6 解开 Donald Knuth 数周未解的图论难题，Knuth 发论文致敬</h2>
+      <p>计算机科学泰斗 Donald Knuth 近日发表论文《Claude's Cycles》，记录了 Anthropic Claude Opus 4.6 解决一道他本人研究数周未果的开放图论难题——在三维有向图中构造哈密顿回路。Knuth 在文中以"震惊"二字形容自己的反应，并评价此举是"自动推理与创造性问题求解领域的戏剧性进步"。这是 AI 首次被顶尖数学家公开认可具备前沿研究能力。</p>
+      <div class="tags">
+        <span class="tag">Claude Opus 4.6</span>
+        <span class="tag">数学推理</span>
+        <span class="tag">图论</span>
+        <span class="tag">Donald Knuth</span>
+      </div>
+      <span class="read-more">点击查看原文 →</span>
+    </a>
+
+  </div>
+
+  <div class="footer">
+    <p class="count">📰 今日共收录 <strong>10</strong> 条 AI 资讯</p>
+    <p>由 AI 自动采集整理 &nbsp;|&nbsp; 生成时间：2026-03-21 &nbsp;|&nbsp; Steven学长的每日AI日报</p>
+  </div>
+
+</div>
+</body>
+</html>
