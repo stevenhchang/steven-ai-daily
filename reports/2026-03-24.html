@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Steven学长的每日AI日报 - 2026年03月24日</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+    background: #f0f2f5;
+    color: #2d3436;
+    min-height: 100vh;
+  }
+  .header {
+    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 40%, #6c5ce7 100%);
+    color: white;
+    text-align: center;
+    padding: 52px 20px 44px;
+    position: relative;
+    overflow: hidden;
+  }
+  .header::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(ellipse at center, rgba(108,92,231,0.15) 0%, transparent 70%);
+    animation: pulse 6s ease-in-out infinite;
+  }
+  @keyframes pulse {
+    0%, 100% { transform: scale(1); opacity: 0.5; }
+    50% { transform: scale(1.1); opacity: 1; }
+  }
+  .header-inner { position: relative; z-index: 1; }
+  .header-badge {
+    display: inline-block;
+    background: rgba(255,255,255,0.12);
+    border: 1px solid rgba(255,255,255,0.25);
+    border-radius: 20px;
+    padding: 4px 14px;
+    font-size: 12px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 16px;
+    color: rgba(255,255,255,0.85);
+  }
+  .header h1 {
+    font-size: clamp(26px, 5vw, 42px);
+    font-weight: 800;
+    letter-spacing: -0.5px;
+    margin-bottom: 12px;
+    text-shadow: 0 2px 20px rgba(0,0,0,0.3);
+  }
+  .header-date {
+    font-size: 18px;
+    color: rgba(255,255,255,0.75);
+    font-weight: 400;
+  }
+  .header-date span {
+    color: #a29bfe;
+    font-weight: 600;
+  }
+
+  .container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 36px 16px 48px;
+  }
+
+  .section-title {
+    font-size: 13px;
+    font-weight: 700;
+    color: #6c5ce7;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+    padding-left: 4px;
+  }
+
+  .card {
+    display: block;
+    background: #fff;
+    border-radius: 16px;
+    padding: 24px 26px;
+    margin-bottom: 18px;
+    text-decoration: none;
+    color: inherit;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    transition: transform 0.22s cubic-bezier(.34,1.56,.64,1), box-shadow 0.22s ease;
+    border: 1px solid rgba(0,0,0,0.04);
+    cursor: pointer;
+  }
+  .card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 32px rgba(108,92,231,0.14);
+  }
+  .card-meta {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 12px;
+    flex-wrap: wrap;
+  }
+  .source-tag {
+    display: inline-block;
+    padding: 3px 10px;
+    border-radius: 20px;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+  }
+  .card-time {
+    font-size: 12px;
+    color: #b2bec3;
+  }
+  .card-title {
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 1.45;
+    margin-bottom: 10px;
+    color: #1a1a2e;
+  }
+  .card-summary {
+    font-size: 14px;
+    line-height: 1.75;
+    color: #636e72;
+    margin-bottom: 14px;
+  }
+  .card-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  .tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+  .tag {
+    display: inline-block;
+    background: #f0f0ff;
+    color: #6c5ce7;
+    border-radius: 20px;
+    padding: 3px 10px;
+    font-size: 11px;
+    font-weight: 600;
+  }
+  .read-more {
+    font-size: 13px;
+    color: #6c5ce7;
+    font-weight: 600;
+    white-space: nowrap;
+  }
+  .read-more:hover { text-decoration: underline; }
+
+  /* Source tag colors */
+  .src-yahoo  { background: #fff0f0; color: #c0392b; }
+  .src-techcrunch { background: #fff7e6; color: #e67e22; }
+  .src-nvidia { background: #e8f8e8; color: #27ae60; }
+  .src-crescendo { background: #e8f0ff; color: #2980b9; }
+  .src-crunchbase { background: #f0fff4; color: #16a085; }
+  .src-wbn { background: #fdf0ff; color: #8e44ad; }
+  .src-national { background: #fff8e1; color: #f39c12; }
+  .src-mktprofs { background: #e8f4fd; color: #1565C0; }
+  .src-qbitai { background: #fff3e0; color: #e65100; }
+
+  .footer {
+    text-align: center;
+    padding: 28px 16px;
+    font-size: 13px;
+    color: #b2bec3;
+    border-top: 1px solid #e0e0e0;
+    margin-top: 8px;
+  }
+  .footer strong { color: #6c5ce7; }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="header-inner">
+    <div class="header-badge">AI Daily Briefing</div>
+    <h1>Steven学长的每日AI日报</h1>
+    <div class="header-date">【<span>2026年03月24日</span>】今日 AI 动态速览</div>
+  </div>
+</div>
+
+<div class="container">
+  <div class="section-title">今日精选 · 10 条资讯</div>
+
+  <!-- Card 1 -->
+  <a class="card" href="https://finance.yahoo.com/news/anthropic-tells-judge-billions-stake-233500564.html" target="_blank">
+    <div class="card-meta">
+      <span class="source-tag src-yahoo">Yahoo Finance</span>
+      <span class="card-time">2026-03-24 · 关键听证日</span>
+    </div>
+    <div class="card-title">⚖️ 【续】Anthropic vs 五角大楼：3月24日关键听证，数十亿营收悬于一判</div>
+    <div class="card-summary">
+      今日，Anthropic 在旧金山联邦法院就起诉国防部一案举行关键临时禁令听证。Anthropic CFO 在庭上陈述，若法院不发出禁令，公司2026年营收损失将高达数十亿美元。案件核心争议在于：五角大楼要求 Claude 可被用于大规模监控和自主武器系统，而 Anthropic 明确拒绝以此类方式授权。国防部随即转向 OpenAI 签约，后者员工也联署抗议，形成行业罕见的内部撕裂局面。
+    </div>
+    <div class="card-footer">
+      <div class="tags">
+        <span class="tag">Anthropic</span>
+        <span class="tag">AI政策</span>
+        <span class="tag">军事AI</span>
+        <span class="tag">法律</span>
+      </div>
+      <span class="read-more">点击查看原文 →</span>
+    </div>
+  </a>
+
+  <!-- Card 2 -->
+  <a class="card" href="https://www.wbn.digital/the-prompt-report-march-23-2026-the-ai-land-grab-has-begun/" target="_blank">
+    <div class="card-meta">
+      <span class="source-tag src-wbn">The Prompt Report</span>
+      <span class="card-time">2026-03-23 · 基础设施战争</span>
+    </div>
+    <div class="card-title">🏭 Musk 宣布"Terafab"：Tesla/SpaceX/xAI 联合投资逾200亿美元建芯片工厂</div>
+    <div class="card-summary">
+      Elon Musk 宣布由 Tesla、SpaceX 和 xAI 联合出资逾200亿美元，在德克萨斯州奥斯汀建设"Terafab"半导体制造基地。工厂将生产面向电动汽车、Optimus 人形机器人及高性能 AI 计算的定制芯片，目标实现太瓦（Terawatt）级算力输出。这一举措被分析师解读为"AI 控制权之争已从模型层延伸至硅片层"，与 NVIDIA 主导的供应链直接形成竞争关系。
+    </div>
+    <div class="card-footer">
+      <div class="tags">
+        <span class="tag">Elon Musk</span>
+        <span class="tag">半导体</span>
+        <span class="tag">AI基础设施</span>
+        <span class="tag">xAI</span>
+      </div>
+      <span class="read-more">点击查看原文 →</span>
+    </div>
+  </a>
+
+  <!-- Card 3 -->
+  <a class="card" href="https://www.crescendo.ai/news/latest-ai-news-and-updates" target="_blank">
+    <div class="card-meta">
+      <span class="source-tag src-crescendo">Crescendo AI</span>
+      <span class="card-time">2026-03-24 · 医疗 AI</span>
+    </div>
+    <div class="card-title">🏥 Amazon 推出健康 AI 智能体，Prime 会员24小时免费问诊</div>
+    <div class="card-summary">
+      亚马逊正式推出 Health AI Agent，集成于其网站和 App，Prime 会员可全天候获取免费个性化健康咨询。该 Agent 依托 One Medical 服务，具备回答健康问题、解读化验报告、管理处方续药及预约挂号等能力，可处理超过30种常见病症。此举被视为亚马逊迄今最大规模的医疗 AI 落地，分析人士预计将对传统远程医疗平台和互联网医院形成明显冲击。
+    </div>
+    <div class="card-footer">
+      <div class="tags">
+        <span class="tag">Amazon</span>
+        <span class="tag">医疗AI</span>
+        <span class="tag">AI Agent</span>
+        <span class="tag">One Medical</span>
+      </div>
+      <span class="read-more">点击查看原文 →</span>
+    </div>
+  </a>
+
+  <!-- Card 4 -->
+  <a class="card" href="https://www.crescendo.ai/news/latest-ai-news-and-updates" target="_blank">
+    <div class="card-meta">
+      <span class="source-tag src-crescendo">Crescendo AI</span>
+      <span class="card-time">2026-03-24 · 产品更新</span>
+    </div>
+    <div class="card-title">🔍 Google Gemini 个人智能向全美用户开放，接入 Gmail / Photos / YouTube</div>
+    <div class="card-summary">
+      Google 宣布将 Gemini 的 Personal Intelligence 功能向全体美国用户开放，允许 Gemini 读取用户在 Gmail、Photos、YouTube 等产品中的个人数据，提供深度个性化回答。此前该功能仅对付费用户开放，现已跨 Search、Chrome 及 Gemini App 全面覆盖免费版，采用用户自主选择接入的方式。与此同时，Google 也明确表示不排除未来在 Gemini 对话界面引入广告，探索新型商业化路径。
+    </div>
+    <div class="card-footer">
+      <div class="tags">
+        <span class="tag">Google</span>
+        <span class="tag">Gemini</span>
+        <span class="tag">个人数据</span>
+        <span class="tag">AI广告</span>
+      </div>
+      <span class="read-more">点击查看原文 →</span>
+    </div>
+  </a>
+
+  <!-- Card 5 -->
+  <a class="card" href="https://nationaltoday.com/us/ca/san-francisco/news/2026/03/22/openai-to-double-workforce-by-year-end-to-rival-anthropic-google/" target="_blank">
+    <div class="card-meta">
+      <span class="source-tag src-national">National Today</span>
+      <span class="card-time">2026-03-22 · 企业动态</span>
+    </div>
+    <div class="card-title">📈 OpenAI 计划年底员工倍增至8000人，私募融资攻势持续</div>
+    <div class="card-summary">
+      OpenAI 披露内部规划，将在2026年底前将员工总数从约4000人扩充至约8000人，重点招募工程、安全研究和企业销售岗位，全面应对 Anthropic 和 Google 的竞争。与此同时，OpenAI 正积极向私募股权机构提供比 Anthropic 更优厚的合资条件，以加速获取新资本并扩大企业 AI 产品部署。此次大规模扩招恰逢公司因与五角大楼签约引发内外部争议的敏感时期，多名高管及工程师已公开表示反对。
+    </div>
+    <div class="card-footer">
+      <div class="tags">
+        <span class="tag">OpenAI</span>
+        <span class="tag">招聘</span>
+        <span class="tag">企业竞争</span>
+        <span class="tag">私募融资</span>
+      </div>
+      <span class="read-more">点击查看原文 →</span>
+    </div>
+  </a>
+
+  <!-- Card 6 -->
+  <a class="card" href="https://techcrunch.com/2026/03/12/atlassian-follows-blocks-footsteps-and-cuts-staff-in-the-name-of-ai/" target="_blank">
+    <div class="card-meta">
+      <span class="source-tag src-techcrunch">TechCrunch</span>
+      <span class="card-time">2026-03-12 · 企业重组</span>
+    </div>
+    <div class="card-title">🔄 Atlassian 裁员1600人、以双 CTO 替代单一 CTO，全面 AI 转型</div>
+    <div class="card-summary">
+      澳大利亚软件巨头 Atlassian 宣布裁减约1600名员工（占全球员工约10%），同步将 CTO Rajeev Rajan 职位一拆为二：AI 工程负责人 Taroon Mandhana 出任"CTO Teamwork"，首席信任官 Vikram Rao 出任"CTO Enterprise & 首席信任官"。其 AI 助手 Rovo 月活已达500万。讽刺的是，CEO Mike Cannon-Brookes 5个月前曾公开承诺"不会因 AI 减少工程师岗位"，此次超过900个 R&D 职位被裁，引发外界对"AI-washing"的质疑。
+    </div>
+    <div class="card-footer">
+      <div class="tags">
+        <span class="tag">Atlassian</span>
+        <span class="tag">裁员</span>
+        <span class="tag">AI转型</span>
+        <span class="tag">企业SaaS</span>
+      </div>
+      <span class="read-more">点击查看原文 →</span>
+    </div>
+  </a>
+
+  <!-- Card 7 -->
+  <a class="card" href="https://nvidianews.nvidia.com/news/rubin-platform-ai-supercomputer" target="_blank">
+    <div class="card-meta">
+      <span class="source-tag src-nvidia">NVIDIA Newsroom</span>
+      <span class="card-time">2026-03-24 · 芯片硬件</span>
+    </div>
+    <div class="card-title">🟢 NVIDIA 与亚马逊签百万芯片大单，Vera Rubin 平台正式进入量产</div>
+    <div class="card-summary">
+      NVIDIA 宣布与亚马逊 AWS 签署大规模长期供货协议，2027年前将供应逾百万颗 GPU，锁定云端 AI 基础设施需求。与此同时，新一代 Vera Rubin AI 超算平台正式进入量产阶段，由六款全新芯片构成，首批产品将于2026年下半年通过 AWS、Google Cloud、Microsoft Azure、OCI 及 CoreWeave、Lambda 等云服务商部署上市。Rubin 架构在处理器性能和内存带宽上较 Blackwell 实现了大幅跃升。
+    </div>
+    <div class="card-footer">
+      <div class="tags">
+        <span class="tag">NVIDIA</span>
+        <span class="tag">Vera Rubin</span>
+        <span class="tag">AI芯片</span>
+        <span class="tag">AWS</span>
+      </div>
+      <span class="read-more">点击查看原文 →</span>
+    </div>
+  </a>
+
+  <!-- Card 8 -->
+  <a class="card" href="https://www.crescendo.ai/news/latest-ai-news-and-updates" target="_blank">
+    <div class="card-meta">
+      <span class="source-tag src-crescendo">Crescendo AI</span>
+      <span class="card-time">2026-03-24 · 人才并购</span>
+    </div>
+    <div class="card-title">🤝 Meta Superintelligence Labs：Dreamer 整队加入，Hugo Barra 归队扎克伯格</div>
+    <div class="card-summary">
+      AI 初创公司 Dreamer 宣布以整体团队形式并入 Meta Superintelligence Labs，联合创始人 Hugo Barra 由此重返 Mark Zuckerberg 麾下。Barra 曾任 Meta VR 部门 VP 及小米全球副总裁，在硅谷以跨国科技经验著称。Dreamer 专注于构建具备长期规划能力的 AI Agent 系统。此次收购是 Meta 快速扩充超级 AI 团队战略的最新举动，与 Zuckerberg 公开表示"AI 将在2026年完成大多数工程师工作"的目标高度契合。
+    </div>
+    <div class="card-footer">
+      <div class="tags">
+        <span class="tag">Meta</span>
+        <span class="tag">AI Agent</span>
+        <span class="tag">人才并购</span>
+        <span class="tag">Hugo Barra</span>
+      </div>
+      <span class="read-more">点击查看原文 →</span>
+    </div>
+  </a>
+
+  <!-- Card 9 -->
+  <a class="card" href="https://www.marketingprofs.com/opinions/2026/54448/ai-update-march-20-2026-ai-news-and-views-from-the-past-week" target="_blank">
+    <div class="card-meta">
+      <span class="source-tag src-mktprofs">MarketingProfs</span>
+      <span class="card-time">2026-03-20 · 商业趋势</span>
+    </div>
+    <div class="card-title">📊 AI 广告市场2026年增长63%至570亿美元，Google 试探 Gemini 广告变现</div>
+    <div class="card-summary">
+      据最新预测，AI 驱动的广告市场2026年将增长63%，规模达570亿美元，占美国广告总支出的重要份额。与此同步，Google 明确表示不排除在 Gemini 对话界面引入广告，这将是搜索广告商业模式的重大迭代。AI 生成回答正在蚕食传统搜索流量，迫使广告平台寻找新的变现路径。相比传统展示广告，对话式 AI 广告位的意图匹配度更高，但如何在不损害用户信任的前提下植入广告，将是 Google 面临的核心挑战。
+    </div>
+    <div class="card-footer">
+      <div class="tags">
+        <span class="tag">AI广告</span>
+        <span class="tag">Google</span>
+        <span class="tag">商业化</span>
+        <span class="tag">市场规模</span>
+      </div>
+      <span class="read-more">点击查看原文 →</span>
+    </div>
+  </a>
+
+  <!-- Card 10 -->
+  <a class="card" href="https://news.crunchbase.com/business/us-startup-funding-slows-march-2026-data/" target="_blank">
+    <div class="card-meta">
+      <span class="source-tag src-crunchbase">Crunchbase</span>
+      <span class="card-time">2026-03-24 · 融资动态</span>
+    </div>
+    <div class="card-title">💸 美国 AI 私人投资达1091亿美元（中国的12倍），3月融资降温但欧洲逆势创高</div>
+    <div class="card-summary">
+      最新数据显示，美国私人 AI 投资规模已达1091亿美元，约为中国（93亿美元）的12倍、英国（45亿美元）的24倍。2026年2月全球风投单月纪录达1890亿美元，OpenAI 的1100亿美元融资独占鳌头。进入3月，美国融资因超大规模轮次减少而降温，但欧洲逆势创下年内新高，AI 基础设施独角兽 Nscale 和 Yann LeCun 创立的 AMI Labs 贡献主要涨幅，欧洲 AI 生态正在崛起。
+    </div>
+    <div class="card-footer">
+      <div class="tags">
+        <span class="tag">AI融资</span>
+        <span class="tag">风险投资</span>
+        <span class="tag">欧洲AI</span>
+        <span class="tag">市场格局</span>
+      </div>
+      <span class="read-more">点击查看原文 →</span>
+    </div>
+  </a>
+
+</div>
+
+<div class="footer">
+  由 AI 自动采集整理 | 共收录 <strong>10</strong> 条资讯 | 生成时间：2026-03-24 &nbsp;|&nbsp; Steven学长的每日AI日报
+</div>
+
+</body>
+</html>
