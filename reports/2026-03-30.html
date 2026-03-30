@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Steven学长的每日AI日报 - 2026年03月30日</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Noto Sans CJK SC', sans-serif;
+    background: #f0f2f5;
+    min-height: 100vh;
+    padding: 20px 16px 40px;
+  }
+  .container {
+    max-width: 900px;
+    margin: 0 auto;
+  }
+  /* Header */
+  .header {
+    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 40%, #6c5ce7 100%);
+    border-radius: 20px;
+    padding: 40px 36px 32px;
+    margin-bottom: 28px;
+    color: #fff;
+    position: relative;
+    overflow: hidden;
+  }
+  .header::before {
+    content: '';
+    position: absolute;
+    top: -40px; right: -40px;
+    width: 200px; height: 200px;
+    background: rgba(108,92,231,0.25);
+    border-radius: 50%;
+  }
+  .header::after {
+    content: '';
+    position: absolute;
+    bottom: -60px; left: -20px;
+    width: 150px; height: 150px;
+    background: rgba(255,255,255,0.05);
+    border-radius: 50%;
+  }
+  .header-badge {
+    display: inline-block;
+    background: rgba(255,255,255,0.15);
+    border: 1px solid rgba(255,255,255,0.25);
+    border-radius: 20px;
+    padding: 4px 14px;
+    font-size: 12px;
+    letter-spacing: 1px;
+    margin-bottom: 12px;
+    text-transform: uppercase;
+  }
+  .header h1 {
+    font-size: 28px;
+    font-weight: 700;
+    line-height: 1.3;
+    margin-bottom: 8px;
+    position: relative;
+    z-index: 1;
+  }
+  .header .date {
+    font-size: 18px;
+    opacity: 0.85;
+    font-weight: 500;
+    position: relative;
+    z-index: 1;
+  }
+  .header .subtitle {
+    margin-top: 14px;
+    font-size: 13px;
+    opacity: 0.65;
+    position: relative;
+    z-index: 1;
+  }
+
+  /* Stats bar */
+  .stats-bar {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 24px;
+    flex-wrap: wrap;
+  }
+  .stat-pill {
+    background: #fff;
+    border-radius: 30px;
+    padding: 8px 16px;
+    font-size: 13px;
+    color: #555;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .stat-pill span.dot {
+    width: 8px; height: 8px;
+    border-radius: 50%;
+    display: inline-block;
+  }
+  .dot-red { background: #e74c3c; }
+  .dot-green { background: #2ecc71; }
+  .dot-blue { background: #3498db; }
+  .dot-purple { background: #9b59b6; }
+
+  /* Section heading */
+  .section-title {
+    font-size: 13px;
+    font-weight: 700;
+    color: #888;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    margin-bottom: 14px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .section-title::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: #ddd;
+  }
+
+  /* Cards */
+  a.card {
+    display: block;
+    background: #fff;
+    border-radius: 12px;
+    padding: 20px 22px 18px;
+    margin-bottom: 16px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    text-decoration: none;
+    color: inherit;
+    transition: transform 0.18s ease, box-shadow 0.18s ease;
+    border: 1px solid rgba(0,0,0,0.04);
+    position: relative;
+    overflow: hidden;
+  }
+  a.card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 28px rgba(0,0,0,0.12);
+  }
+  a.card.top-story {
+    border-left: 4px solid #6c5ce7;
+  }
+  a.card.top-story::before {
+    content: '🔥 头条';
+    position: absolute;
+    top: 0; right: 0;
+    background: linear-gradient(135deg, #6c5ce7, #a29bfe);
+    color: #fff;
+    font-size: 11px;
+    font-weight: 600;
+    padding: 4px 12px;
+    border-bottom-left-radius: 10px;
+  }
+  .card-meta {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 10px;
+    flex-wrap: wrap;
+  }
+  .source-tag {
+    font-size: 11px;
+    font-weight: 700;
+    padding: 3px 10px;
+    border-radius: 20px;
+    letter-spacing: 0.5px;
+  }
+  .tag-fortune   { background: #fff3e0; color: #e65100; }
+  .tag-techcrunch{ background: #e8f5e9; color: #2e7d32; }
+  .tag-cnbc      { background: #e3f2fd; color: #0277bd; }
+  .tag-apple     { background: #fce4ec; color: #c62828; }
+  .tag-aljazeera { background: #f3e5f5; color: #6a1b9a; }
+  .tag-crunchbase{ background: #e0f2f1; color: #00695c; }
+  .tag-llmstats  { background: #ede7f6; color: #4527a0; }
+  .tag-venturebeat{ background: #fff8e1; color: #f57f17; }
+
+  .card-time {
+    font-size: 12px;
+    color: #aaa;
+  }
+  .card-title {
+    font-size: 17px;
+    font-weight: 700;
+    color: #1a1a2e;
+    line-height: 1.45;
+    margin-bottom: 10px;
+  }
+  .card-summary {
+    font-size: 14px;
+    color: #555;
+    line-height: 1.7;
+    margin-bottom: 14px;
+  }
+  .card-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  .tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+  .tag-pill {
+    background: #f0f2f5;
+    color: #555;
+    font-size: 12px;
+    padding: 3px 10px;
+    border-radius: 12px;
+  }
+  .read-more {
+    font-size: 13px;
+    color: #6c5ce7;
+    font-weight: 600;
+    white-space: nowrap;
+  }
+
+  /* Footer */
+  .footer {
+    text-align: center;
+    margin-top: 36px;
+    font-size: 13px;
+    color: #999;
+    line-height: 1.8;
+  }
+  .footer a { color: #6c5ce7; text-decoration: none; }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <!-- Header -->
+  <div class="header">
+    <div class="header-badge">AI Daily · Steven学长出品</div>
+    <h1>Steven学长的每日AI日报</h1>
+    <div class="date">【2026年03月30日 · 星期一】</div>
+    <div class="subtitle">精选过去24小时内 AI 领域最重要资讯 · 每日自动生成</div>
+  </div>
+
+  <!-- Stats bar -->
+  <div class="stats-bar">
+    <div class="stat-pill"><span class="dot dot-red"></span>头条 2 条</div>
+    <div class="stat-pill"><span class="dot dot-blue"></span>模型动态 3 条</div>
+    <div class="stat-pill"><span class="dot dot-green"></span>融资 1 条</div>
+    <div class="stat-pill"><span class="dot dot-purple"></span>政策 &amp; 法律 2 条</div>
+  </div>
+
+  <!-- Top Stories -->
+  <div class="section-title">头条</div>
+
+  <!-- Card 1: Anthropic Mythos -->
+  <a class="card top-story" href="https://fortune.com/2026/03/26/anthropic-says-testing-mythos-powerful-new-ai-model-after-data-leak-reveals-its-existence-step-change-in-capabilities/" target="_blank" rel="noopener">
+    <div class="card-meta">
+      <span class="source-tag tag-fortune">Fortune</span>
+      <span class="card-time">2026-03-26</span>
+    </div>
+    <div class="card-title">Anthropic Mythos模型数据泄露：网络安全能力"远超任何现有AI"，正在秘密测试</div>
+    <div class="card-summary">Anthropic因内容管理系统配置错误，将近3000份未发布资产暴露在公开可搜索的数据缓存中，泄露材料显示新模型内部代号"Claude Mythos"（别名Capybara），性能被描述为相比此前发布的任何模型均有"阶跃式提升"。泄露草稿特别指出，该模型在网络安全领域"目前远超任何其他AI模型"，并警告其"预示着即将到来的一波能以超越防御者速度利用漏洞的模型浪潮"。Anthropic在被通知后迅速下架数据，称正聚焦于首先向网络安全防御者开放测试权限。</div>
+    <div class="card-footer">
+      <div class="tags">
+        <span class="tag-pill">Anthropic</span>
+        <span class="tag-pill">Claude Mythos</span>
+        <span class="tag-pill">网络安全</span>
+        <span class="tag-pill">数据泄露</span>
+      </div>
+      <span class="read-more">点击查看原文 →</span>
+    </div>
+  </a>
+
+  <!-- Card 2: OpenAI Sora shutdown -->
+  <a class="card top-story" href="https://techcrunch.com/2026/03/24/openais-sora-was-the-creepiest-app-on-your-phone-now-its-shutting-down/" target="_blank" rel="noopener">
+    <div class="card-meta">
+      <span class="source-tag tag-techcrunch">TechCrunch</span>
+      <span class="card-time">2026-03-24</span>
+    </div>
+    <div class="card-title">OpenAI Sora全面关闭：每日推理成本达1500万美元，迪士尼10亿合作随之告吹</div>
+    <div class="card-summary">OpenAI宣布将彻底关闭Sora视频生成平台，涵盖iOS应用、Sora.com网站及开发者API，仅在ChatGPT付费套餐内保留Sora 2模型入口。内部资料显示Sora推理成本每日高达1500万美元，30天内用户留存率不足8%，下载量较高峰期暴跌75%。迪士尼随即宣布终止原定10亿美元入股计划及包含200余个IP授权使用Sora的三年协议。OpenAI表示，腾出的算力将重新分配给编程与推理等更具商业价值的方向，并为筹备IPO提速作准备。</div>
+    <div class="card-footer">
+      <div class="tags">
+        <span class="tag-pill">OpenAI</span>
+        <span class="tag-pill">Sora</span>
+        <span class="tag-pill">视频生成</span>
+        <span class="tag-pill">迪士尼</span>
+      </div>
+      <span class="read-more">点击查看原文 →</span>
+    </div>
+  </a>
+
+  <!-- Model news -->
+  <div class="section-title">模型动态</div>
+
+  <!-- Card 3: Apple + Google Gemini -->
+  <a class="card" href="https://9to5mac.com/2026/03/25/new-details-on-apple-google-ai-deal-revealed-including-gemini-changes-report/" target="_blank" rel="noopener">
+    <div class="card-meta">
+      <span class="source-tag tag-apple">9to5Mac</span>
+      <span class="card-time">2026-03-25</span>
+    </div>
+    <div class="card-title">苹果与Google Gemini合作深度超预期：可将完整Gemini蒸馏为端侧小模型</div>
+    <div class="card-summary">《The Information》最新报道披露，苹果与Google的AI合作"远比外界所知的深入"。苹果不仅获得Gemini API接入权，更可直接蒸馏完整Gemini大模型——学生模型能模仿Gemini的内部计算路径，生成性能近似但算力需求大幅降低的端侧模型，实现在iPhone本地离线运行。合作采用Apple Private Cloud Compute架构，用户数据经隐私缓冲层处理后才传至Google，预计随iOS 26.4（3月至4月发布）推出全新个性化Siri，支持跨App感知与复杂指令执行。</div>
+    <div class="card-footer">
+      <div class="tags">
+        <span class="tag-pill">Apple</span>
+        <span class="tag-pill">Google Gemini</span>
+        <span class="tag-pill">Siri</span>
+        <span class="tag-pill">端侧AI</span>
+      </div>
+      <span class="read-more">点击查看原文 →</span>
+    </div>
+  </a>
+
+  <!-- Card 4: Cursor Composer 2 / Kimi K2.5 -->
+  <a class="card" href="https://techcrunch.com/2026/03/22/cursor-admits-its-new-coding-model-was-built-on-top-of-moonshot-ais-kimi/" target="_blank" rel="noopener">
+    <div class="card-meta">
+      <span class="source-tag tag-techcrunch">TechCrunch</span>
+      <span class="card-time">2026-03-22</span>
+    </div>
+    <div class="card-title">Cursor Composer 2被曝底层为月之暗面Kimi K2.5，中国开源模型成西方AI产品基石</div>
+    <div class="card-summary">估值290亿美元的AI编程工具Cursor推出Composer 2时声称是自研"前沿级编程智能"，但一名开发者通过调试代理拦截API流量，发现模型ID包含"kimi-k2p5-rl-0317"字样，证明底层为北京月之暗面的开源模型Kimi K2.5。Cursor联创随后承认未披露基础模型是"一个错误"，并表示仅约1/4算力来自Kimi底座，其余为自有强化学习训练。此事件揭示更深层问题：Meta Llama 4迟迟未能达到预期，西方AI产品公司在寻求高质量开源底座时正日益依赖中国模型。</div>
+    <div class="card-footer">
+      <div class="tags">
+        <span class="tag-pill">Cursor</span>
+        <span class="tag-pill">月之暗面</span>
+        <span class="tag-pill">开源归因</span>
+        <span class="tag-pill">Kimi K2.5</span>
+      </div>
+      <span class="read-more">点击查看原文 →</span>
+    </div>
+  </a>
+
+  <!-- Card 5: Google Gemini Personal Intelligence -->
+  <a class="card" href="https://www.crescendo.ai/news/latest-ai-news-and-updates" target="_blank" rel="noopener">
+    <div class="card-meta">
+      <span class="source-tag tag-llmstats">Crescendo AI</span>
+      <span class="card-time">2026-03-28</span>
+    </div>
+    <div class="card-title">Google Gemini"Personal Intelligence"向全美免费用户开放：接入Gmail、Photos、YouTube数据</div>
+    <div class="card-summary">Google宣布将原本仅限付费套餐的Gemini"Personal Intelligence"个性化功能向全美免费用户全面开放。该功能允许Gemini读取用户在Gmail、Google Photos、YouTube等已授权应用的数据，提供高度情境化的回答与建议。新功能在Search、Chrome浏览器及Gemini应用中均可使用，用户可随时断开各数据源连接，并以选择性加入（opt-in）方式激活。此举意味着Gemini正式迈入"个人AI助理"赛道，与Apple Intelligence展开正面竞争。</div>
+    <div class="card-footer">
+      <div class="tags">
+        <span class="tag-pill">Google Gemini</span>
+        <span class="tag-pill">个性化AI</span>
+        <span class="tag-pill">数据隐私</span>
+        <span class="tag-pill">免费用户</span>
+      </div>
+      <span class="read-more">点击查看原文 →</span>
+    </div>
+  </a>
+
+  <!-- Funding -->
+  <div class="section-title">融资</div>
+
+  <!-- Card 6: Granola funding -->
+  <a class="card" href="https://aifundingtracker.com/ai-startup-funding-news-today/" target="_blank" rel="noopener">
+    <div class="card-meta">
+      <span class="source-tag tag-crunchbase">AI Funding Tracker</span>
+      <span class="card-time">2026-03-26</span>
+    </div>
+    <div class="card-title">Granola AI会议助手完成1.25亿美元C轮融资，估值升至15亿美元</div>
+    <div class="card-summary">AI会议记录与摘要平台Granola宣布完成1.25亿美元C轮融资，估值达15亿美元，由Index Ventures的Danny Rimer领投，Kleiner Perkins跟投。Granola以端侧处理为核心卖点——所有音频转录与AI摘要均在本地完成，会议内容不上传服务器，深受科技公司和金融机构的隐私敏感团队欢迎。此轮融资将用于扩展企业版功能、加强与Slack、Notion、Linear等工作流工具的集成。AI会议助手赛道竞争日趋白热化，Otter.ai、Fireflies、Notion AI等均在近期加大投入。</div>
+    <div class="card-footer">
+      <div class="tags">
+        <span class="tag-pill">Granola</span>
+        <span class="tag-pill">AI会议</span>
+        <span class="tag-pill">C轮融资</span>
+        <span class="tag-pill">Index Ventures</span>
+      </div>
+      <span class="read-more">点击查看原文 →</span>
+    </div>
+  </a>
+
+  <!-- Policy & Legal -->
+  <div class="section-title">政策 &amp; 法律</div>
+
+  <!-- Card 7: Super Micro chip smuggling -->
+  <a class="card" href="https://www.aljazeera.com/news/2026/3/20/three-charged-in-the-us-with-smuggling-ai-chips-into-china" target="_blank" rel="noopener">
+    <div class="card-meta">
+      <span class="source-tag tag-aljazeera">Al Jazeera</span>
+      <span class="card-time">2026-03-20</span>
+    </div>
+    <div class="card-title">Super Micro联创等三人被诉走私逾25亿美元AI芯片至中国，违反出口管制法</div>
+    <div class="card-summary">美国司法部对AI服务器制造商Super Micro Computer（超微电脑）联合创始人及另外两名高管提起联邦指控，被告被控合谋将至少25亿美元的美国AI计算技术（主要为高端GPU）出口至中国，违反出口管制法及国际紧急经济权力法（IEEPA）。检察官在起诉书中未直接点名Super Micro公司，仅称"某美国制造商"。此案是迄今规模最大的AI芯片走私执法行动，恰逢美国商务部进一步收紧对华芯片出口限制之际，将对科技供应链合规产生深远影响。</div>
+    <div class="card-footer">
+      <div class="tags">
+        <span class="tag-pill">出口管制</span>
+        <span class="tag-pill">Super Micro</span>
+        <span class="tag-pill">AI芯片</span>
+        <span class="tag-pill">中美科技战</span>
+      </div>
+      <span class="read-more">点击查看原文 →</span>
+    </div>
+  </a>
+
+  <!-- Card 8: Anthropic vs Pentagon -->
+  <a class="card" href="https://fortune.com/2026/03/10/google-openai-employees-back-anthropic-legal-fight-military-use-of-ai/" target="_blank" rel="noopener">
+    <div class="card-meta">
+      <span class="source-tag tag-fortune">Fortune</span>
+      <span class="card-time">2026-03-10</span>
+    </div>
+    <div class="card-title">Anthropic起诉美国国防部"供应链风险"定性，900名谷歌、OpenAI员工联署声援</div>
+    <div class="card-summary">美国国防部将Anthropic列为"供应链风险"——此标签通常仅用于外国对手——起因是Anthropic拒绝允许DoD将Claude用于大规模无司法令监控或自主武器决策。包括Google首席科学家Jeff Dean在内逾900名谷歌及OpenAI员工联署法庭之友意见书，警告将Anthropic列入黑名单将危及整个美国AI产业。与此同时，Pentagon在宣布定性的同一时刻即与OpenAI签署合作协议，引发ChatGPT内部员工强烈抗议，研究员Caitlin Kalinowski为此辞职。此案被视为AI伦理边界与国防需求之间的标志性冲突。</div>
+    <div class="card-footer">
+      <div class="tags">
+        <span class="tag-pill">Anthropic</span>
+        <span class="tag-pill">美国国防部</span>
+        <span class="tag-pill">AI伦理</span>
+        <span class="tag-pill">军事AI</span>
+      </div>
+      <span class="read-more">点击查看原文 →</span>
+    </div>
+  </a>
+
+  <!-- Card 9: OpenAI Revenue & IPO -->
+  <a class="card" href="https://llm-stats.com/ai-news" target="_blank" rel="noopener">
+    <div class="card-meta">
+      <span class="source-tag tag-llmstats">LLM Stats</span>
+      <span class="card-time">2026-03-29</span>
+    </div>
+    <div class="card-title">OpenAI年化营收突破250亿美元，最早2026年底IPO；Anthropic逼近190亿</div>
+    <div class="card-summary">OpenAI年化营收已超过250亿美元，公司据报正就公开发行（IPO）进行早期探讨，时间窗口最早为2026年底。关闭Sora、砍除"副业"项目正是清晰聚焦盈利能力、提升IPO估值的举措之一。与此同时，Anthropic年化营收已接近190亿美元，Claude付费订阅今年增速超200%，在企业市场赢得约70%的与OpenAI正面竞争。投资方Ramp的3月AI指数显示，在首次采购AI服务的企业中Anthropic胜率大幅领先。两家公司的收入增速均超出行业普遍预期。</div>
+    <div class="card-footer">
+      <div class="tags">
+        <span class="tag-pill">OpenAI</span>
+        <span class="tag-pill">Anthropic</span>
+        <span class="tag-pill">IPO</span>
+        <span class="tag-pill">年化营收</span>
+      </div>
+      <span class="read-more">点击查看原文 →</span>
+    </div>
+  </a>
+
+  <!-- Card 10: OpenAI Safety Bug Bounty -->
+  <a class="card" href="https://llm-stats.com/ai-news" target="_blank" rel="noopener">
+    <div class="card-meta">
+      <span class="source-tag tag-techcrunch">OpenAI</span>
+      <span class="card-time">2026-03-28</span>
+    </div>
+    <div class="card-title">OpenAI发布Safety Bug Bounty计划：招募白帽黑客系统性猎AI安全漏洞</div>
+    <div class="card-summary">OpenAI正式启动"Safety Bug Bounty"安全漏洞悬赏计划，这是其现有网络安全漏洞奖励计划的重大扩展，将涵盖范围扩大至AI本身的安全缺陷与滥用风险，而非仅局限于软件工程漏洞。参与者可针对ChatGPT、API及其他OpenAI产品中的提示注入、越狱、偏见放大、生成式欺诈内容等问题提交报告，有效提交将获得奖金。此举是Anthropic披露Mythos模型网络安全风险之后，OpenAI对外界AI安全忧虑的积极回应，也被解读为IPO前夕提升企业安全信誉的举措之一。</div>
+    <div class="card-footer">
+      <div class="tags">
+        <span class="tag-pill">OpenAI</span>
+        <span class="tag-pill">AI安全</span>
+        <span class="tag-pill">Bug Bounty</span>
+        <span class="tag-pill">白帽黑客</span>
+      </div>
+      <span class="read-more">点击查看原文 →</span>
+    </div>
+  </a>
+
+  <!-- Footer -->
+  <div class="footer">
+    <div>由 AI 自动采集整理 | 共收录 <strong>10</strong> 条资讯</div>
+    <div style="margin-top:6px;">生成时间：2026年03月30日 &nbsp;·&nbsp; <a href="https://stevenhchang.github.io/steven-ai-daily/" target="_blank">Steven学长每日AI日报</a></div>
+  </div>
+
+</div>
+</body>
+</html>
