@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Steven学长的每日AI日报 - 2026年04月02日</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+    background: #f0f2f5;
+    min-height: 100vh;
+    padding: 20px;
+  }
+  .container { max-width: 900px; margin: 0 auto; }
+  .header {
+    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 40%, #6c5ce7 100%);
+    border-radius: 16px;
+    padding: 40px 32px;
+    text-align: center;
+    margin-bottom: 24px;
+    box-shadow: 0 8px 32px rgba(108, 92, 231, 0.3);
+  }
+  .header-badge {
+    display: inline-block;
+    background: rgba(255,255,255,0.15);
+    color: #a29bfe;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    padding: 4px 14px;
+    border-radius: 20px;
+    border: 1px solid rgba(162, 155, 254, 0.3);
+    margin-bottom: 12px;
+  }
+  .header h1 {
+    color: #ffffff;
+    font-size: 28px;
+    font-weight: 700;
+    margin-bottom: 10px;
+    text-shadow: 0 2px 8px rgba(0,0,0,0.3);
+  }
+  .header .date {
+    color: #a29bfe;
+    font-size: 18px;
+    font-weight: 500;
+  }
+  .header .subtitle {
+    color: rgba(255,255,255,0.6);
+    font-size: 13px;
+    margin-top: 8px;
+  }
+  .stats-bar {
+    background: white;
+    border-radius: 12px;
+    padding: 14px 24px;
+    margin-bottom: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+  .stat-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 13px;
+    color: #636e72;
+  }
+  .stat-item strong { color: #2d3436; }
+  .stat-dot { width: 8px; height: 8px; border-radius: 50%; background: #6c5ce7; }
+  a.card {
+    display: block;
+    background: white;
+    border-radius: 12px;
+    padding: 22px 24px;
+    margin-bottom: 16px;
+    text-decoration: none;
+    color: inherit;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    border: 1px solid rgba(0,0,0,0.04);
+    cursor: pointer;
+  }
+  a.card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 28px rgba(0,0,0,0.12);
+  }
+  .card-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 10px;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  .source-tag {
+    font-size: 11px;
+    font-weight: 600;
+    padding: 3px 10px;
+    border-radius: 20px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+  .src-crunchbase { background: #e8f5e9; color: #2e7d32; }
+  .src-anthropic  { background: #fce4ec; color: #c62828; }
+  .src-nvidia     { background: #e8f5e9; color: #1b5e20; }
+  .src-bloomberg  { background: #e3f2fd; color: #1565c0; }
+  .src-openai     { background: #f3e5f5; color: #6a1b9a; }
+  .src-reuters    { background: #fff3e0; color: #e65100; }
+  .src-xinhua     { background: #fce4ec; color: #880e4f; }
+  .src-techcrunch { background: #e0f2f1; color: #00695c; }
+  .src-axios      { background: #e8eaf6; color: #283593; }
+  .src-usnews     { background: #fff8e1; color: #f57f17; }
+  .card-time {
+    font-size: 12px;
+    color: #b2bec3;
+  }
+  .card h2 {
+    font-size: 16px;
+    font-weight: 700;
+    color: #2d3436;
+    margin-bottom: 8px;
+    line-height: 1.5;
+  }
+  .card p {
+    font-size: 14px;
+    color: #636e72;
+    line-height: 1.7;
+    margin-bottom: 14px;
+  }
+  .tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-bottom: 12px;
+  }
+  .tag {
+    font-size: 11px;
+    background: #f0f0f0;
+    color: #74b9ff;
+    padding: 3px 10px;
+    border-radius: 20px;
+    font-weight: 500;
+    background: #eef2ff;
+    color: #6c5ce7;
+  }
+  .read-more {
+    font-size: 13px;
+    color: #6c5ce7;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+  }
+  .read-more::after { content: '→'; }
+  .divider { height: 1px; background: #f0f2f5; margin: 14px 0; }
+  .footer {
+    text-align: center;
+    padding: 32px 20px;
+    color: #b2bec3;
+    font-size: 13px;
+    line-height: 1.8;
+  }
+  .footer strong { color: #6c5ce7; }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <!-- Header -->
+  <div class="header">
+    <div class="header-badge">Daily AI Briefing</div>
+    <h1>Steven学长的每日AI日报</h1>
+    <div class="date">【2026年04月02日】</div>
+    <div class="subtitle">过去24小时全球AI领域精选资讯</div>
+  </div>
+
+  <!-- Stats bar -->
+  <div class="stats-bar">
+    <div class="stat-item">
+      <div class="stat-dot"></div>
+      <span>今日收录 <strong>10</strong> 条资讯</span>
+    </div>
+    <div class="stat-item">
+      <span>覆盖领域：融资 · 模型 · 芯片 · 政策 · 应用</span>
+    </div>
+    <div class="stat-item">
+      <span>生成时间：2026-04-02</span>
+    </div>
+  </div>
+
+  <!-- Card 1 -->
+  <a class="card" href="https://news.crunchbase.com/venture/record-breaking-funding-ai-global-q1-2026/" target="_blank">
+    <div class="card-header">
+      <span class="source-tag src-crunchbase">Crunchbase</span>
+      <span class="card-time">2026-04-02</span>
+    </div>
+    <h2>💰 Q1 2026风险投资创历史纪录：全球$3000亿，AI独吞80%</h2>
+    <div class="divider"></div>
+    <p>2026年Q1全球风险投资总额突破3000亿美元，其中AI领域独揽2420亿（占80%），同比激增150%。OpenAI单笔融资1220亿美元刷新硅谷纪录，Anthropic、xAI、Waymo分别完成300亿、200亿、160亿融资。这四家公司合计吸金1880亿，占全球风投总额的65%。美国公司拿走总额的83%，中国以161亿排名第二。分析师指出，AI的投资逻辑已从"押注规模"转向"押注实际营收"——OpenAI月营收已达20亿美元，正筹备IPO。</p>
+    <div class="tags">
+      <span class="tag">风险投资</span>
+      <span class="tag">OpenAI</span>
+      <span class="tag">Anthropic</span>
+      <span class="tag">xAI</span>
+    </div>
+    <span class="read-more">点击查看原文 </span>
+  </a>
+
+  <!-- Card 2 -->
+  <a class="card" href="https://releasebot.io/updates/anthropic" target="_blank">
+    <div class="card-header">
+      <span class="source-tag src-anthropic">Anthropic</span>
+      <span class="card-time">2026-04-02</span>
+    </div>
+    <h2>🧬 Anthropic发布Claude Operon：专攻生物医学的AI研究工作区</h2>
+    <div class="divider"></div>
+    <p>Anthropic推出Claude Operon，这是集成在Claude桌面应用内的专属生物与健康研究工作区。Operon支持CRISPR筛选设计、单细胞RNA分析、系统发育树构建和蛋白质语言模型推理等高阶科研任务，是Anthropic首次针对垂直科学领域打造的专属产品。与此同时，Anthropic还将Message Batches API中Claude Opus 4.6和Sonnet 4.6的最大输出token数提升至30万，并提供beta功能支持超长单次输出，适用于大型代码生成和结构化数据处理场景。</p>
+    <div class="tags">
+      <span class="tag">Claude</span>
+      <span class="tag">生物医学AI</span>
+      <span class="tag">CRISPR</span>
+      <span class="tag">科研工具</span>
+    </div>
+    <span class="read-more">点击查看原文 </span>
+  </a>
+
+  <!-- Card 3 -->
+  <a class="card" href="https://renovateqr.com/blog/ai-models-april-2026" target="_blank">
+    <div class="card-header">
+      <span class="source-tag src-anthropic">AI模型</span>
+      <span class="card-time">2026-04-02</span>
+    </div>
+    <h2>🔐 "Claude Mythos"数据泄露：Anthropic或已训练出跨越式新模型</h2>
+    <div class="divider"></div>
+    <p>3月26日，被称为"Claude Mythos"的内部数据泄露事件引发业界高度关注。泄露信息显示Anthropic内部将该模型描述为"a step change"（跨越式进步），能力远超现有Claude Opus 4.6。目前该模型仅向网络安全合作伙伴提供早期访问权限，尚无公开发布时间表。与此同时，Anthropic宣布4月30日将退役Claude Sonnet 4.5及Claude Sonnet 4的100万token上下文窗口测试版，超出标准20万token限制的请求将返回错误。这一连串动作被解读为Anthropic正在全面布局下一代产品。</p>
+    <div class="tags">
+      <span class="tag">Claude Mythos</span>
+      <span class="tag">Anthropic</span>
+      <span class="tag">模型泄露</span>
+      <span class="tag">网络安全</span>
+    </div>
+    <span class="read-more">点击查看原文 </span>
+  </a>
+
+  <!-- Card 4 -->
+  <a class="card" href="https://www.bloomberg.com/news/articles/2026-04-01/openai-demand-sinks-on-secondary-market-as-anthropic-runs-hot" target="_blank">
+    <div class="card-header">
+      <span class="source-tag src-bloomberg">Bloomberg</span>
+      <span class="card-time">2026-04-01</span>
+    </div>
+    <h2>📉 OpenAI二级市场遭抛售：投资者转向Anthropic，$6亿急寻出口</h2>
+    <div class="divider"></div>
+    <p>Bloomberg报道称，OpenAI股份在二级市场已出现"几乎无法出手"的局面，多家对冲基金和VC机构合计寻求出售约6亿美元OpenAI持仓。与此形成鲜明对比的是，Anthropic的二级市场需求持续升温。分析人士认为，这与Anthropic估值达3500亿美元、年化营收逼近190亿美元的强劲增势有关，叠加OpenAI预计到2030年才能盈亏平衡（Anthropic预计2028年），机构资金正在重新权衡押注对象。</p>
+    <div class="tags">
+      <span class="tag">OpenAI</span>
+      <span class="tag">Anthropic</span>
+      <span class="tag">二级市场</span>
+      <span class="tag">投资者情绪</span>
+    </div>
+    <span class="read-more">点击查看原文 </span>
+  </a>
+
+  <!-- Card 5 -->
+  <a class="card" href="https://nvidianews.nvidia.com/news/nvidia-announces-open-physical-ai-data-factory-blueprint-to-accelerate-robotics-vision-ai-agents-and-autonomous-vehicle-development" target="_blank">
+    <div class="card-header">
+      <span class="source-tag src-nvidia">NVIDIA</span>
+      <span class="card-time">2026-04-02</span>
+    </div>
+    <h2>🏭 NVIDIA开源"物理AI数据工厂蓝图"：机器人与自动驾驶训练成本大幅降低</h2>
+    <div class="divider"></div>
+    <p>NVIDIA发布Physical AI Data Factory Blueprint，这是一套开放参考架构，将大规模数据处理、合成数据生成、强化学习和评估流程统一自动化，专为机器人、视觉AI智能体和自动驾驶训练设计。该蓝图将于4月上线GitHub，微软Azure和Nebius率先接入，可将世界级算力转化为由智能体驱动的一键式数据生产引擎。Anthropic、Meta、OpenAI、Mistral、Perplexity等多家AI实验室同时宣布将基于NVIDIA Rubin平台训练下一代更大规模模型，Rubin系列产品将于2026年下半年正式出货。</p>
+    <div class="tags">
+      <span class="tag">NVIDIA Rubin</span>
+      <span class="tag">物理AI</span>
+      <span class="tag">机器人</span>
+      <span class="tag">合成数据</span>
+    </div>
+    <span class="read-more">点击查看原文 </span>
+  </a>
+
+  <!-- Card 6 -->
+  <a class="card" href="https://finance.yahoo.com/news/nvidia-just-made-major-move-213000821.html" target="_blank">
+    <div class="card-header">
+      <span class="source-tag src-reuters">Yahoo Finance</span>
+      <span class="card-time">2026-04-02</span>
+    </div>
+    <h2>🇨🇳 特朗普批准H200对华销售：NVIDIA向台积电下单200万颗</h2>
+    <div class="divider"></div>
+    <p>特朗普政府批准NVIDIA向中国出售H200芯片，NVIDIA已要求台积电增产以应对约200万颗H200的订单需求。此前，拜登时代出台的芯片出口禁令将H200列入对华受限清单，此次政策逆转被分析师解读为贸易谈判筹码与商业利益博弈的结果。对NVIDIA而言，中国是其第二大市场，H200对华销售窗口的重开将直接提振2026年营收预期。与此同时，NVIDIA将于4月6日现身旧金山HumanX 2026大会，副总裁Bryan Catanzaro将发表主题演讲，重点阐述AI基础设施"五层蛋糕"理论。</p>
+    <div class="tags">
+      <span class="tag">NVIDIA H200</span>
+      <span class="tag">芯片出口管制</span>
+      <span class="tag">中美科技博弈</span>
+      <span class="tag">TSMC</span>
+    </div>
+    <span class="read-more">点击查看原文 </span>
+  </a>
+
+  <!-- Card 7 -->
+  <a class="card" href="https://llm-stats.com/llm-updates" target="_blank">
+    <div class="card-header">
+      <span class="source-tag src-openai">OpenAI</span>
+      <span class="card-time">2026-04-02</span>
+    </div>
+    <h2>🤖 OpenAI扩展Responses API：内置Shell工具与智能体执行循环上线</h2>
+    <div class="divider"></div>
+    <p>OpenAI宣布对Responses API进行重大扩展，新增shell工具、内置智能体执行循环、托管容器工作区、上下文压缩（context compaction）和可复用智能体技能（agent skills）五大功能，大幅降低开发者构建多步骤自主智能体工作流的门槛。与此同时，GPT-5.4推理模型（3月5日发布）引入"执行前规划（Planning）"和"执行中打断（Interrupting）"双机制，将错误纠正从完成后返工前置为执行中调整，在GDPVal计算机使用基准上以83%得分领跑全球，上下文窗口达100万token。</p>
+    <div class="tags">
+      <span class="tag">OpenAI</span>
+      <span class="tag">Responses API</span>
+      <span class="tag">AI Agent</span>
+      <span class="tag">GPT-5.4</span>
+    </div>
+    <span class="read-more">点击查看原文 </span>
+  </a>
+
+  <!-- Card 8 -->
+  <a class="card" href="https://www.usnews.com/news/top-news/articles/2026-04-02/crisis-contractor-for-openai-anthropic-eyes-a-move-to-combat-extremism" target="_blank">
+    <div class="card-header">
+      <span class="source-tag src-usnews">US News</span>
+      <span class="card-time">2026-04-02</span>
+    </div>
+    <h2>🛡️ AI危机干预商ThroughLine拓展反极端主义：覆盖180国1600条危机热线</h2>
+    <div class="divider"></div>
+    <p>同时服务于OpenAI、Anthropic和Google的危机支持承包商ThroughLine正在开发一款反暴力极端主义工具。当AI检测到用户出现极端倾向时，将通过AI聊天机器人结合人工服务的混合模式进行干预，并对接真实世界心理健康资源。ThroughLine目前已在ChatGPT等平台部署，当系统识别出用户有自伤、家暴或饮食失调风险时，自动导流至其覆盖180个国家、1600条人工危机热线的支持网络。此次拓展是AI安全监管压力下，大模型公司主动强化社会责任的最新举措。</p>
+    <div class="tags">
+      <span class="tag">AI安全</span>
+      <span class="tag">极端主义预防</span>
+      <span class="tag">ThroughLine</span>
+      <span class="tag">内容审核</span>
+    </div>
+    <span class="read-more">点击查看原文 </span>
+  </a>
+
+  <!-- Card 9 -->
+  <a class="card" href="https://www.clickorlando.com/news/politics/2026/04/02/its-international-fact-checking-day-refresh-your-ai-identification-skills/" target="_blank">
+    <div class="card-header">
+      <span class="source-tag src-techcrunch">Reuters/AP</span>
+      <span class="card-time">2026-04-02</span>
+    </div>
+    <h2>🔍 伊朗战争催生AI虚假信息泛滥：仅24个X账号获逾10亿次观看</h2>
+    <div class="divider"></div>
+    <p>今日恰逢第10届国际事实核查日。自2月28日美以联合攻击伊朗以来，战略对话研究所（ISD）追踪发现，约24个X平台账号——其中多数已获蓝标认证——持续发布AI生成虚假内容，总浏览量超10亿次。虚假内容包括从未发生的爆炸假视频、将特朗普等人描绘为乐高玩具的宣传影片等。研究人员警告，AI生成工具的门槛已低至任何人都能批量制造以假乱真的视频，而平台的认证体系反而为这类账号提供了可信度背书，亟需新型检测机制。</p>
+    <div class="tags">
+      <span class="tag">AI虚假信息</span>
+      <span class="tag">深度伪造</span>
+      <span class="tag">信息战</span>
+      <span class="tag">事实核查</span>
+    </div>
+    <span class="read-more">点击查看原文 </span>
+  </a>
+
+  <!-- Card 10 -->
+  <a class="card" href="https://www.news.cn/20260128/3b2f11906fd74ca397fef9996c805a60/c.html" target="_blank">
+    <div class="card-header">
+      <span class="source-tag src-xinhua">新华网</span>
+      <span class="card-time">2026-04-02</span>
+    </div>
+    <h2>🇨🇳 中国日均Token调用量突破140万亿：较2024年初暴增1000倍</h2>
+    <div class="divider"></div>
+    <p>国家数据局局长刘烈宏披露，截至2026年3月，中国日均Token调用量已突破140万亿，相较2024年初的1000亿增长超1000倍，仅今年前三个月就再增40%。与此同时，中国AI应用落地加速：联想天津工厂将AI排产时效从2小时压缩至10分钟；天津医科大学肿瘤医院AI审核系统平均缩短报告审核时间30分钟；四川德阳"城市大脑"实现分钟级路面问题识别。国家预测，至"十五五"（2026-2030年）末，中国AI相关产业规模将突破10万亿元人民币。</p>
+    <div class="tags">
+      <span class="tag">中国AI</span>
+      <span class="tag">Token调用量</span>
+      <span class="tag">AI落地应用</span>
+      <span class="tag">产业规模</span>
+    </div>
+    <span class="read-more">点击查看原文 </span>
+  </a>
+
+  <!-- Footer -->
+  <div class="footer">
+    <p>由 <strong>AI 自动采集整理</strong> | 共收录 <strong>10</strong> 条资讯</p>
+    <p>生成时间：2026-04-02 | Steven学长每日AI日报</p>
+    <p style="margin-top:8px; font-size:12px;">内容来源于公开网络，仅供参考。原文链接已注明，请以原始报道为准。</p>
+  </div>
+
+</div>
+</body>
+</html>
