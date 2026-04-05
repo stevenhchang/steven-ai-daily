@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Steven学长的每日AI日报 - 2026年04月05日</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Hiragino Sans GB', sans-serif;
+      background: #f0f2f5;
+      min-height: 100vh;
+      padding: 20px;
+    }
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+    /* Header */
+    .header {
+      background: linear-gradient(135deg, #1a1a2e 0%, #16213e 40%, #6c5ce7 100%);
+      border-radius: 20px;
+      padding: 40px 36px;
+      margin-bottom: 28px;
+      color: white;
+      position: relative;
+      overflow: hidden;
+    }
+    .header::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      right: -10%;
+      width: 400px;
+      height: 400px;
+      background: radial-gradient(circle, rgba(108,92,231,0.3) 0%, transparent 70%);
+      border-radius: 50%;
+    }
+    .header-badge {
+      display: inline-block;
+      background: rgba(255,255,255,0.15);
+      border: 1px solid rgba(255,255,255,0.25);
+      border-radius: 20px;
+      padding: 4px 14px;
+      font-size: 12px;
+      letter-spacing: 1px;
+      margin-bottom: 14px;
+      backdrop-filter: blur(10px);
+    }
+    .header h1 {
+      font-size: 28px;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+      margin-bottom: 10px;
+      text-shadow: 0 2px 10px rgba(0,0,0,0.3);
+    }
+    .header .date {
+      font-size: 15px;
+      opacity: 0.85;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .header .date span {
+      background: rgba(255,255,255,0.2);
+      padding: 3px 12px;
+      border-radius: 10px;
+      font-weight: 500;
+    }
+    .header .stats {
+      margin-top: 16px;
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+    .stat-item {
+      background: rgba(255,255,255,0.1);
+      border-radius: 10px;
+      padding: 6px 14px;
+      font-size: 13px;
+      opacity: 0.9;
+    }
+    /* Cards */
+    .cards-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+    .card {
+      background: white;
+      border-radius: 16px;
+      padding: 24px 26px;
+      text-decoration: none;
+      color: inherit;
+      display: block;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+      border: 1px solid rgba(0,0,0,0.05);
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+      position: relative;
+      overflow: hidden;
+    }
+    .card::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      width: 4px;
+      border-radius: 4px 0 0 4px;
+    }
+    .card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 32px rgba(0,0,0,0.12);
+    }
+    .card-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 12px;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .source-meta {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .source-badge {
+      font-size: 11px;
+      font-weight: 600;
+      padding: 3px 10px;
+      border-radius: 6px;
+      letter-spacing: 0.3px;
+    }
+    .time-label {
+      font-size: 12px;
+      color: #999;
+    }
+    .card-title {
+      font-size: 17px;
+      font-weight: 700;
+      color: #1a1a2e;
+      margin-bottom: 10px;
+      line-height: 1.45;
+    }
+    .card-summary {
+      font-size: 14px;
+      color: #555;
+      line-height: 1.75;
+      margin-bottom: 14px;
+    }
+    .card-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+    .tag {
+      font-size: 11px;
+      padding: 3px 10px;
+      border-radius: 20px;
+      font-weight: 500;
+    }
+    .read-more {
+      font-size: 13px;
+      font-weight: 600;
+      color: #6c5ce7;
+      white-space: nowrap;
+      opacity: 0.85;
+    }
+    .card:hover .read-more { opacity: 1; }
+
+    .theme-google .source-badge { background: #e8f5e9; color: #2e7d32; }
+    .theme-google::before { background: #34a853; }
+    .theme-google .tag { background: #e8f5e9; color: #2e7d32; }
+
+    .theme-microsoft .source-badge { background: #e3f2fd; color: #1565c0; }
+    .theme-microsoft::before { background: #0078d4; }
+    .theme-microsoft .tag { background: #e3f2fd; color: #1565c0; }
+
+    .theme-deepseek .source-badge { background: #fce4ec; color: #c62828; }
+    .theme-deepseek::before { background: #e53935; }
+    .theme-deepseek .tag { background: #fce4ec; color: #c62828; }
+
+    .theme-openai .source-badge { background: #e8eaf6; color: #283593; }
+    .theme-openai::before { background: #3f51b5; }
+    .theme-openai .tag { background: #e8eaf6; color: #283593; }
+
+    .theme-anthropic .source-badge { background: #fff3e0; color: #e65100; }
+    .theme-anthropic::before { background: #ff6d00; }
+    .theme-anthropic .tag { background: #fff3e0; color: #e65100; }
+
+    .theme-funding .source-badge { background: #f3e5f5; color: #6a1b9a; }
+    .theme-funding::before { background: #9c27b0; }
+    .theme-funding .tag { background: #f3e5f5; color: #6a1b9a; }
+
+    .theme-nvidia .source-badge { background: #e8f5e9; color: #1b5e20; }
+    .theme-nvidia::before { background: #76b900; }
+    .theme-nvidia .tag { background: #e8f5e9; color: #1b5e20; }
+
+    .theme-spacex .source-badge { background: #eceff1; color: #37474f; }
+    .theme-spacex::before { background: #607d8b; }
+    .theme-spacex .tag { background: #eceff1; color: #37474f; }
+
+    .theme-ipo .source-badge { background: #e0f7fa; color: #00695c; }
+    .theme-ipo::before { background: #00bcd4; }
+    .theme-ipo .tag { background: #e0f7fa; color: #00695c; }
+
+    .theme-research .source-badge { background: #fff8e1; color: #f57f17; }
+    .theme-research::before { background: #ffc107; }
+    .theme-research .tag { background: #fff8e1; color: #f57f17; }
+
+    .section-label {
+      font-size: 12px;
+      font-weight: 700;
+      color: #999;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      margin: 24px 0 10px;
+      padding-left: 4px;
+    }
+
+    .footer {
+      margin-top: 32px;
+      background: white;
+      border-radius: 16px;
+      padding: 20px 26px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    }
+    .footer-left { font-size: 13px; color: #666; }
+    .footer-right { font-size: 12px; color: #999; }
+    .footer-dot {
+      display: inline-block;
+      width: 6px; height: 6px;
+      background: #6c5ce7;
+      border-radius: 50%;
+      margin-right: 6px;
+      vertical-align: middle;
+    }
+
+    @media (max-width: 600px) {
+      body { padding: 12px; }
+      .header { padding: 28px 20px; }
+      .header h1 { font-size: 22px; }
+      .card { padding: 18px; }
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+
+  <div class="header">
+    <div class="header-badge">🤖 AI DAILY BRIEFING</div>
+    <h1>Steven学长的每日AI日报</h1>
+    <div class="date">
+      <span>【2026年04月05日】</span>
+      <span>星期日</span>
+    </div>
+    <div class="stats">
+      <div class="stat-item">📰 今日收录 10 条资讯</div>
+      <div class="stat-item">🔥 模型发布 · 融资 · 安全 · 研究</div>
+    </div>
+  </div>
+
+  <div class="cards-grid">
+
+    <div class="section-label">🚀 模型发布 &amp; 技术突破</div>
+
+    <a class="card theme-google" href="https://agenticaihype.substack.com/p/anthropics-500k-line-code-leak-google" target="_blank" rel="noopener">
+      <div class="card-top">
+        <div class="source-meta">
+          <span class="source-badge">Google</span>
+          <span class="time-label">2026-04-02</span>
+        </div>
+      </div>
+      <div class="card-title">Google Gemma 4 正式开源，Apache 2.0 授权，速度提升4倍</div>
+      <div class="card-summary">Google于4月2日发布Gemma 4系列开源模型，采用Apache 2.0协议，包含四个变体：31B Dense版、26B Mixture of Experts版，以及两款轻量边缘优化版（E4B和E2B）。官方数据显示比前代快4倍、移动端省电60%，支持140+语言、函数调用与多模态输入。Gemma 4被定位为高级推理和智能体工作流的旗舰开源模型，直接对标DeepSeek V4。</div>
+      <div class="card-footer">
+        <div class="tags">
+          <span class="tag">开源模型</span><span class="tag">Gemma 4</span><span class="tag">MoE架构</span><span class="tag">多模态</span>
+        </div>
+        <span class="read-more">点击查看原文 →</span>
+      </div>
+    </a>
+
+    <a class="card theme-deepseek" href="https://www.devflokers.com/blog/ai-news-last-24-hours-april-2026-model-releases-breakthroughs" target="_blank" rel="noopener">
+      <div class="card-top">
+        <div class="source-meta">
+          <span class="source-badge">DeepSeek</span>
+          <span class="time-label">2026年4月初</span>
+        </div>
+      </div>
+      <div class="card-title">DeepSeek V4 发布：1万亿参数完全开源，训练成本仅 $520万</div>
+      <div class="card-summary">DeepSeek发布V4，这是一个1万亿参数的Mixture-of-Experts模型，采用完全开放权重（Apache 2.0）。HumanEval得分达94.7%，性能媲美美国顶级前沿模型，但训练成本估计仅$520万，远低于同级竞争对手。DeepSeek V4将运行于华为芯片之上，进一步挑战西方AI供应链。业界认为这是继DeepSeek R1之后又一"震荡全球"的开源里程碑。</div>
+      <div class="card-footer">
+        <div class="tags">
+          <span class="tag">开源模型</span><span class="tag">DeepSeek V4</span><span class="tag">MoE</span><span class="tag">华为芯片</span>
+        </div>
+        <span class="read-more">点击查看原文 →</span>
+      </div>
+    </a>
+
+    <a class="card theme-openai" href="https://releasebot.io/updates/openai/chatgpt" target="_blank" rel="noopener">
+      <div class="card-top">
+        <div class="source-meta">
+          <span class="source-badge">OpenAI</span>
+          <span class="time-label">2026年4月初</span>
+        </div>
+      </div>
+      <div class="card-title">OpenAI GPT-5.4 全系列上线，OSWorld-Verified 得分 75%，超越人类基线</div>
+      <div class="card-summary">OpenAI正式部署GPT-5.4完整系列。"Thinking"变体整合了测试时计算（test-time compute），在操作系统级自主任务基准OSWorld-Verified中得分75%，较GPT-5.2提升27.7个百分点，正式超越人类表现。GPT-5.4 mini同步面向Free和Go用户推出，可通过"Thinking"功能菜单访问。ChatGPT还新增CarPlay免提语音对话（需iOS 26.4+）及大段贴文自动转附件等功能。</div>
+      <div class="card-footer">
+        <div class="tags">
+          <span class="tag">GPT-5.4</span><span class="tag">AI Agent</span><span class="tag">推理能力</span><span class="tag">OSWorld</span>
+        </div>
+        <span class="read-more">点击查看原文 →</span>
+      </div>
+    </a>
+
+    <a class="card theme-microsoft" href="https://techcrunch.com/2026/04/02/microsoft-takes-on-ai-rivals-with-three-new-foundational-models/" target="_blank" rel="noopener">
+      <div class="card-top">
+        <div class="source-meta">
+          <span class="source-badge">Microsoft</span>
+          <span class="time-label">2026-04-02</span>
+        </div>
+      </div>
+      <div class="card-title">微软发布三款基础AI模型，涵盖语音转写、音频生成与图像生成</div>
+      <div class="card-summary">微软AI（MAI）团队发布三款基础模型。MAI-Transcribe-1 支持25种语言的语音转文字，速度是Azure Fast产品的2.5倍；MAI-Voice-1 可1秒生成60秒音频并支持自定义声音克隆；此外还包含一款图像生成模型。这标志着微软在六个月内完成了从独立团队组建到全栈多模态基础模型发布的跨越，意图减少对OpenAI技术的依赖，与各大AI实验室展开正面竞争。</div>
+      <div class="card-footer">
+        <div class="tags">
+          <span class="tag">MAI</span><span class="tag">语音模型</span><span class="tag">多模态</span><span class="tag">微软自研</span>
+        </div>
+        <span class="read-more">点击查看原文 →</span>
+      </div>
+    </a>
+
+    <a class="card theme-research" href="https://www.devflokers.com/blog/ai-news-last-24-hours-april-2026-model-releases-breakthroughs" target="_blank" rel="noopener">
+      <div class="card-top">
+        <div class="source-meta">
+          <span class="source-badge">Google DeepMind</span>
+          <span class="time-label">ICLR 2026</span>
+        </div>
+      </div>
+      <div class="card-title">Google TurboQuant 突破：KV Cache 内存降低6倍，推理速度提升8倍</div>
+      <div class="card-summary">Google DeepMind在ICLR 2026上发布量化算法TurboQuant，将大模型推理中的KV Cache内存占用降低6倍，同时注意力计算速度提升最高8倍，且准确度损失为零。这项突破将大幅降低运行大型语言模型的基础设施成本，并使消费级硬件运行更大规模模型成为可能。业界认为TurboQuant是2026年最重要的模型效率改进之一。</div>
+      <div class="card-footer">
+        <div class="tags">
+          <span class="tag">TurboQuant</span><span class="tag">推理效率</span><span class="tag">KV Cache</span><span class="tag">量化技术</span>
+        </div>
+        <span class="read-more">点击查看原文 →</span>
+      </div>
+    </a>
+
+    <div class="section-label">💼 产业动态 &amp; 安全事件</div>
+
+    <a class="card theme-anthropic" href="https://agenticaihype.substack.com/p/anthropics-500k-line-code-leak-google" target="_blank" rel="noopener">
+      <div class="card-top">
+        <div class="source-meta">
+          <span class="source-badge">Anthropic</span>
+          <span class="time-label">2026-03-31</span>
+        </div>
+      </div>
+      <div class="card-title">Anthropic 意外将50万行 Claude Code 源码上传至 npm 公开注册表</div>
+      <div class="card-summary">3月31日，Anthropic因一个被错误捆绑进常规更新包的调试文件，将约50万行、近2000个文件的Claude Code源代码意外发布至npm公开注册表。事件曝光后，一名研究者分享的下载链接在短时间内获得1600万次访问，GitHub镜像星标超5万。Anthropic声明无用户数据或凭证泄露，属人工打包失误而非安全入侵。该事件同期伴随一起axios npm供应链攻击，引发业界对AI工具链安全的高度警觉。</div>
+      <div class="card-footer">
+        <div class="tags">
+          <span class="tag">Claude Code</span><span class="tag">供应链安全</span><span class="tag">npm泄露</span><span class="tag">开源</span>
+        </div>
+        <span class="read-more">点击查看原文 →</span>
+      </div>
+    </a>
+
+    <a class="card theme-spacex" href="https://www.devflokers.com/blog/ai-news-last-24-hours-april-2026-model-releases-breakthroughs" target="_blank" rel="noopener">
+      <div class="card-top">
+        <div class="source-meta">
+          <span class="source-badge">SpaceX / xAI</span>
+          <span class="time-label">2026年4月初</span>
+        </div>
+      </div>
+      <div class="card-title">SpaceX 以 $2500亿 收购 xAI，打造 AI 与物理基础设施一体化帝国</div>
+      <div class="card-summary">SpaceX宣布以2500亿美元收购马斯克旗下AI公司xAI，此举创下人类历史上最大规模的科技并购案。合并后的实体将整合xAI的Grok大模型与SpaceX的星链卫星网络、超算中心及火箭制造能力，构建前所未有的"AI + 物理基础设施"生态。xAI此前已在Q1 2026完成200亿美元E轮融资，此次并购估值溢价约25%。</div>
+      <div class="card-footer">
+        <div class="tags">
+          <span class="tag">SpaceX</span><span class="tag">xAI</span><span class="tag">并购</span><span class="tag">马斯克</span>
+        </div>
+        <span class="read-more">点击查看原文 →</span>
+      </div>
+    </a>
+
+    <div class="section-label">💰 融资 &amp; 资本市场</div>
+
+    <a class="card theme-funding" href="https://news.crunchbase.com/venture/record-breaking-funding-ai-global-q1-2026/" target="_blank" rel="noopener">
+      <div class="card-top">
+        <div class="source-meta">
+          <span class="source-badge">Crunchbase</span>
+          <span class="time-label">Q1 2026</span>
+        </div>
+      </div>
+      <div class="card-title">Q1 2026 全球 VC 融资 $3000亿创纪录，AI 占比 80%</div>
+      <div class="card-summary">Crunchbase数据显示，2026年Q1全球风险投资规模达到3000亿美元，同比增长超150%，创下历史纪录。其中AI领域吸金2420亿美元，占全球融资总量80%。单季度最大四笔融资均出自AI赛道：OpenAI（1220亿，估值8520亿）、Anthropic（300亿Series G，估值3800亿）、xAI（200亿）、Waymo（160亿）。Crunchbase独角兽榜单单季度估值增幅高达9000亿美元。</div>
+      <div class="card-footer">
+        <div class="tags">
+          <span class="tag">风险投资</span><span class="tag">AI融资</span><span class="tag">独角兽</span><span class="tag">OpenAI</span>
+        </div>
+        <span class="read-more">点击查看原文 →</span>
+      </div>
+    </a>
+
+    <a class="card theme-ipo" href="https://www.axios.com/2026/04/03/anthropic-openai-ipo" target="_blank" rel="noopener">
+      <div class="card-top">
+        <div class="source-meta">
+          <span class="source-badge">Axios</span>
+          <span class="time-label">2026-04-03</span>
+        </div>
+      </div>
+      <div class="card-title">Anthropic 与 OpenAI 竞相 IPO，均希望抢先对方登陆资本市场</div>
+      <div class="card-summary">Axios独家报道，Anthropic与OpenAI均计划于2026年完成IPO，且双方都希望率先上市。Anthropic刚完成300亿美元G轮融资（估值3800亿），OpenAI则在完成1220亿美元超级融资后谋求公开募股。两家公司的IPO竞赛被认为将重塑AI投资格局，并对谷歌等战略合作方形成深远影响。分析师指出，Anthropic若抢先上市，将在机构投资者层面建立先发优势。</div>
+      <div class="card-footer">
+        <div class="tags">
+          <span class="tag">IPO</span><span class="tag">Anthropic</span><span class="tag">OpenAI</span><span class="tag">资本市场</span>
+        </div>
+        <span class="read-more">点击查看原文 →</span>
+      </div>
+    </a>
+
+    <a class="card theme-nvidia" href="https://nvidianews.nvidia.com/news/nvidia-announces-open-physical-ai-data-factory-blueprint-to-accelerate-robotics-vision-ai-agents-and-autonomous-vehicle-development" target="_blank" rel="noopener">
+      <div class="card-top">
+        <div class="source-meta">
+          <span class="source-badge">NVIDIA</span>
+          <span class="time-label">2026年4月</span>
+        </div>
+      </div>
+      <div class="card-title">NVIDIA 开源物理AI数据工厂蓝图，加速机器人与自动驾驶研发</div>
+      <div class="card-summary">NVIDIA发布Physical AI Data Factory Blueprint，这是一个开源参考架构，统一并自动化物理AI训练数据的生成、增强与评估流程，旨在大幅降低机器人、视觉AI和自动驾驶系统的训练成本与复杂度。该蓝图将于4月在GitHub上公开发布。与此同时，Rubin下一代AI超算平台已全面投产，AWS、Google Cloud、微软、OCI等云厂商将于2026年下半年率先部署基于Rubin的算力实例。</div>
+      <div class="card-footer">
+        <div class="tags">
+          <span class="tag">NVIDIA</span><span class="tag">物理AI</span><span class="tag">机器人</span><span class="tag">Rubin</span>
+        </div>
+        <span class="read-more">点击查看原文 →</span>
+      </div>
+    </a>
+
+  </div>
+
+  <div class="footer">
+    <div class="footer-left">
+      <span class="footer-dot"></span>
+      由 AI 自动采集整理 | 共收录 <strong>10</strong> 条资讯
+    </div>
+    <div class="footer-right">
+      生成时间：2026-04-05 | Powered by Claude AI
+    </div>
+  </div>
+
+</div>
+</body>
+</html>
