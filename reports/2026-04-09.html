@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Steven学长的每日AI日报 - 2026年04月09日</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+    background: #f0f2f5;
+    color: #333;
+    line-height: 1.6;
+  }
+  .container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 20px 16px 40px;
+  }
+  .header {
+    background: linear-gradient(135deg, #1a1a2e 0%, #6c5ce7 100%);
+    border-radius: 16px;
+    padding: 36px 32px;
+    margin-bottom: 28px;
+    text-align: center;
+    color: white;
+    box-shadow: 0 8px 32px rgba(108,92,231,0.3);
+  }
+  .header h1 {
+    font-size: 28px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    margin-bottom: 10px;
+  }
+  .header .date-badge {
+    display: inline-block;
+    background: rgba(255,255,255,0.15);
+    border: 1px solid rgba(255,255,255,0.25);
+    border-radius: 20px;
+    padding: 6px 18px;
+    font-size: 15px;
+    letter-spacing: 0.5px;
+  }
+  .header .subtitle {
+    margin-top: 12px;
+    font-size: 13px;
+    opacity: 0.75;
+  }
+  .card {
+    background: white;
+    border-radius: 12px;
+    padding: 22px 24px;
+    margin-bottom: 16px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.07);
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    text-decoration: none;
+    display: block;
+    color: inherit;
+    border: 1px solid rgba(0,0,0,0.05);
+  }
+  .card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 28px rgba(0,0,0,0.13);
+  }
+  .card-meta {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 10px;
+  }
+  .source-badge {
+    display: inline-block;
+    padding: 3px 10px;
+    border-radius: 20px;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.3px;
+  }
+  .src-techcrunch { background: #e8f5e9; color: #2e7d32; }
+  .src-bloomberg { background: #fff8e1; color: #f57f17; }
+  .src-sciencedaily { background: #e3f2fd; color: #1565c0; }
+  .src-crunchbase { background: #fce4ec; color: #ad1457; }
+  .src-cnbc { background: #ede7f6; color: #4527a0; }
+  .src-thepaper { background: #e0f2f1; color: #00695c; }
+  .src-thedecoder { background: #fff3e0; color: #e65100; }
+  .src-llmstats { background: #f3e5f5; color: #6a1b9a; }
+  .src-xinhua { background: #ffebee; color: #b71c1c; }
+  .src-fortune { background: #e8eaf6; color: #283593; }
+  .time-label {
+    font-size: 12px;
+    color: #999;
+  }
+  .card-title {
+    font-size: 17px;
+    font-weight: 700;
+    color: #1a1a2e;
+    margin-bottom: 8px;
+    line-height: 1.4;
+  }
+  .card-summary {
+    font-size: 14px;
+    color: #555;
+    line-height: 1.7;
+    margin-bottom: 12px;
+  }
+  .tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-bottom: 12px;
+  }
+  .tag {
+    background: #f0f2f5;
+    color: #6c5ce7;
+    border-radius: 10px;
+    padding: 2px 10px;
+    font-size: 12px;
+    font-weight: 500;
+  }
+  .read-more {
+    font-size: 13px;
+    color: #6c5ce7;
+    font-weight: 600;
+  }
+  .footer {
+    text-align: center;
+    padding: 24px;
+    color: #999;
+    font-size: 13px;
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  }
+  .footer .count { font-weight: 700; color: #6c5ce7; font-size: 16px; }
+  @media (max-width: 600px) {
+    .header h1 { font-size: 20px; }
+    .card { padding: 16px; }
+    .card-title { font-size: 15px; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <div class="header">
+    <h1>📰 Steven学长的每日AI日报</h1>
+    <div class="date-badge">【2026年04月09日】</div>
+    <p class="subtitle">每日精选全球AI领域最重要资讯 · 保持认知领先</p>
+  </div>
+
+  <!-- Card 1 -->
+  <a class="card" href="https://techcrunch.com/2026/04/07/anthropic-compute-deal-google-broadcom-tpus/" target="_blank">
+    <div class="card-meta">
+      <span class="source-badge src-techcrunch">TechCrunch</span>
+      <span class="time-label">2026-04-07</span>
+    </div>
+    <div class="card-title">Anthropic扩大Google与Broadcom算力协议，年化收入飙升至300亿美元</div>
+    <div class="card-summary">
+      Anthropic宣布与Google和Broadcom签署扩容算力协议，新增3.5吉瓦算力支撑Claude模型爆炸式增长。公司年化营收从2025年底的90亿美元急速攀升至300亿美元，单年增长超3倍。目前超过1000家企业客户年支出逾百万美元，公司估值在最新一轮Series G融资后达3800亿美元，稳居AI独角兽第一梯队。
+    </div>
+    <div class="tags">
+      <span class="tag">Anthropic</span>
+      <span class="tag">算力</span>
+      <span class="tag">Google TPU</span>
+      <span class="tag">融资</span>
+    </div>
+    <span class="read-more">点击查看原文 →</span>
+  </a>
+
+  <!-- Card 2 -->
+  <a class="card" href="https://the-decoder.com/openai-anthropic-and-google-team-up-against-unauthorized-chinese-model-copying/" target="_blank">
+    <div class="card-meta">
+      <span class="source-badge src-thedecoder">The Decoder</span>
+      <span class="time-label">2026-04-07</span>
+    </div>
+    <div class="card-title">OpenAI、Anthropic、Google三巨头联手打击中国"对抗蒸馏"攻击</div>
+    <div class="card-summary">
+      三家顶级AI公司通过Frontier Model Forum共享情报，协同检测中国竞争者以"对抗蒸馏"（adversarial distillation）手段窃取模型能力的行为。Anthropic单独记录了来自DeepSeek、Moonshot AI、MiniMax三家中国企业的1600万次违规调用。美国当局估计此类模型盗用每年令美国实验室损失数十亿美元，此次三巨头联盟被视为AI知识产权保护的标志性举措。
+    </div>
+    <div class="tags">
+      <span class="tag">OpenAI</span>
+      <span class="tag">Anthropic</span>
+      <span class="tag">知识产权</span>
+      <span class="tag">模型安全</span>
+    </div>
+    <span class="read-more">点击查看原文 →</span>
+  </a>
+
+  <!-- Card 3 -->
+  <a class="card" href="https://fortune.com/2026/04/07/openai-drama-sam-altman-ipo-anthropic-cybersecurity-risks-eye-on-ai/" target="_blank">
+    <div class="card-meta">
+      <span class="source-badge src-fortune">Fortune</span>
+      <span class="time-label">2026-04-07</span>
+    </div>
+    <div class="card-title">Anthropic发布Project Glasswing：专属网络安全AI模型提前揭露数千零日漏洞</div>
+    <div class="card-summary">
+      Anthropic推出"Project Glasswing"——一项联合Microsoft、Amazon、Apple、Google、NVIDIA、CrowdStrike等40余家科技与安全企业的网络安全专项计划。参与企业可提前获得尚未正式发布的Claude Mythos Preview模型，该模型专为高风险网络安全场景设计，已在测试中发现数千个此前未知的零日漏洞（zero-day vulnerability），被认为是AI进入主动防御领域的重大里程碑。
+    </div>
+    <div class="tags">
+      <span class="tag">Anthropic</span>
+      <span class="tag">Claude Mythos</span>
+      <span class="tag">网络安全</span>
+      <span class="tag">零日漏洞</span>
+    </div>
+    <span class="read-more">点击查看原文 →</span>
+  </a>
+
+  <!-- Card 4 -->
+  <a class="card" href="https://news.crunchbase.com/venture/record-breaking-funding-ai-global-q1-2026/" target="_blank">
+    <div class="card-meta">
+      <span class="source-badge src-crunchbase">Crunchbase News</span>
+      <span class="time-label">2026-04-08</span>
+    </div>
+    <div class="card-title">Q1 2026创投史上最强季度：AI独揽2420亿美元，占全球风投80%</div>
+    <div class="card-summary">
+      2026年第一季度全球风险投资额达3000亿美元，同比暴增150%，创历史最高纪录。其中AI企业吸纳2420亿美元，占比80%。四笔超级融资主导全局：OpenAI（1220亿）、Anthropic（300亿）、xAI（200亿）、Waymo（160亿），合计1880亿美元占全球总投资额65%。美国企业独揽2500亿（83%），中国以161亿美元位居第二。
+    </div>
+    <div class="tags">
+      <span class="tag">风险投资</span>
+      <span class="tag">AI融资</span>
+      <span class="tag">OpenAI</span>
+      <span class="tag">市场趋势</span>
+    </div>
+    <span class="read-more">点击查看原文 →</span>
+  </a>
+
+  <!-- Card 5 -->
+  <a class="card" href="https://www.sciencedaily.com/releases/2026/04/260405003952.htm" target="_blank">
+    <div class="card-meta">
+      <span class="source-badge src-sciencedaily">ScienceDaily</span>
+      <span class="time-label">2026-04-05</span>
+    </div>
+    <div class="card-title">塔夫茨大学突破：神经符号AI将训练能耗降低100倍，准确率同步提升</div>
+    <div class="card-summary">
+      Tufts University研究人员开发的神经符号AI（neuro-symbolic AI）系统将训练能耗压缩至传统模型的1%，运行阶段能耗降至5%，实现近百倍节能。在"汉诺塔"测试中，准确率从34%跃升至95%；面对全新变体时仍维持78%正确率，而传统模型完全失效。该系统融合神经网络与符号推理，训练用时仅34分钟（传统需超过36小时）。此突破对缓解AI电力消耗危机（当前超美国总用电量10%）具有重大意义。
+    </div>
+    <div class="tags">
+      <span class="tag">神经符号AI</span>
+      <span class="tag">能效突破</span>
+      <span class="tag">学术研究</span>
+      <span class="tag">可持续AI</span>
+    </div>
+    <span class="read-more">点击查看原文 →</span>
+  </a>
+
+  <!-- Card 6 -->
+  <a class="card" href="https://llm-stats.com/ai-news" target="_blank">
+    <div class="card-meta">
+      <span class="source-badge src-llmstats">LLM Stats</span>
+      <span class="time-label">2026-04-08</span>
+    </div>
+    <div class="card-title">Google发布Gemma 4与Gemini 3.1 Ultra：开源推理模型+200万Token多模态上下文</div>
+    <div class="card-summary">
+      Google本周双线出击：Gemma 4以Apache 2.0协议开源，专为高级推理与智能体工作流优化，宣称"每参数智能"创历史新高；Gemini 3.1 Ultra则带来200万Token超长上下文窗口，原生支持文本、图像、音频、视频跨模态统一推理，无需中间转录环节，并内置沙箱化代码执行工具。两款模型标志着Google在开源与闭源双赛道同步强化竞争力。
+    </div>
+    <div class="tags">
+      <span class="tag">Google</span>
+      <span class="tag">Gemma 4</span>
+      <span class="tag">Gemini 3.1</span>
+      <span class="tag">多模态</span>
+    </div>
+    <span class="read-more">点击查看原文 →</span>
+  </a>
+
+  <!-- Card 7 -->
+  <a class="card" href="https://finance.biggo.com/news/A8Y8a50ByH9TLH69HG8d" target="_blank">
+    <div class="card-meta">
+      <span class="source-badge src-bloomberg">BigGo Finance</span>
+      <span class="time-label">2026-04-08</span>
+    </div>
+    <div class="card-title">DeepSeek正式推出产品分层：Fast Mode与Expert Mode标志商业化转型</div>
+    <div class="card-summary">
+      长期以完全免费著称的DeepSeek于4月8日正式上线"Fast Mode"（快速模式）与"Expert Mode"（专家模式），开启服务产品分级，标志其向可持续商业化模式迈出关键一步。背后驱动力是模型推理成本持续攀升。业内同时传出"Vision Mode"（视觉模式）即将推出的消息，暗示DeepSeek正加速布局多模态能力。叠加DeepSeek V4（1万亿参数MoE，Apache 2.0开源）临近发布，未来数周或成为国产大模型新一轮爆发节点。
+    </div>
+    <div class="tags">
+      <span class="tag">DeepSeek</span>
+      <span class="tag">商业化</span>
+      <span class="tag">产品分层</span>
+      <span class="tag">开源模型</span>
+    </div>
+    <span class="read-more">点击查看原文 →</span>
+  </a>
+
+  <!-- Card 8 -->
+  <a class="card" href="https://releasebot.io/updates/mistral" target="_blank">
+    <div class="card-meta">
+      <span class="source-badge src-thedecoder">Releasebot</span>
+      <span class="time-label">2026-04-08</span>
+    </div>
+    <div class="card-title">Mistral发布Voxtral TTS：首款多语言情感语音合成模型，支持9种语言</div>
+    <div class="card-summary">
+      欧洲AI新锐Mistral推出首款文本转语音模型Voxtral TTS，支持9种语言的自然、情感化语音生成，内置低延迟流式传输和自定义音色功能，已在Mistral Studio开放测试，API同步上线。Voxtral标志Mistral从纯文本大模型向全模态能力扩展，进一步挑战OpenAI、Google在语音AI领域的主导地位，也加速欧洲AI在多模态方向的独立技术布局。
+    </div>
+    <div class="tags">
+      <span class="tag">Mistral</span>
+      <span class="tag">TTS</span>
+      <span class="tag">语音AI</span>
+      <span class="tag">多语言</span>
+    </div>
+    <span class="read-more">点击查看原文 →</span>
+  </a>
+
+  <!-- Card 9 -->
+  <a class="card" href="https://view.inews.qq.com/a/20260405A01VUS00" target="_blank">
+    <div class="card-meta">
+      <span class="source-badge src-xinhua">腾讯新闻</span>
+      <span class="time-label">2026-04-05</span>
+    </div>
+    <div class="card-title">十部门联合发布《人工智能科技伦理审查与服务办法（试行）》</div>
+    <div class="card-summary">
+      工业和信息化部等十部门联合印发《人工智能科技伦理审查与服务办法（试行）》，聚焦人类福祉、公平公正、可控可信、透明可解释、责任可追溯、隐私保护六大维度，建立AI科技活动伦理审查标准化机制。这是中国迄今覆盖部门最广、体系最完整的AI伦理治理规范文件，标志着中国AI监管从"鼓励创新"向"规范治理并重"的重要政策转向。
+    </div>
+    <div class="tags">
+      <span class="tag">AI监管</span>
+      <span class="tag">伦理治理</span>
+      <span class="tag">中国政策</span>
+      <span class="tag">合规</span>
+    </div>
+    <span class="read-more">点击查看原文 →</span>
+  </a>
+
+  <!-- Card 10 -->
+  <a class="card" href="https://investor.nvidia.com/news/press-release-details/2026/NVIDIA-Kicks-Off-the-Next-Generation-of-AI-With-Rubin--Six-New-Chips-One-Incredible-AI-Supercomputer/default.aspx" target="_blank">
+    <div class="card-meta">
+      <span class="source-badge src-thepaper">NVIDIA Investor</span>
+      <span class="time-label">2026-04-07</span>
+    </div>
+    <div class="card-title">NVIDIA Rubin平台全面进入量产：推理成本降低10倍，AWS/Google/微软率先部署</div>
+    <div class="card-summary">
+      NVIDIA确认Rubin下一代AI芯片平台正式进入全面量产阶段，预计2026年下半年由AWS、Google Cloud、Microsoft Azure、OCI率先上线。与Blackwell平台相比，Rubin在推理Token成本上降低10倍，训练MoE模型所需GPU数量减少4倍。此外NVIDIA还在HumanX 2026大会期间展示了六款新芯片组合及一体化AI超级计算机架构，进一步巩固其在AI算力基础设施领域的绝对主导地位。
+    </div>
+    <div class="tags">
+      <span class="tag">NVIDIA</span>
+      <span class="tag">Rubin</span>
+      <span class="tag">AI芯片</span>
+      <span class="tag">算力基础设施</span>
+    </div>
+    <span class="read-more">点击查看原文 →</span>
+  </a>
+
+  <div class="footer">
+    <div class="count">今日共收录 10 条资讯</div>
+    <p style="margin-top:8px;">由 AI 自动采集整理 | 生成时间：2026-04-09</p>
+    <p style="margin-top:4px; font-size:12px;">内容来源于公开互联网，仅供信息参考</p>
+  </div>
+
+</div>
+</body>
+</html>
