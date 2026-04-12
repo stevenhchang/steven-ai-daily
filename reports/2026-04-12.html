@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Steven学长的每日AI日报 - 2026年04月12日</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Hiragino Sans GB', sans-serif;
+    background: #f0f2f5;
+    color: #333;
+    line-height: 1.6;
+  }
+  .container { max-width: 900px; margin: 0 auto; padding: 20px; }
+  .header {
+    background: linear-gradient(135deg, #1a1a2e 0%, #6c5ce7 100%);
+    color: white;
+    text-align: center;
+    padding: 48px 24px;
+    border-radius: 16px;
+    margin-bottom: 28px;
+    position: relative;
+    overflow: hidden;
+  }
+  .header::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(255,255,255,0.05) 0%, transparent 60%);
+  }
+  .header h1 {
+    font-size: 2rem;
+    font-weight: 700;
+    letter-spacing: 2px;
+    margin-bottom: 12px;
+    position: relative;
+  }
+  .header .date-badge {
+    display: inline-block;
+    background: rgba(255,255,255,0.2);
+    padding: 6px 20px;
+    border-radius: 20px;
+    font-size: 1rem;
+    letter-spacing: 1px;
+    position: relative;
+  }
+  .header .subtitle {
+    margin-top: 12px;
+    font-size: 0.9rem;
+    opacity: 0.8;
+    position: relative;
+  }
+  .card {
+    background: white;
+    border-radius: 12px;
+    padding: 24px;
+    margin-bottom: 16px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+    cursor: pointer;
+    text-decoration: none;
+    display: block;
+    color: inherit;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+  .card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+  }
+  .card-meta {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 12px;
+    flex-wrap: wrap;
+  }
+  .source-badge {
+    font-size: 0.75rem;
+    font-weight: 600;
+    padding: 3px 10px;
+    border-radius: 12px;
+    color: white;
+  }
+  .time-badge {
+    font-size: 0.8rem;
+    color: #999;
+  }
+  .card h2 {
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: #1a1a2e;
+    margin-bottom: 10px;
+    line-height: 1.5;
+  }
+  .card p {
+    font-size: 0.92rem;
+    color: #555;
+    margin-bottom: 14px;
+    line-height: 1.7;
+  }
+  .tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-bottom: 14px;
+  }
+  .tag {
+    font-size: 0.75rem;
+    padding: 3px 10px;
+    border-radius: 10px;
+    background: #f0f2f5;
+    color: #6c5ce7;
+    font-weight: 500;
+  }
+  .read-more {
+    font-size: 0.82rem;
+    color: #6c5ce7;
+    font-weight: 600;
+  }
+  .footer {
+    text-align: center;
+    padding: 32px 24px;
+    color: #999;
+    font-size: 0.85rem;
+  }
+  .footer strong { color: #6c5ce7; }
+  .c1 { background: #e17055; }
+  .c2 { background: #00b894; }
+  .c3 { background: #0984e3; }
+  .c4 { background: #6c5ce7; }
+  .c5 { background: #fd79a8; }
+  .c6 { background: #00cec9; }
+  .c7 { background: #fdcb6e; color: #333 !important; }
+  .c8 { background: #2d3436; }
+  .c9 { background: #d63031; }
+  .c10 { background: #74b9ff; color: #333 !important; }
+  .section-label {
+    font-size: 0.8rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #aaa;
+    margin: 24px 0 12px;
+    padding-left: 4px;
+  }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <div class="header">
+    <h1>📡 Steven学长的每日AI日报</h1>
+    <div class="date-badge">【2026年04月12日】</div>
+    <div class="subtitle">每日精选 · AI前沿动态 · 洞察未来</div>
+  </div>
+
+  <div class="section-label">🔥 今日头条</div>
+
+  <a class="card" href="https://the-decoder.com/openai-anthropic-and-google-team-up-against-unauthorized-chinese-model-copying/" target="_blank">
+    <div class="card-meta">
+      <span class="source-badge c9">The Decoder</span>
+      <span class="time-badge">2026-04-07</span>
+    </div>
+    <h2>OpenAI、Anthropic、Google三巨头联合出击，对抗中国企业"对抗蒸馏"模型窃取</h2>
+    <p>三家AI顶级实验室罕见携手，通过"前沿模型论坛"（Frontier Model Forum）共享情报，打击DeepSeek、Moonshot AI、MiniMax等中国AI公司的"对抗蒸馏"行为。Anthropic披露，这三家公司合计通过约2.4万个伪造账号与Claude进行了逾1600万次交互，相关损失估计达数十亿美元。此次合作是竞争对手之间前所未有的协同防御行动。</p>
+    <div class="tags">
+      <span class="tag">IP保护</span>
+      <span class="tag">Frontier Model Forum</span>
+      <span class="tag">DeepSeek</span>
+      <span class="tag">模型安全</span>
+    </div>
+    <div class="read-more">点击查看原文 →</div>
+  </a>
+
+  <a class="card" href="https://nvidianews.nvidia.com/news/rubin-platform-ai-supercomputer" target="_blank">
+    <div class="card-meta">
+      <span class="source-badge c2">NVIDIA Newsroom</span>
+      <span class="time-badge">2026-04-09</span>
+    </div>
+    <h2>NVIDIA Rubin平台深度解析：6芯片AI超算，推理成本降低10倍，H2 2026量产</h2>
+    <p>NVIDIA Rubin平台由六块高度协同设计的芯片组成：Vera CPU、Rubin GPU、NVLink 6交换机、ConnectX-9 SuperNIC、BlueField-4 DPU及Spectrum-6以太网交换机。与Blackwell相比，推理token成本降低最多10倍，MoE模型训练所需GPU减少75%。Vera Rubin NVL72机架配置带宽达260TB/s。AWS、Google Cloud、Azure、Meta、OpenAI等均已确认首批部署，产品将于2026年下半年正式出货。</p>
+    <div class="tags">
+      <span class="tag">NVIDIA Rubin</span>
+      <span class="tag">AI芯片</span>
+      <span class="tag">推理加速</span>
+      <span class="tag">Vera CPU</span>
+    </div>
+    <div class="read-more">点击查看原文 →</div>
+  </a>
+
+  <a class="card" href="https://markets.financialcontent.com/stocks/article/finterra-2026-4-9-nvidias-rubin-revolution-the-metacoreweave-deal-and-the-future-of-sovereign-ai-april-2026-research-feature" target="_blank">
+    <div class="card-meta">
+      <span class="source-badge c3">Financial Content</span>
+      <span class="time-badge">2026-04-09</span>
+    </div>
+    <h2>Meta与CoreWeave达成210亿美元Rubin算力协议，押注下一代Agentic AI</h2>
+    <p>Meta Platforms与专业云服务商CoreWeave签署估值约210亿美元的三方协议，率先锁定NVIDIA Rubin架构集群的早期访问权限，用于驱动下一代"Agentic AI"模型研发。这一巨额采购进一步巩固CoreWeave在AI基础设施赛道的战略地位，也标志着主权AI竞赛进入算力锁仓新阶段。</p>
+    <div class="tags">
+      <span class="tag">Meta</span>
+      <span class="tag">CoreWeave</span>
+      <span class="tag">主权AI</span>
+      <span class="tag">算力采购</span>
+    </div>
+    <div class="read-more">点击查看原文 →</div>
+  </a>
+
+  <div class="section-label">💰 资本动态</div>
+
+  <a class="card" href="https://news.crunchbase.com/venture/record-breaking-funding-ai-global-q1-2026/" target="_blank">
+    <div class="card-meta">
+      <span class="source-badge c4">Crunchbase News</span>
+      <span class="time-badge">2026-04-08</span>
+    </div>
+    <h2>2026年Q1全球风险投资创纪录：3000亿美元，其中80%流向AI赛道</h2>
+    <p>2026年第一季度，全球风投规模达3000亿美元，同比暴增150%，创历史最高单季纪录。AI赛道独揽2420亿美元（占比80%）。单季最大四笔融资均由AI公司包揽：OpenAI（1220亿美元）、Anthropic（300亿美元）、xAI（200亿美元）、Waymo（160亿美元），四家合计占全球风投总额的65%。Anthropic年化收入已从2月的140亿美元飙升至300亿美元，并正式启动IPO计划。</p>
+    <div class="tags">
+      <span class="tag">风险投资</span>
+      <span class="tag">Q1 2026</span>
+      <span class="tag">Anthropic IPO</span>
+      <span class="tag">OpenAI</span>
+    </div>
+    <div class="read-more">点击查看原文 →</div>
+  </a>
+
+  <a class="card" href="https://www.bloomberg.com/news/articles/2026-04-07/cerebras-backer-eclipse-raises-1-3-billion-for-robotics-ai-infrastructure" target="_blank">
+    <div class="card-meta">
+      <span class="source-badge c1">Bloomberg</span>
+      <span class="time-badge">2026-04-07</span>
+    </div>
+    <h2>Eclipse VC完成13亿美元募资，聚焦机器人与AI基础设施投资</h2>
+    <p>Cerebras早期支持者Eclipse风险投资公司完成13亿美元新基金募集，将重点投向物理AI、制造自动化、防务科技及AI基础设施领域的初创企业。此外，Shield AI本轮Series G融资15亿美元，估值达127亿美元，较一年前暴涨140%，AI国防应用市场持续高温。</p>
+    <div class="tags">
+      <span class="tag">Eclipse</span>
+      <span class="tag">机器人</span>
+      <span class="tag">Shield AI</span>
+      <span class="tag">国防科技</span>
+    </div>
+    <div class="read-more">点击查看原文 →</div>
+  </a>
+
+  <div class="section-label">🤖 模型动态</div>
+
+  <a class="card" href="https://llm-stats.com/ai-news" target="_blank">
+    <div class="card-meta">
+      <span class="source-badge c8">LLM Stats</span>
+      <span class="time-badge">2026-04-07</span>
+    </div>
+    <h2>Anthropic最强模型Claude Mythos因网络安全风险拒绝公开，仅限"玻璃翼计划"合作伙伴</h2>
+    <p>Anthropic确认代号"Claude Mythos"的最新旗舰模型存在严重网络安全隐患——其漏洞利用速度可能超越现有防御体系的响应速度。公司于4月7日正式宣布该模型不予公开发布，仅通过"Project Glasswing（玻璃翼计划）"向特定合作伙伴限量开放。这是AI安全理念与商业竞争博弈的重要案例。</p>
+    <div class="tags">
+      <span class="tag">Claude Mythos</span>
+      <span class="tag">AI安全</span>
+      <span class="tag">Anthropic</span>
+      <span class="tag">网络安全</span>
+    </div>
+    <div class="read-more">点击查看原文 →</div>
+  </a>
+
+  <a class="card" href="https://blog.mean.ceo/large-language-model-news-april-2026/" target="_blank">
+    <div class="card-meta">
+      <span class="source-badge c6">Mean CEO Blog</span>
+      <span class="time-badge">2026-04-10</span>
+    </div>
+    <h2>Mistral发布首款多语言TTS模型Voxtral：支持9种语言、低延迟流式传输与自定义音色</h2>
+    <p>Mistral推出其首款文字转语音模型Voxtral，支持9种语言的自然情感化语音生成，具备低延迟流式输出能力，并允许开发者自定义音色。目前已在Mistral Studio开放测试，API接口同步上线。此举标志着Mistral从纯文本模型提供商向全模态AI平台转型。</p>
+    <div class="tags">
+      <span class="tag">Mistral</span>
+      <span class="tag">Voxtral TTS</span>
+      <span class="tag">语音合成</span>
+      <span class="tag">多语言</span>
+    </div>
+    <div class="read-more">点击查看原文 →</div>
+  </a>
+
+  <a class="card" href="https://renovateqr.com/blog/ai-models-april-2026" target="_blank">
+    <div class="card-meta">
+      <span class="source-badge c5">RenovateQR</span>
+      <span class="time-badge">2026-04-08</span>
+    </div>
+    <h2>Qwen 3.6 Plus发布，混合线性注意力+稀疏MoE架构；Meta Llama 4 Maverick支持1000万token上下文</h2>
+    <p>阿里云于4月2日发布Qwen 3.6 Plus，采用线性注意力与稀疏混合专家（MoE）的混合架构，在长上下文理解和推理效率上实现突破。与此同时，Meta开源模型Llama 4 Maverick（4000亿参数）正式推出，支持高达1000万token上下文窗口，成为目前开源模型中上下文最长的选项之一，Apache 2.0授权。</p>
+    <div class="tags">
+      <span class="tag">Qwen 3.6 Plus</span>
+      <span class="tag">Llama 4</span>
+      <span class="tag">开源模型</span>
+      <span class="tag">长上下文</span>
+    </div>
+    <div class="read-more">点击查看原文 →</div>
+  </a>
+
+  <div class="section-label">🔬 技术前沿</div>
+
+  <a class="card" href="https://llm-stats.com/llm-updates" target="_blank">
+    <div class="card-meta">
+      <span class="source-badge c3">LLM Stats</span>
+      <span class="time-badge">2026-04-11</span>
+    </div>
+    <h2>Google TurboQuant登场ICLR 2026：大幅降低KV Cache内存开销，百万token模型向消费级硬件迈进</h2>
+    <p>Google Research在ICLR 2026发表TurboQuant算法，结合PolarQuant向量旋转和量化Johnson-Lindenstrauss（JL）压缩两项技术，专门针对超长上下文窗口模型的KV Cache内存瓶颈。测试显示TurboQuant可在维持输出质量的同时显著降低内存占用，让百万token级别的模型在消费级GPU上运行成为可能。</p>
+    <div class="tags">
+      <span class="tag">Google</span>
+      <span class="tag">TurboQuant</span>
+      <span class="tag">KV Cache</span>
+      <span class="tag">ICLR 2026</span>
+    </div>
+    <div class="read-more">点击查看原文 →</div>
+  </a>
+
+  <a class="card" href="https://www.crescendo.ai/news/latest-ai-news-and-updates" target="_blank">
+    <div class="card-meta">
+      <span class="source-badge c2">Crescendo AI</span>
+      <span class="time-badge">2026-04-10</span>
+    </div>
+    <h2>Anthropic MCP突破9700万安装量，所有主流AI提供商全面支持，Agent基础设施标准确立</h2>
+    <p>Anthropic的Model Context Protocol（MCP）在2026年3月完成9700万次安装，所有主流AI提供商现已全面支持MCP兼容工具，协议已从实验性标准演变为构建AI Agent的基础设施规范。这一里程碑确立了MCP作为AI互操作层的核心地位，对整个Agent生态意义深远。</p>
+    <div class="tags">
+      <span class="tag">MCP</span>
+      <span class="tag">AI Agent</span>
+      <span class="tag">互操作性</span>
+      <span class="tag">基础设施</span>
+    </div>
+    <div class="read-more">点击查看原文 →</div>
+  </a>
+
+  <div class="footer">
+    <p>由 <strong>AI 自动采集整理</strong> | 共收录 <strong>10 条</strong>资讯</p>
+    <p style="margin-top:8px;">生成时间：2026-04-12 &nbsp;|&nbsp; <a href="https://stevenhchang.github.io/steven-ai-daily/" style="color:#6c5ce7;text-decoration:none;">访问日报主页</a></p>
+  </div>
+
+</div>
+</body>
+</html>
