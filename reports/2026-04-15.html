@@ -3,362 +3,413 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Steven学长的每日AI日报 — 2026年04月15日</title>
+<title>Steven学长的每日AI日报 - 2026年04月15日</title>
 <style>
   * { box-sizing: border-box; margin: 0; padding: 0; }
   body {
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Microsoft YaHei', sans-serif;
     background: #f0f2f5;
-    color: #333;
     min-height: 100vh;
+    padding: 20px;
   }
   .container {
     max-width: 900px;
     margin: 0 auto;
-    padding: 0 16px 40px;
   }
-  /* Header */
   .header {
-    background: linear-gradient(135deg, #1a1a2e 0%, #6c5ce7 100%);
-    border-radius: 0 0 24px 24px;
-    padding: 48px 32px 40px;
-    margin-bottom: 32px;
+    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 40%, #6c5ce7 100%);
+    border-radius: 20px;
+    padding: 48px 40px;
     text-align: center;
-    box-shadow: 0 8px 32px rgba(108,92,231,0.35);
+    margin-bottom: 32px;
+    box-shadow: 0 8px 32px rgba(108,92,231,0.3);
+    position: relative;
+    overflow: hidden;
   }
-  .header .badge {
+  .header::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle at 30% 50%, rgba(108,92,231,0.2) 0%, transparent 50%),
+                radial-gradient(circle at 70% 50%, rgba(0,206,201,0.1) 0%, transparent 50%);
+    pointer-events: none;
+  }
+  .header-badge {
     display: inline-block;
     background: rgba(255,255,255,0.15);
-    color: rgba(255,255,255,0.9);
+    color: #a29bfe;
     font-size: 12px;
-    letter-spacing: 2px;
-    padding: 4px 14px;
+    font-weight: 600;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    padding: 6px 16px;
     border-radius: 20px;
     margin-bottom: 16px;
-    text-transform: uppercase;
+    border: 1px solid rgba(162,155,254,0.3);
   }
   .header h1 {
-    font-size: 2rem;
+    color: #ffffff;
+    font-size: 32px;
     font-weight: 800;
-    color: #fff;
-    margin-bottom: 10px;
-    line-height: 1.3;
+    margin-bottom: 12px;
+    text-shadow: 0 2px 8px rgba(0,0,0,0.3);
   }
   .header .date {
-    font-size: 1.1rem;
-    color: rgba(255,255,255,0.75);
-    font-weight: 400;
+    color: #a29bfe;
+    font-size: 18px;
+    font-weight: 600;
+    letter-spacing: 1px;
   }
   .header .subtitle {
-    margin-top: 12px;
-    font-size: 0.9rem;
-    color: rgba(255,255,255,0.55);
+    color: rgba(255,255,255,0.6);
+    font-size: 14px;
+    margin-top: 8px;
   }
-  /* Section label */
-  .section-label {
-    font-size: 0.75rem;
+  .stats-bar {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 28px;
+    flex-wrap: wrap;
+  }
+  .stat-chip {
+    background: white;
+    border-radius: 24px;
+    padding: 8px 18px;
+    font-size: 13px;
+    color: #636e72;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .stat-chip strong { color: #2d3436; }
+  .section-title {
+    font-size: 13px;
     font-weight: 700;
-    letter-spacing: 2px;
+    color: #b2bec3;
     text-transform: uppercase;
-    color: #8a8fa8;
+    letter-spacing: 2px;
     margin-bottom: 16px;
     padding-left: 4px;
   }
-  /* Cards */
-  .cards { display: flex; flex-direction: column; gap: 18px; }
   .card {
-    background: #fff;
-    border-radius: 12px;
-    padding: 24px 26px 20px;
+    background: #ffffff;
+    border-radius: 16px;
+    padding: 24px 28px;
+    margin-bottom: 16px;
     box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
     cursor: pointer;
     text-decoration: none;
-    color: inherit;
     display: block;
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    color: inherit;
     border: 1px solid rgba(0,0,0,0.04);
+    position: relative;
+    overflow: hidden;
+  }
+  .card::after {
+    content: '点击查看原文 →';
+    position: absolute;
+    bottom: 20px;
+    right: 24px;
+    font-size: 12px;
+    color: #6c5ce7;
+    font-weight: 600;
+    opacity: 0;
+    transition: opacity 0.2s ease;
   }
   .card:hover {
     transform: translateY(-4px);
-    box-shadow: 0 10px 28px rgba(0,0,0,0.12);
+    box-shadow: 0 12px 32px rgba(0,0,0,0.12);
   }
-  .card-meta {
+  .card:hover::after { opacity: 1; }
+  .card-header {
     display: flex;
     align-items: center;
     gap: 10px;
     margin-bottom: 12px;
     flex-wrap: wrap;
   }
-  .source-tag {
+  .source-badge {
     font-size: 11px;
     font-weight: 700;
     padding: 3px 10px;
-    border-radius: 20px;
+    border-radius: 10px;
     text-transform: uppercase;
     letter-spacing: 0.5px;
   }
-  .tag-blue   { background: #e8f0fe; color: #1a73e8; }
-  .tag-purple { background: #f0ebff; color: #6c5ce7; }
-  .tag-green  { background: #e6f4ea; color: #1e8e3e; }
-  .tag-orange { background: #fff3e0; color: #e65100; }
-  .tag-red    { background: #fce8e6; color: #c5221f; }
-  .tag-teal   { background: #e0f5f5; color: #00796b; }
-  .tag-pink   { background: #fce4ec; color: #c2185b; }
-  .tag-indigo { background: #e8eaf6; color: #3949ab; }
-  .tag-dark   { background: #e8eaed; color: #202124; }
-  .card-date {
+  .badge-purple { background: #f3f0ff; color: #6c5ce7; }
+  .badge-blue   { background: #e8f4fd; color: #0984e3; }
+  .badge-green  { background: #e8f8f0; color: #00b894; }
+  .badge-orange { background: #fff3e8; color: #e17055; }
+  .badge-red    { background: #ffe8e8; color: #d63031; }
+  .badge-teal   { background: #e0f7fa; color: #00acc1; }
+  .badge-yellow { background: #fffde7; color: #f9a825; }
+  .badge-navy   { background: #e8eaf6; color: #3949ab; }
+  .time-tag {
     font-size: 12px;
-    color: #9aa0b0;
+    color: #b2bec3;
+    font-weight: 500;
   }
-  .card h2 {
-    font-size: 1.1rem;
+  .hot-tag {
+    font-size: 11px;
+    background: linear-gradient(135deg, #fd79a8, #e84393);
+    color: white;
+    padding: 2px 8px;
+    border-radius: 8px;
     font-weight: 700;
-    margin-bottom: 10px;
-    line-height: 1.5;
-    color: #1a1a2e;
   }
-  .card p {
-    font-size: 0.93rem;
-    line-height: 1.75;
-    color: #555;
-    margin-bottom: 14px;
+  .card-title {
+    font-size: 18px;
+    font-weight: 700;
+    color: #2d3436;
+    margin-bottom: 10px;
+    line-height: 1.4;
+  }
+  .card-summary {
+    font-size: 14px;
+    color: #636e72;
+    line-height: 1.8;
+    margin-bottom: 16px;
   }
   .tags {
     display: flex;
     flex-wrap: wrap;
-    gap: 6px;
-    margin-bottom: 14px;
+    gap: 8px;
+    padding-bottom: 4px;
   }
-  .kw-tag {
-    font-size: 11px;
-    background: #f4f5f7;
-    color: #666;
-    padding: 3px 10px;
-    border-radius: 20px;
-    border: 1px solid #e8e9ec;
-  }
-  .read-more {
-    font-size: 13px;
+  .tag {
+    font-size: 12px;
+    background: #f8f9fa;
     color: #6c5ce7;
-    font-weight: 600;
-    text-align: right;
-    display: block;
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-weight: 500;
+    border: 1px solid #e8e4ff;
   }
-  /* Footer */
   .footer {
     text-align: center;
-    margin-top: 40px;
-    padding: 24px;
-    background: #fff;
-    border-radius: 12px;
-    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
-  }
-  .footer p {
+    padding: 32px 20px;
+    color: #b2bec3;
     font-size: 13px;
-    color: #9aa0b0;
-    line-height: 2;
+    line-height: 1.8;
   }
-  .footer strong { color: #6c5ce7; }
+  .footer-logo {
+    font-size: 22px;
+    font-weight: 800;
+    background: linear-gradient(135deg, #6c5ce7, #00cec9);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 8px;
+  }
   @media (max-width: 600px) {
-    .header h1 { font-size: 1.5rem; }
-    .card { padding: 18px 18px 16px; }
+    .header { padding: 32px 20px; }
+    .header h1 { font-size: 24px; }
+    .card { padding: 20px; }
   }
 </style>
 </head>
 <body>
 <div class="container">
 
-  <!-- Header -->
   <div class="header">
-    <div class="badge">Daily AI Digest</div>
+    <div class="header-badge">AI Daily Briefing</div>
     <h1>Steven学长的每日AI日报</h1>
     <div class="date">【2026年04月15日】</div>
-    <div class="subtitle">过去24小时，AI世界正在发生什么</div>
+    <div class="subtitle">精选过去24-48小时 · AI领域最重要资讯</div>
   </div>
 
-  <div class="section-label">今日精选 · 10条资讯</div>
+  <div class="stats-bar">
+    <div class="stat-chip">今日收录 <strong>10 条</strong>资讯</div>
+    <div class="stat-chip">覆盖 <strong>模型发布 · 商业 · 政策 · 投融资</strong></div>
+    <div class="stat-chip">生成时间 <strong>2026-04-15</strong></div>
+  </div>
 
-  <div class="cards">
+  <div class="section-title">今日精选</div>
 
-    <!-- Card 1 -->
-    <a class="card" href="https://medium.com/@david.j.sea/anthropic-just-passed-openai-in-revenue-here-is-why-it-matters-e3dd9bb04069" target="_blank" rel="noopener">
-      <div class="card-meta">
-        <span class="source-tag tag-purple">Medium</span>
-        <span class="card-date">April 7, 2026</span>
-      </div>
-      <h2>Anthropic收入首超OpenAI：年化营收达300亿美元</h2>
-      <p>Anthropic于4月7日宣布其年化营收突破300亿美元，超过OpenAI的250亿美元，这是Anthropic首次在收入规模上超越老对手。增长轨迹令人震惊：从2025年初的10亿美元，到2026年4月的300亿美元，仅用15个月实现30倍增长。关键驱动力在于企业市场：当前每年为Claude花费超过100万美元的企业客户已超1000家，较两个月前翻番。Claude Code自2025年中上线起，年化营收已达10亿美元。分析指出，企业级AI工作流工具的价值积累远超消费端聊天机器人。</p>
-      <div class="tags">
-        <span class="kw-tag">Anthropic</span>
-        <span class="kw-tag">营收超越</span>
-        <span class="kw-tag">企业AI</span>
-        <span class="kw-tag">Claude</span>
-      </div>
-      <span class="read-more">点击查看原文 →</span>
-    </a>
+  <a class="card" href="https://medium.com/@david.j.sea/anthropic-just-passed-openai-in-revenue-here-is-why-it-matters-e3dd9bb04069" target="_blank">
+    <div class="card-header">
+      <span class="source-badge badge-purple">Anthropic · Medium</span>
+      <span class="time-tag">2026-04-07</span>
+      <span class="hot-tag">🔥 HOT</span>
+    </div>
+    <div class="card-title">Anthropic 年化营收首超 OpenAI，达 300 亿美元</div>
+    <div class="card-summary">
+      Anthropic 宣布年化营收突破 300 亿美元，首次超越 OpenAI 的 250 亿美元。增长轨迹惊人：2025 年 1 月仅 10 亿，至 2026 年 4 月仅 15 个月内增长 30 倍。关键驱动力来自企业端：超 1,000 家企业客户年均消费超 100 万美元（2 月时仅 500 家），Model Context Protocol (MCP) 累计安装量达 9,700 万次。Anthropic CEO Dario Amodei 强调，驱动增长的不是消费者聊天机器人，而是嵌入企业工作流的智能自动化工具，这种"粘性"远高于消费级产品。
+    </div>
+    <div class="tags">
+      <span class="tag">Anthropic</span>
+      <span class="tag">营收里程碑</span>
+      <span class="tag">企业AI</span>
+      <span class="tag">MCP</span>
+    </div>
+  </a>
 
-    <!-- Card 2 -->
-    <a class="card" href="https://www.bloomberg.com/news/articles/2026-04-06/openai-anthropic-google-unite-to-combat-model-copying-in-china" target="_blank" rel="noopener">
-      <div class="card-meta">
-        <span class="source-tag tag-blue">Bloomberg</span>
-        <span class="card-date">April 6, 2026</span>
-      </div>
-      <h2>OpenAI、Anthropic、Google三巨头联手打击中国"蒸馏攻击"</h2>
-      <p>三家AI领头企业宣布通过Frontier Model Forum共享情报，协同打击中国竞争者通过"对抗性蒸馏"（adversarial distillation）违规提取美国顶尖模型能力的行为。Anthropic已记录到来自三家具名中国企业的1600万次未授权访问交换。此举标志着长期竞争的OpenAI与Anthropic首次在关键安全议题上形成合作阵线。Frontier Model Forum由OpenAI、Anthropic、Google和微软于2023年联合创立，此次协作被视为AI地缘政治竞争加剧下的产业级应对。</p>
-      <div class="tags">
-        <span class="kw-tag">模型安全</span>
-        <span class="kw-tag">知识蒸馏</span>
-        <span class="kw-tag">Frontier Model Forum</span>
-        <span class="kw-tag">AI竞争</span>
-      </div>
-      <span class="read-more">点击查看原文 →</span>
-    </a>
+  <a class="card" href="https://www.roborhythms.com/openai-anthropic-google-fight-chinese-ai-copying-2026/" target="_blank">
+    <div class="card-header">
+      <span class="source-badge badge-red">地缘政治 · RoboRhythms</span>
+      <span class="time-tag">2026-04-06</span>
+      <span class="hot-tag">🔥 HOT</span>
+    </div>
+    <div class="card-title">OpenAI、Anthropic、Google 三巨头联手打击中国"对抗性蒸馏"</div>
+    <div class="card-summary">
+      三家 AI 巨头通过 Frontier Model Forum 共享威胁情报，联合打击中国企业的"对抗性蒸馏"行为：以数万个虚假账号大规模调用 API，将输出用于训练竞争模型，同时绕过安全过滤层。Anthropic 记录了 1,600 万次未授权交换，涉及约 24,000 个欺诈账号，点名 DeepSeek、Moonshot AI（Kimi）、MiniMax 三家公司。美国官员估计此类行为每年给 AI 实验室造成数十亿美元损失。OpenAI 已向众议院中国特别委员会提交正式文件，预计推动更严格的 API 访问控制措施。
+    </div>
+    <div class="tags">
+      <span class="tag">AI安全</span>
+      <span class="tag">模型蒸馏</span>
+      <span class="tag">中美竞争</span>
+      <span class="tag">Frontier Model Forum</span>
+    </div>
+  </a>
 
-    <!-- Card 3 -->
-    <a class="card" href="https://fazm.ai/blog/latest-llm-releases-april-2026" target="_blank" rel="noopener">
-      <div class="card-meta">
-        <span class="source-tag tag-purple">Fazm Blog</span>
-        <span class="card-date">April 2–9, 2026</span>
-      </div>
-      <h2>史上最密集模型发布月：Claude Opus 4、GPT-5 Turbo、Gemini 2.5 Pro同台竞技</h2>
-      <p>2026年4月成为大模型发布史上最密集的月份。Anthropic于4月2日推出Claude Opus 4（SWE-bench达72.1%）和Sonnet 4；OpenAI于4月7日发布GPT-5 Turbo（支持原生图像与音频生成）；Google推出Gemini 2.5 Pro（200万token上下文）与Gemma 4系列（Apache 2.0开源，31B Dense版超越20倍参数规模闭源模型）；Meta发布Llama 4 Scout（MoE架构，支持1000万token上下文）和Maverick（4000亿参数）；阿里巴巴的Qwen 3覆盖0.6B至72B，支持思维链与直答双模；Mistral Medium 3以开放权重支持EU AI Act合规元数据。</p>
-      <div class="tags">
-        <span class="kw-tag">Claude Opus 4</span>
-        <span class="kw-tag">GPT-5 Turbo</span>
-        <span class="kw-tag">Gemini 2.5 Pro</span>
-        <span class="kw-tag">Llama 4</span>
-      </div>
-      <span class="read-more">点击查看原文 →</span>
-    </a>
+  <a class="card" href="https://fazm.ai/blog/latest-llm-releases-april-2026" target="_blank">
+    <div class="card-header">
+      <span class="source-badge badge-purple">Anthropic · Fazm.ai</span>
+      <span class="time-tag">2026-04-02</span>
+    </div>
+    <div class="card-title">Anthropic 发布 Claude 4 家族：Opus 4 登顶 SWE-bench，得分 72.1%</div>
+    <div class="card-summary">
+      Anthropic 正式发布 Claude 4 系列，包含 Opus 4（旗舰）和 Sonnet 4（高性价比）两款，均支持 200K token 上下文。Opus 4 在 SWE-bench Verified 编程基准上以 72.1% 得分登顶，专为复杂编码和长程智能体任务设计，在 Humanity's Last Exam 等综合基准上同样领先。Sonnet 4 提供更快推理速度和更低使用成本，此次发布标志 Anthropic 在 Agentic AI 方向的持续押注。
+    </div>
+    <div class="tags">
+      <span class="tag">Claude 4</span>
+      <span class="tag">Opus 4</span>
+      <span class="tag">Agent</span>
+      <span class="tag">SWE-bench</span>
+    </div>
+  </a>
 
-    <!-- Card 4 -->
-    <a class="card" href="https://www.cnbc.com/2026/04/08/meta-debuts-first-major-ai-model-since-14-billion-deal-to-bring-in-alexandr-wang.html" target="_blank" rel="noopener">
-      <div class="card-meta">
-        <span class="source-tag tag-blue">CNBC</span>
-        <span class="card-date">April 8, 2026</span>
-      </div>
-      <h2>Meta超级智能实验室首秀：Muse Spark正式亮相，转向闭源</h2>
-      <p>Meta超级智能实验室（Meta Superintelligence Lab）发布首个模型Muse Spark，将为Meta AI聊天机器人提供核心支持。这是Meta在以140亿美元收购Scale AI创始人Alexandr Wang加入后的首次重大模型发布，同时也标志着Meta战略性地从完全开源转向受控授权模式。业界分析认为此举反映Meta对商业化AI竞争日益激烈的现实判断，引发开源社区对未来Llama系列走向的广泛关注。</p>
-      <div class="tags">
-        <span class="kw-tag">Meta</span>
-        <span class="kw-tag">Muse Spark</span>
-        <span class="kw-tag">闭源转型</span>
-        <span class="kw-tag">超级智能</span>
-      </div>
-      <span class="read-more">点击查看原文 →</span>
-    </a>
+  <a class="card" href="https://fazm.ai/blog/latest-llm-releases-april-2026" target="_blank">
+    <div class="card-header">
+      <span class="source-badge badge-blue">Google · Fazm.ai</span>
+      <span class="time-tag">2026-04-01</span>
+    </div>
+    <div class="card-title">Google 发布 Gemini 2.5 Pro：100 万 Token 上下文 + 原生多模态推理</div>
+    <div class="card-summary">
+      Google 发布 Gemini 2.5 系列，旗舰 Pro 版本具备 100 万 token 上下文窗口，支持原生多模态推理（文本、图像、视频、音频、代码同时处理）。Flash 变体针对高吞吐量和低成本场景优化。同步发布 Gemma 4 开源系列（2B/4B/26B/31B 四款），Apache 2.0 协议，31B Dense 旗舰版在多项基准上超越参数量大 20 倍的竞争模型，专为企业本地部署设计。
+    </div>
+    <div class="tags">
+      <span class="tag">Gemini 2.5</span>
+      <span class="tag">Gemma 4</span>
+      <span class="tag">百万Token</span>
+      <span class="tag">开源</span>
+    </div>
+  </a>
 
-    <!-- Card 5 -->
-    <a class="card" href="https://nvidianews.nvidia.com/news/nvidia-announces-open-physical-ai-data-factory-blueprint-to-accelerate-robotics-vision-ai-agents-and-autonomous-vehicle-development" target="_blank" rel="noopener">
-      <div class="card-meta">
-        <span class="source-tag tag-green">NVIDIA Newsroom</span>
-        <span class="card-date">April 14, 2026</span>
-      </div>
-      <h2>NVIDIA发布Physical AI数据工厂蓝图，加速机器人与自动驾驶数据生产</h2>
-      <p>NVIDIA宣布开源物理AI数据工厂蓝图（Physical AI Data Factory Blueprint），这是一套自动化生成、增强与评估物理AI训练数据的参考架构，利用Cosmos基础模型和编码Agent将有限数据集转化为包含罕见边缘案例的大规模多样数据集。框架集成了NVIDIA OSMO编排层，可与Claude Code、OpenAI Codex、Cursor等AI Agent协同工作。微软Azure、Nebius、Uber、Skild AI等多家合作伙伴加入生态。该蓝图将于4月在GitHub发布。同日，NVIDIA与Marvell Technology宣布战略合作，接入NVIDIA AI工厂和AI-RAN生态。</p>
-      <div class="tags">
-        <span class="kw-tag">NVIDIA</span>
-        <span class="kw-tag">物理AI</span>
-        <span class="kw-tag">机器人</span>
-        <span class="kw-tag">Cosmos</span>
-      </div>
-      <span class="read-more">点击查看原文 →</span>
-    </a>
+  <a class="card" href="https://fazm.ai/blog/latest-llm-releases-april-2026" target="_blank">
+    <div class="card-header">
+      <span class="source-badge badge-navy">Meta · Fazm.ai</span>
+      <span class="time-tag">2026-04-05</span>
+    </div>
+    <div class="card-title">Meta Llama 4 Scout 开源：史上最长 1000 万 Token 上下文窗口</div>
+    <div class="card-summary">
+      Meta 发布 Llama 4 系列，Scout 采用 MoE（混合专家）架构，支持高达 1,000 万 token 上下文，可完整处理超长文档、代码库或视频帧序列，刷新开源模型记录。Maverick 拥有 4,000 亿参数（17B 活跃），专注代码生成与多语言任务。同期 Meta 超级智能实验室发布首个模型 Muse Spark，采用受控许可协议而非完全开源，标志 Meta AI 战略出现分化趋势。
+    </div>
+    <div class="tags">
+      <span class="tag">Llama 4</span>
+      <span class="tag">MoE架构</span>
+      <span class="tag">长上下文</span>
+      <span class="tag">开源</span>
+    </div>
+  </a>
 
-    <!-- Card 6 -->
-    <a class="card" href="https://news.crunchbase.com/venture/record-breaking-funding-ai-global-q1-2026/" target="_blank" rel="noopener">
-      <div class="card-meta">
-        <span class="source-tag tag-orange">Crunchbase News</span>
-        <span class="card-date">April 2026</span>
-      </div>
-      <h2>Q1 2026风投创纪录：AI吸金2420亿美元，占全球投资80%</h2>
-      <p>Crunchbase数据显示，2026年Q1全球风险投资达3000亿美元，刷新史上最高单季纪录，其中AI赛道吸纳2420亿美元（占比80%）。史上最大五笔风投轮次中，四笔在本季完成：OpenAI（1220亿美元）、Anthropic（300亿美元）、xAI（200亿美元）、Waymo（160亿美元），这四家企业独吞全球65%的风险资本。美国公司占全球融资的83%。IPO方面，xAI/SpaceX目标2026年6月以1.75万亿美元估值上市，OpenAI瞄准Q4以约1万亿美元估值上市。</p>
-      <div class="tags">
-        <span class="kw-tag">风险投资</span>
-        <span class="kw-tag">AI融资</span>
-        <span class="kw-tag">Q1 2026</span>
-        <span class="kw-tag">独角兽</span>
-      </div>
-      <span class="read-more">点击查看原文 →</span>
-    </a>
+  <a class="card" href="https://llm-stats.com/ai-news" target="_blank">
+    <div class="card-header">
+      <span class="source-badge badge-green">OpenAI · LLM-Stats</span>
+      <span class="time-tag">2026-04-07</span>
+    </div>
+    <div class="card-title">OpenAI 发布 GPT-5 Turbo：原生多模态集成，结构化输出全面升级</div>
+    <div class="card-summary">
+      OpenAI 推出 GPT-5 Turbo，将图像生成与音频处理原生集成至文本推理流程，无需额外模型切换，改进了结构化输出（JSON Mode）稳定性，大幅降低幻觉率。同期推出 $100/月 Pro 新层级提供更大 Codex 配额；ChatGPT 同步上线轻量级 GPT-5.3 Instant Mini，主打自然对话与写作辅助。
+    </div>
+    <div class="tags">
+      <span class="tag">GPT-5 Turbo</span>
+      <span class="tag">原生多模态</span>
+      <span class="tag">OpenAI</span>
+      <span class="tag">ChatGPT</span>
+    </div>
+  </a>
 
-    <!-- Card 7 -->
-    <a class="card" href="https://spectrum.ieee.org/state-of-ai-index-2026" target="_blank" rel="noopener">
-      <div class="card-meta">
-        <span class="source-tag tag-teal">IEEE Spectrum</span>
-        <span class="card-date">April 13, 2026</span>
-      </div>
-      <h2>斯坦福AI Index 2026：中美模型性能几乎持平，人类仍领先复杂任务</h2>
-      <p>斯坦福人本AI研究所发布《人工智能指数报告2026》，核心数据：Anthropic的Claude Opus 4.6与Google Gemini 3.1 Pro在挑战性基准上超过50%准确率，创历史新高；Arena社区排行显示中美顶级模型性能差距已缩小至统计误差范围内；人类科学家在Nature最新研究中仍在复杂科研任务上显著超越最强AI Agent；自然科学领域论文提及AI的比例从不足1%（2015年）升至6-9%（2025年）。报告同时指出，73%的AI经济收益被20%头部企业捕获，AI价值分配不均已成政策焦点。</p>
-      <div class="tags">
-        <span class="kw-tag">Stanford AI Index</span>
-        <span class="kw-tag">中美AI竞争</span>
-        <span class="kw-tag">基准测试</span>
-        <span class="kw-tag">AI研究</span>
-      </div>
-      <span class="read-more">点击查看原文 →</span>
-    </a>
+  <a class="card" href="https://fazm.ai/blog/latest-llm-releases-april-2026" target="_blank">
+    <div class="card-header">
+      <span class="source-badge badge-orange">阿里巴巴 · Fazm.ai</span>
+      <span class="time-tag">2026-04-08</span>
+    </div>
+    <div class="card-title">阿里 Qwen 3 发布：双模式思考机制，0.6B 到 72B 全参数覆盖</div>
+    <div class="card-summary">
+      阿里巴巴发布 Qwen 3 系列，参数规模从 0.6B 到 72B，覆盖边缘端到服务器端全场景。最大亮点是"双模式思考"机制：用户可动态切换链式推理（CoT）模式与标准直接回答模式，在准确率与推理速度之间按需平衡。该设计参考 DeepSeek-R1 但更灵活，多语言任务表现突出，是国内外企业高性价比开源选择。
+    </div>
+    <div class="tags">
+      <span class="tag">Qwen 3</span>
+      <span class="tag">阿里巴巴</span>
+      <span class="tag">双模式推理</span>
+      <span class="tag">开源</span>
+    </div>
+  </a>
 
-    <!-- Card 8 -->
-    <a class="card" href="https://finance.sina.com.cn/tech/digi/2026-04-13/doc-inhufuxw6413787.shtml" target="_blank" rel="noopener">
-      <div class="card-meta">
-        <span class="source-tag tag-red">新浪科技</span>
-        <span class="card-date">2026年4月13日</span>
-      </div>
-      <h2>智元机器人GO-2基座大模型发布，4月17日将推4款新本体</h2>
-      <p>智元机器人于4月9日正式发布新一代具身基座大模型GO-2，并在"AI WEEK"发布周中推出开源具身数据集，为具身智能领域提供高质量训练资源。4月17日，智元将举办2026合作伙伴大会，计划集中发布4款本体新品与4个AI大模型，进一步巩固其在国内人形机器人赛道的领先地位。GO-2在操控灵活性、全身协调性和复杂环境适应能力上较前代有显著提升，标志着中国具身AI正从演示走向规模化部署阶段。</p>
-      <div class="tags">
-        <span class="kw-tag">具身智能</span>
-        <span class="kw-tag">智元机器人</span>
-        <span class="kw-tag">GO-2</span>
-        <span class="kw-tag">人形机器人</span>
-      </div>
-      <span class="read-more">点击查看原文 →</span>
-    </a>
+  <a class="card" href="https://nvidianews.nvidia.com/news/rubin-platform-ai-supercomputer" target="_blank">
+    <div class="card-header">
+      <span class="source-badge badge-green">NVIDIA · Newsroom</span>
+      <span class="time-tag">2026 H2供货</span>
+    </div>
+    <div class="card-title">NVIDIA Rubin 平台全面亮相：6 款新芯片，推理成本较 Blackwell 降低 10 倍</div>
+    <div class="card-summary">
+      NVIDIA 正式发布 Rubin AI 平台，包含 Vera CPU、Rubin GPU、NVLink 6 交换芯片等 6 款核心芯片。旗舰 Vera Rubin NVL72 机架搭载 72 颗 GPU 和 36 颗 CPU，总带宽 260TB/s，每颗 GPU 提供 50 petaflops NVFP4 推理算力。对比 Blackwell，推理 token 成本最高降低 10 倍，训练 MoE 模型所需 GPU 减少 4 倍。AWS、Google Cloud、微软 Azure 将于 2026 年下半年开放云实例，同日宣布与 Marvell 战略合作。
+    </div>
+    <div class="tags">
+      <span class="tag">NVIDIA Rubin</span>
+      <span class="tag">GPU算力</span>
+      <span class="tag">AI基础设施</span>
+      <span class="tag">NVLink 6</span>
+    </div>
+  </a>
 
-    <!-- Card 9 -->
-    <a class="card" href="https://zhuanlan.zhihu.com/p/2025390002230555538" target="_blank" rel="noopener">
-      <div class="card-meta">
-        <span class="source-tag tag-indigo">知乎</span>
-        <span class="card-date">2026年4月</span>
-      </div>
-      <h2>国产大模型"核爆"48小时：DeepSeek、Kimi、MiniMax等集体发版</h2>
-      <p>2026年4月初，国内AI圈上演了一场罕见的集体发版"核爆"事件：四家头部厂商在48小时内连续推出五款大模型新版本，DeepSeek、Kimi（月之暗面）、MiniMax等争相刷新能力边界。推理速度、长上下文、多模态理解是各家集中突破的方向，部分模型在数学推理和代码生成上已追平国际领先水平。分析人士指出，此次集中发版既是技术积累的爆发，也是市场竞争压力下的营销博弈，国产大模型已进入"能力平权、差异化破局"的新阶段。</p>
-      <div class="tags">
-        <span class="kw-tag">国产大模型</span>
-        <span class="kw-tag">DeepSeek</span>
-        <span class="kw-tag">Kimi</span>
-        <span class="kw-tag">MiniMax</span>
-      </div>
-      <span class="read-more">点击查看原文 →</span>
-    </a>
+  <a class="card" href="https://news.crunchbase.com/venture/record-breaking-funding-ai-global-q1-2026/" target="_blank">
+    <div class="card-header">
+      <span class="source-badge badge-yellow">投融资 · Crunchbase</span>
+      <span class="time-tag">2026 Q1 recap</span>
+    </div>
+    <div class="card-title">Q1 2026 全球 VC 投资 3,000 亿美元创历史，AI 占比高达 80%</div>
+    <div class="card-summary">
+      Q1 2026 全球风险投资额突破 3,000 亿美元，同比增长超 150%，创史上单季度最高纪录，AI 相关投资占 2,420 亿美元（80%）。超级大额融资主导格局：OpenAI（1,220 亿）、Anthropic（300 亿）、xAI（200 亿）、Waymo（160 亿）四家公司合计吸走全球 65% 风险资本。Physical AI 赛道崛起，VC Eclipse 设立 13 亿美元专项基金，人形机器人领域预计全年融资超 200 亿。IPO 管道成熟：xAI 目标 6 月上市（估值 1.75 万亿），OpenAI 目标 Q4（近 1 万亿）。
+    </div>
+    <div class="tags">
+      <span class="tag">风险投资</span>
+      <span class="tag">AI融资</span>
+      <span class="tag">IPO</span>
+      <span class="tag">Physical AI</span>
+    </div>
+  </a>
 
-    <!-- Card 10 -->
-    <a class="card" href="https://openai.com/index/next-phase-of-enterprise-ai/" target="_blank" rel="noopener">
-      <div class="card-meta">
-        <span class="source-tag tag-dark">OpenAI</span>
-        <span class="card-date">April 2026</span>
-      </div>
-      <h2>OpenAI发布企业AI下一阶段白皮书：MCP跨越9700万安装量成行业标准</h2>
-      <p>OpenAI发布《企业AI下一阶段》报告，勾勒2026年Agent时代的企业AI图景。报告指出Anthropic的MCP（Model Context Protocol）已跨越9700万次安装，所有主流AI提供商均已支持MCP，使其成为Agent连接外部工具、API与数据源的默认协议标准。GPT-5.4被披露拥有100万token上下文窗口，能在OSWorld-V基准（模拟真实桌面生产力任务）上达到75%的自主工作流执行成功率。同期，OpenAI宣布ChatGPT Pro计划调整为100美元/月套餐，并更新Codex访问额度。</p>
-      <div class="tags">
-        <span class="kw-tag">企业AI</span>
-        <span class="kw-tag">MCP</span>
-        <span class="kw-tag">AI Agent</span>
-        <span class="kw-tag">GPT-5.4</span>
-      </div>
-      <span class="read-more">点击查看原文 →</span>
-    </a>
+  <a class="card" href="https://k.sina.com.cn/article_7857201856_1d45362c0019049ium.html" target="_blank">
+    <div class="card-header">
+      <span class="source-badge badge-teal">政策监管 · 新浪科技</span>
+      <span class="time-tag">2026-04-15</span>
+    </div>
+    <div class="card-title">中国《AI 拟人化互动服务管理暂行办法》7 月 15 日施行，教育部同步推出 AI+教育行动计划</div>
+    <div class="card-summary">
+      中国《人工智能拟人化互动服务管理暂行办法》将于 2026 年 7 月 15 日正式施行，直接规范 AI 陪伴、虚拟情感助手等快速增长服务。同日，教育部联合四部委发布《"人工智能+教育"行动计划》，提出四大重点任务推动 AI 人才培养与教育深度融合。此外，机器之心举办"世界模型"专题研讨会，5 位产学研专家解析世界模型如何推动 AI 从"感知当下"向"时空预测与推演"跨越，被视为通往 AGI 的核心基建路径。
+    </div>
+    <div class="tags">
+      <span class="tag">AI监管</span>
+      <span class="tag">中国政策</span>
+      <span class="tag">AI陪伴</span>
+      <span class="tag">世界模型</span>
+    </div>
+  </a>
 
-  </div><!-- /cards -->
-
-  <!-- Footer -->
   <div class="footer">
-    <p>由 <strong>AI 自动采集整理</strong> | 共收录 <strong>10</strong> 条资讯</p>
-    <p>生成时间：2026年04月15日 &nbsp;·&nbsp; Powered by Claude Sonnet 4.6</p>
-    <p style="margin-top:8px;font-size:12px;">内容来源于公开网络，仅供参考。转载请注明出处。</p>
+    <div class="footer-logo">Steven学长的每日AI日报</div>
+    <div>由 AI 自动采集整理 | 共收录 <strong>10</strong> 条资讯</div>
+    <div style="margin-top:4px">生成时间：2026-04-15 | 来源：Bloomberg、Crunchbase、NVIDIA Newsroom、Medium、Anthropic、Fazm.ai 等</div>
+    <div style="margin-top:12px; font-size:12px; color:#dfe6e9">内容基于公开信息汇编，仅供参考，不构成投资建议</div>
   </div>
 
-</div><!-- /container -->
+</div>
 </body>
 </html>
