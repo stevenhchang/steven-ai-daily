@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Steven学长的每日AI日报 - 2026年05月05日</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+    background: #f0f2f5;
+    min-height: 100vh;
+    padding: 0 16px 40px;
+  }
+  .container { max-width: 900px; margin: 0 auto; }
+
+  /* Header */
+  .header {
+    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 40%, #6c5ce7 100%);
+    border-radius: 0 0 24px 24px;
+    padding: 48px 32px 40px;
+    margin-bottom: 32px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .header::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle at 60% 40%, rgba(108,92,231,0.3) 0%, transparent 60%);
+    pointer-events: none;
+  }
+  .header-badge {
+    display: inline-block;
+    background: rgba(108,92,231,0.4);
+    border: 1px solid rgba(108,92,231,0.6);
+    color: #a29bfe;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    padding: 4px 14px;
+    border-radius: 20px;
+    margin-bottom: 16px;
+  }
+  .header h1 {
+    color: #ffffff;
+    font-size: 32px;
+    font-weight: 800;
+    letter-spacing: 1px;
+    margin-bottom: 10px;
+    text-shadow: 0 2px 12px rgba(0,0,0,0.3);
+  }
+  .header .date-tag {
+    display: inline-block;
+    background: rgba(255,255,255,0.12);
+    backdrop-filter: blur(8px);
+    color: #dfe6e9;
+    font-size: 16px;
+    font-weight: 500;
+    padding: 6px 20px;
+    border-radius: 30px;
+    border: 1px solid rgba(255,255,255,0.15);
+    margin-bottom: 8px;
+  }
+  .header .subtitle {
+    color: rgba(255,255,255,0.55);
+    font-size: 13px;
+    margin-top: 8px;
+  }
+
+  /* Section label */
+  .section-label {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #a0a0b0;
+    margin: 0 0 16px 4px;
+  }
+
+  /* News Card */
+  .card {
+    display: block;
+    background: #ffffff;
+    border-radius: 14px;
+    padding: 24px 26px;
+    margin-bottom: 16px;
+    text-decoration: none;
+    color: inherit;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    transition: transform 0.22s cubic-bezier(.4,0,.2,1), box-shadow 0.22s cubic-bezier(.4,0,.2,1);
+    position: relative;
+    overflow: hidden;
+    border: 1px solid rgba(0,0,0,0.04);
+  }
+  .card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 32px rgba(0,0,0,0.12);
+  }
+  .card-top {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 12px;
+    flex-wrap: wrap;
+  }
+  .source-badge {
+    font-size: 11px;
+    font-weight: 700;
+    padding: 3px 10px;
+    border-radius: 6px;
+    letter-spacing: 0.5px;
+  }
+  .src-techcrunch { background: #e8f5e9; color: #2e7d32; }
+  .src-cnn       { background: #fce4ec; color: #c62828; }
+  .src-nvidia    { background: #e8f4fd; color: #006db3; }
+  .src-crunchbase{ background: #fff3e0; color: #e65100; }
+  .src-chinanews { background: #f3e5f5; color: #6a1b9a; }
+  .src-hipther   { background: #e0f7fa; color: #00697a; }
+  .src-eastmoney { background: #fdf6e3; color: #7c5f00; }
+  .src-sina      { background: #fbe9e7; color: #bf360c; }
+  .src-breaking  { background: #e8eaf6; color: #283593; }
+  .src-aws       { background: #fff8e1; color: #f57f17; }
+
+  .card-time {
+    font-size: 12px;
+    color: #aaa;
+    font-weight: 500;
+  }
+  .card h2 {
+    font-size: 18px;
+    font-weight: 700;
+    color: #1a1a2e;
+    line-height: 1.45;
+    margin-bottom: 10px;
+  }
+  .card .summary {
+    font-size: 14px;
+    color: #555;
+    line-height: 1.75;
+    margin-bottom: 14px;
+  }
+  .tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 7px;
+    margin-bottom: 14px;
+  }
+  .tag {
+    font-size: 11px;
+    font-weight: 600;
+    padding: 3px 10px;
+    border-radius: 20px;
+    background: #f0f2f5;
+    color: #6c5ce7;
+    border: 1px solid #e0dcf8;
+  }
+  .read-more {
+    font-size: 13px;
+    font-weight: 600;
+    color: #6c5ce7;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    transition: gap 0.2s;
+  }
+  .card:hover .read-more { gap: 8px; }
+
+  /* Accent line */
+  .card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 4px;
+    height: 100%;
+    border-radius: 4px 0 0 4px;
+  }
+  .card.accent-purple::before { background: linear-gradient(180deg, #6c5ce7, #a29bfe); }
+  .card.accent-blue::before   { background: linear-gradient(180deg, #0984e3, #74b9ff); }
+  .card.accent-green::before  { background: linear-gradient(180deg, #00b894, #55efc4); }
+  .card.accent-red::before    { background: linear-gradient(180deg, #d63031, #ff7675); }
+  .card.accent-orange::before { background: linear-gradient(180deg, #e17055, #fdcb6e); }
+  .card.accent-teal::before   { background: linear-gradient(180deg, #00cec9, #81ecec); }
+  .card.accent-pink::before   { background: linear-gradient(180deg, #e84393, #fd79a8); }
+
+  /* Footer */
+  .footer {
+    text-align: center;
+    padding: 32px 20px 16px;
+    color: #aaa;
+    font-size: 13px;
+    line-height: 1.8;
+  }
+  .footer .count-badge {
+    display: inline-block;
+    background: linear-gradient(135deg, #6c5ce7, #a29bfe);
+    color: white;
+    font-weight: 700;
+    font-size: 14px;
+    padding: 6px 18px;
+    border-radius: 20px;
+    margin-bottom: 12px;
+  }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <!-- Header -->
+  <div class="header">
+    <div class="header-badge">🤖 AI Intelligence Daily</div>
+    <h1>Steven学长的每日AI日报</h1>
+    <div class="date-tag">【2026年05月05日】</div>
+    <div class="subtitle">AI领域每日精选 · 信息密度优先 · 专注前沿动态</div>
+  </div>
+
+  <div class="section-label">今日精选 · 10 条资讯</div>
+
+  <!-- Card 1 -->
+  <a class="card accent-purple" href="https://techcrunch.com/2026/05/04/anthropic-and-openai-are-both-launching-joint-ventures-for-enterprise-ai-services/" target="_blank">
+    <div class="card-top">
+      <span class="source-badge src-techcrunch">TechCrunch</span>
+      <span class="card-time">2026-05-04</span>
+    </div>
+    <h2>Anthropic 与 OpenAI 同日宣布企业AI联营公司，合计融资逾55亿美元</h2>
+    <p class="summary">两大AI巨头几乎同步推出企业服务合资架构。Anthropic联合Blackstone、Hellman & Friedman、Goldman Sachs等成立估值15亿美元的企业AI服务公司，三方各承诺3亿美元。OpenAI则发布"The Development Company"，集结TPG、Brookfield等19家机构，融资40亿美元、估值100亿美元。两家公司的模式高度相似：将前沿工程师嵌入客户工作流，同时为机构投资人开辟优先销售渠道，标志着AI从纯技术产品转向深度企业集成服务。</p>
+    <div class="tags">
+      <span class="tag">企业AI</span>
+      <span class="tag">Anthropic</span>
+      <span class="tag">OpenAI</span>
+      <span class="tag">融资</span>
+    </div>
+    <div class="read-more">点击查看原文 →</div>
+  </a>
+
+  <!-- Card 2 -->
+  <a class="card accent-red" href="https://www.cnn.com/2026/05/01/tech/pentagon-ai-anthropic" target="_blank">
+    <div class="card-top">
+      <span class="source-badge src-cnn">CNN Business</span>
+      <span class="card-time">2026-05-01</span>
+    </div>
+    <h2>五角大楼与八大科技巨头签署AI保密网络协议，Anthropic因安全红线被排除</h2>
+    <p class="summary">美国国防部宣布与SpaceX、OpenAI、Google、Microsoft、Nvidia、AWS、Oracle及Reflection达成协议，允许上述公司AI工具接入国防分类网络。唯独Anthropic缺席——特朗普政府以该公司坚持在军事AI应用中嵌入安全护栏为由将其列入黑名单。Anthropic随即提起诉讼，加州联邦法院已于上月颁布临时禁令，阻止政府排除行动。此案折射出AI安全理念与军事效率之间日益激化的政策张力。</p>
+    <div class="tags">
+      <span class="tag">军事AI</span>
+      <span class="tag">政策监管</span>
+      <span class="tag">Anthropic</span>
+      <span class="tag">五角大楼</span>
+    </div>
+    <div class="read-more">点击查看原文 →</div>
+  </a>
+
+  <!-- Card 3 -->
+  <a class="card accent-blue" href="https://nvidianews.nvidia.com/news/rubin-platform-ai-supercomputer" target="_blank">
+    <div class="card-top">
+      <span class="source-badge src-nvidia">NVIDIA Newsroom</span>
+      <span class="card-time">2026-05 H2发布</span>
+    </div>
+    <h2>NVIDIA Rubin平台正式量产：推理成本降10倍，六芯一体打造AI超算</h2>
+    <p class="summary">NVIDIA发布Rubin下一代AI超算平台，核心由六款芯片组成：Vera CPU（88核Olympus架构）、Rubin GPU（50 PetaFLOPS NVFP4算力）及NVLink 6、ConnectX-9、BlueField-4、Spectrum-6等互联芯片。旗舰系统Vera Rubin NVL72配备72颗GPU，推理Token成本较Blackwell降低10倍，训练MoE模型所需GPU数量减少75%。AWS、Google Cloud、Microsoft Azure、Meta、OpenAI、Anthropic、xAI等均已加入早期部署阵营，量产版本预计2026年下半年上市。</p>
+    <div class="tags">
+      <span class="tag">NVIDIA</span>
+      <span class="tag">Rubin</span>
+      <span class="tag">AI芯片</span>
+      <span class="tag">算力基础设施</span>
+    </div>
+    <div class="read-more">点击查看原文 →</div>
+  </a>
+
+  <!-- Card 4 -->
+  <a class="card accent-teal" href="https://www.chinanews.com.cn/cj/2026/05-01/10614230.shtml" target="_blank">
+    <div class="card-top">
+      <span class="source-badge src-chinanews">中国新闻网</span>
+      <span class="card-time">2026-05-01</span>
+    </div>
+    <h2>DeepSeek-V4适配华为昇腾，API价格比GPT-5.5低700倍，国产AI芯片时代开启</h2>
+    <p class="summary">DeepSeek-V4（4月24日发布）率先完成华为昇腾芯片适配，硬件验证文档同时列出昇腾与Nvidia两种方案。昇腾推理芯片售价约Nvidia对应产品的四分之一，单卡算力却高出2.87倍。模型参数量达1.6万亿、支持百万Token上下文，API定价仅0.25元/百万Token，约为GPT-5.5 Pro（约30美元/百万Token）的1/700。阿里、字节跳动、腾讯等头部企业已批量采购华为芯片，业界将2026年定义为"国产AI芯片训练落地元年"。</p>
+    <div class="tags">
+      <span class="tag">DeepSeek</span>
+      <span class="tag">华为昇腾</span>
+      <span class="tag">国产芯片</span>
+      <span class="tag">大模型</span>
+    </div>
+    <div class="read-more">点击查看原文 →</div>
+  </a>
+
+  <!-- Card 5 -->
+  <a class="card accent-orange" href="https://news.crunchbase.com/venture/record-breaking-funding-ai-global-q1-2026/" target="_blank">
+    <div class="card-top">
+      <span class="source-badge src-crunchbase">Crunchbase News</span>
+      <span class="card-time">2026-04（季报）</span>
+    </div>
+    <h2>Q1 2026风投创史上最高纪录：3000亿美元，AI独吞80%</h2>
+    <p class="summary">2026年第一季度全球风险投资总额达3000亿美元，同比暴增150%，创历史新高。AI公司吸金2420亿美元，占比80%，远超2025年Q1的55%。单笔历史最大融资榜前五中四席归AI：OpenAI（1220亿）、Anthropic（300亿）、xAI（200亿）、Waymo（160亿），仅这四家就吃下全季投资的65%。地域分布上，美国占2500亿，遥遥领先英国（74亿）和中国（161亿）。晚期融资同比增长205%，早期种子轮亦增31%，AI基础设施建设热潮仍在加速。</p>
+    <div class="tags">
+      <span class="tag">风险投资</span>
+      <span class="tag">融资记录</span>
+      <span class="tag">AI经济</span>
+      <span class="tag">创业生态</span>
+    </div>
+    <div class="read-more">点击查看原文 →</div>
+  </a>
+
+  <!-- Card 6 -->
+  <a class="card accent-green" href="https://hipther.com/latest-news/2026/05/04/111138/ai-dispatch-daily-trends-and-innovations-may-4-2026-mark-cuban-nvidia-chatgpt-images-mayo-clinic-and-humain-one/" target="_blank">
+    <div class="card-top">
+      <span class="source-badge src-hipther">Hipther / AI Dispatch</span>
+      <span class="card-time">2026-05-04</span>
+    </div>
+    <h2>Mayo Clinic AI模型REDMOD：常规CT提前三年检出胰腺癌，准确率73%</h2>
+    <p class="summary">Mayo Clinic研究团队开发的REDMOD（Radiology-Enhanced Detection Model）在常规腹部CT扫描中成功识别出73%的胰腺癌前驱病例，最早可比临床确诊提前三年。该模型已在Mayo Clinic现有影像工作流中部署，作为辅助工具与放射科专家协同使用，无需额外专项扫描。胰腺癌五年生存率不足12%，早发现是改善预后的核心因素。此成果被视为临床AI在高死亡率癌症领域取得突破性验证的标志性案例。</p>
+    <div class="tags">
+      <span class="tag">医疗AI</span>
+      <span class="tag">癌症检测</span>
+      <span class="tag">Mayo Clinic</span>
+      <span class="tag">影像AI</span>
+    </div>
+    <div class="read-more">点击查看原文 →</div>
+  </a>
+
+  <!-- Card 7 -->
+  <a class="card accent-red" href="https://hipther.com/latest-news/2026/05/04/111138/ai-dispatch-daily-trends-and-innovations-may-4-2026-mark-cuban-nvidia-chatgpt-images-mayo-clinic-and-humain-one/" target="_blank">
+    <div class="card-top">
+      <span class="source-badge src-hipther">Hipther / AI Dispatch</span>
+      <span class="card-time">2026-05-04</span>
+    </div>
+    <h2>ChatGPT图像生成成新型精准欺诈工具，AI深度伪造绕过现有安全防护</h2>
+    <p class="summary">《大西洋月刊》记者实测揭示，ChatGPT图像生成功能可在不触发安全过滤的情况下，制造高度逼真的伪造出版物截图与文件。研究者指出，威胁并非大规模舆论操控，而是"单点精准欺诈"——一张伪造发票或截图足以在关键时刻欺骗特定目标。同期Mandiant《M-Trends 2026》报告显示，当前28.3%的CVE漏洞在披露后24小时内即遭利用，AI生成恶意代码正悄然绕过沿用多年的检测工具，网络安全防御压力骤增。</p>
+    <div class="tags">
+      <span class="tag">AI安全</span>
+      <span class="tag">深度伪造</span>
+      <span class="tag">网络安全</span>
+      <span class="tag">ChatGPT</span>
+    </div>
+    <div class="read-more">点击查看原文 →</div>
+  </a>
+
+  <!-- Card 8 -->
+  <a class="card accent-pink" href="https://caifuhao.eastmoney.com/news/20260504212156544817030" target="_blank">
+    <div class="card-top">
+      <span class="source-badge src-eastmoney">东方财富</span>
+      <span class="card-time">2026-05-04</span>
+    </div>
+    <h2>中国AI资金战略转向：从通用大模型撤退，疯抢AI for Science赛道</h2>
+    <p class="summary">中国资本市场出现明显风向转变——聪明的钱正在离开通用大模型内卷，流向AI for Science（AI科研）这一新兴赛道。量子计算、蛋白质结构预测、新药研发、新材料发现等科研导向AI应用成为新宠，中科曙光等具备科研AI底蕴的公司站上C位。分析人士认为，通用大模型的边际资本效益递减，而AI for Science技术壁垒更高、产业影响更深远，且与国家科技战略高度契合，是下一个10年的确定性方向。</p>
+    <div class="tags">
+      <span class="tag">中国AI</span>
+      <span class="tag">AI for Science</span>
+      <span class="tag">投资趋势</span>
+      <span class="tag">科研AI</span>
+    </div>
+    <div class="read-more">点击查看原文 →</div>
+  </a>
+
+  <!-- Card 9 -->
+  <a class="card accent-blue" href="https://hipther.com/latest-news/2026/05/04/111138/ai-dispatch-daily-trends-and-innovations-may-4-2026-mark-cuban-nvidia-chatgpt-images-mayo-clinic-and-humain-one/" target="_blank">
+    <div class="card-top">
+      <span class="source-badge src-aws">AWS / HUMAIN</span>
+      <span class="card-time">2026-05-04</span>
+    </div>
+    <h2>AWS与HUMAIN联推HUMAIN ONE：首个面向企业的自主AI代理操作系统</h2>
+    <p class="summary">亚马逊云（AWS）与AI初创公司HUMAIN联合发布HUMAIN ONE，定位为企业级自主AI代理操作系统，核心卖点是安全性、数据主权与合规能力三位一体。该系统允许企业在私有云或本地部署环境中编排多个AI代理协同执行复杂工作流，同时满足金融、医疗等受监管行业的合规要求。这一发布被业界解读为AI行业从PoC试点期迈向大规模生产部署的关键信号，也标志着"代理基础设施"正在成为独立产品类别。</p>
+    <div class="tags">
+      <span class="tag">AI代理</span>
+      <span class="tag">企业AI</span>
+      <span class="tag">AWS</span>
+      <span class="tag">AI治理</span>
+    </div>
+    <div class="read-more">点击查看原文 →</div>
+  </a>
+
+  <!-- Card 10 -->
+  <a class="card accent-green" href="https://finance.sina.com.cn/wm/2026-05-04/doc-inhwtvtx3588918.shtml" target="_blank">
+    <div class="card-top">
+      <span class="source-badge src-sina">新浪财经</span>
+      <span class="card-time">2026-05-04</span>
+    </div>
+    <h2>中国两部门联合发布"模数共振"行动，七大任务推动AI模型与数据协同</h2>
+    <p class="summary">工业和信息化部与国家数据局联合印发《关于实施2026年"模数共振"行动的通知》，设置7项重点任务，核心目标是打通AI模型训练与高质量数据供给之间的壁垒。具体举措包括：建立行业数据共享机制、推动公共数据向AI开放授权、开展大模型与行业数据适配测试，以及建立数据标注质量标准体系。此次行动被解读为中国AI治理体系从"单点突破"升级为"系统性协同"的重要节点，将直接影响国内大模型厂商的数据获取成本与训练质量。</p>
+    <div class="tags">
+      <span class="tag">中国AI政策</span>
+      <span class="tag">数据治理</span>
+      <span class="tag">工信部</span>
+      <span class="tag">大模型</span>
+    </div>
+    <div class="read-more">点击查看原文 →</div>
+  </a>
+
+  <!-- Footer -->
+  <div class="footer">
+    <div class="count-badge">🗞️ 共收录 10 条资讯</div><br>
+    由 AI 自动采集整理 &nbsp;|&nbsp; 生成时间：2026-05-05 &nbsp;|&nbsp; 数据来源：TechCrunch · CNN · NVIDIA · 中国新闻网 · Crunchbase · 新浪财经 等<br><br>
+    <a href="https://stevenhchang.github.io/steven-ai-daily/" style="color:#6c5ce7; text-decoration:none;">🔗 访问完整存档</a>
+  </div>
+
+</div>
+</body>
+</html>
