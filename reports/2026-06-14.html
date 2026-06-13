@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Steven学长的每日AI日报 - 2026年06月14日</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif;
+    background: #f0f2f5;
+    color: #333;
+    min-height: 100vh;
+  }
+
+  .container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 24px 20px;
+  }
+
+  header {
+    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 40%, #6c5ce7 100%);
+    color: white;
+    padding: 44px 36px;
+    border-radius: 20px;
+    margin-bottom: 28px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 12px 40px rgba(108, 92, 231, 0.35);
+  }
+
+  header::before {
+    content: '';
+    position: absolute;
+    top: -60px;
+    right: -60px;
+    width: 280px;
+    height: 280px;
+    background: rgba(255,255,255,0.04);
+    border-radius: 50%;
+  }
+
+  header::after {
+    content: '';
+    position: absolute;
+    bottom: -80px;
+    left: -40px;
+    width: 220px;
+    height: 220px;
+    background: rgba(255,255,255,0.03);
+    border-radius: 50%;
+  }
+
+  header h1 {
+    font-size: 30px;
+    font-weight: 800;
+    letter-spacing: 2px;
+    margin-bottom: 14px;
+    position: relative;
+    z-index: 1;
+  }
+
+  header .date-badge {
+    font-size: 16px;
+    background: rgba(255,255,255,0.18);
+    display: inline-block;
+    padding: 6px 22px;
+    border-radius: 30px;
+    border: 1px solid rgba(255,255,255,0.22);
+    position: relative;
+    z-index: 1;
+    font-weight: 600;
+  }
+
+  header .subtitle {
+    font-size: 13px;
+    opacity: 0.6;
+    margin-top: 12px;
+    letter-spacing: 1px;
+    position: relative;
+    z-index: 1;
+  }
+
+  a.card {
+    background: white;
+    border-radius: 14px;
+    padding: 24px 26px;
+    margin-bottom: 16px;
+    display: block;
+    text-decoration: none;
+    color: inherit;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.07);
+    border: 1px solid rgba(0,0,0,0.04);
+  }
+
+  a.card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 10px 32px rgba(0,0,0,0.13);
+  }
+
+  .card-meta {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 12px;
+    flex-wrap: wrap;
+  }
+
+  .source-badge {
+    font-size: 11px;
+    font-weight: 700;
+    padding: 3px 11px;
+    border-radius: 20px;
+    color: white;
+    letter-spacing: 0.5px;
+  }
+
+  .date-text {
+    font-size: 12px;
+    color: #bbb;
+  }
+
+  .card-title {
+    font-size: 18px;
+    font-weight: 700;
+    color: #1a1a2e;
+    margin-bottom: 12px;
+    line-height: 1.45;
+  }
+
+  .card-summary {
+    font-size: 14px;
+    color: #5a5a6e;
+    line-height: 1.85;
+    margin-bottom: 16px;
+  }
+
+  .tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 7px;
+    margin-bottom: 14px;
+  }
+
+  .tag {
+    font-size: 11px;
+    padding: 3px 11px;
+    background: #f3f0ff;
+    color: #6c5ce7;
+    border-radius: 20px;
+    font-weight: 600;
+    letter-spacing: 0.3px;
+  }
+
+  .read-more {
+    font-size: 13px;
+    color: #6c5ce7;
+    font-weight: 600;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    opacity: 0.75;
+    transition: opacity 0.15s;
+  }
+
+  a.card:hover .read-more {
+    opacity: 1;
+  }
+
+  .footer {
+    background: white;
+    border-radius: 14px;
+    padding: 30px 24px;
+    margin-top: 8px;
+    text-align: center;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    border: 1px solid rgba(0,0,0,0.04);
+  }
+
+  .footer .stats {
+    font-size: 22px;
+    font-weight: 800;
+    color: #1a1a2e;
+    margin-bottom: 8px;
+  }
+
+  .footer .stats span {
+    color: #6c5ce7;
+  }
+
+  .footer .meta {
+    font-size: 12px;
+    color: #bbb;
+    letter-spacing: 0.5px;
+  }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <header>
+    <h1>Steven学长的每日AI日报</h1>
+    <div class="date-badge">【2026年06月14日】</div>
+    <div class="subtitle">精选全球AI领域最新动态 · 每日更新</div>
+  </header>
+
+  <!-- Story 1 -->
+  <a class="card" href="https://www.buildfastwithai.com/blogs/ai-news-today-june-13-2026" target="_blank">
+    <div class="card-meta">
+      <span class="source-badge" style="background:#fd7e14;">CNBC / Kiplinger</span>
+      <span class="date-text">6月12–13日</span>
+    </div>
+    <div class="card-title">SpaceX首日上市暴涨25%，市值1.77万亿美元，AI基础设施估值逻辑获市场验证</div>
+    <div class="card-summary">
+      SpaceX（股票代码SPCX）于纳斯达克首日收盘报168.70美元，较135美元IPO发行价大涨约25%，市值达约1.77万亿美元。MSCI于6月13日启动将SPCX纳入指数的程序，纳斯达克100资格预计在约15个交易日后生效，将带来结构性被动买入资金流入。此次有序上涨被市场普遍解读为投资者对亏损型AI基础设施公司的信心背书，直接提振Anthropic（目标Q4 2026上市）和OpenAI的IPO预期。Polymarket加密市场同步开盘押注SpaceX能否突破2万亿美元市值门槛。
+    </div>
+    <div class="tags">
+      <span class="tag">SpaceX</span>
+      <span class="tag">IPO</span>
+      <span class="tag">AI基础设施</span>
+      <span class="tag">纳斯达克</span>
+    </div>
+    <div class="read-more">点击查看原文 →</div>
+  </a>
+
+  <!-- Story 2 -->
+  <a class="card" href="https://www.buildfastwithai.com/blogs/ai-news-today-june-13-2026" target="_blank">
+    <div class="card-meta">
+      <span class="source-badge" style="background:#6c5ce7;">VentureBeat</span>
+      <span class="date-text">6月13日</span>
+    </div>
+    <div class="card-title">Anthropic企业采用率首次超越OpenAI，Claude Code被指为关键驱动力</div>
+    <div class="card-summary">
+      根据Ramp AI指数最新数据，Anthropic在美国商业客户中的AI工具采用率已达34.4%，首次超越OpenAI的32.3%，成为企业市场领先者。这一里程碑式逆转主要归因于Claude Code的爆发式增长——Anthropic已将其AI编程助手确立为开发者首选工具。不过IDC同期调查以"深度使用"为衡量标准，Claude仅有19%的深度活跃用户，仍落后于OpenAI与Google，两份报告采用不同指标，折射出AI企业市场竞争格局的复杂性。两家公司均在筹备2026年下半年IPO，营收计算口径差异（总营收vs净营收）已成为投资者关注焦点。
+    </div>
+    <div class="tags">
+      <span class="tag">Anthropic</span>
+      <span class="tag">OpenAI</span>
+      <span class="tag">Claude Code</span>
+      <span class="tag">企业市场</span>
+    </div>
+    <div class="read-more">点击查看原文 →</div>
+  </a>
+
+  <!-- Story 3 -->
+  <a class="card" href="https://www.buildfastwithai.com/blogs/ai-news-today-june-13-2026" target="_blank">
+    <div class="card-meta">
+      <span class="source-badge" style="background:#e84393;">The Information</span>
+      <span class="date-text">6月13日</span>
+    </div>
+    <div class="card-title">Anthropic突袭发布Claude Design，未预警合作伙伴直接进军Figma/Canva市场</div>
+    <div class="card-summary">
+      据The Information报道，Anthropic在未提前告知合作伙伴的情况下，突袭发布了Claude Design产品，直接切入UI/UX设计工具市场，与Figma和Canva形成正面竞争。此举令业内生态合作方深感措手不及，被分析师解读为Anthropic正快速从底层大模型API供应商向垂直应用层全面扩张。这一动态与Anthropic同期扩大与Amazon（5GW算力）、Google、Broadcom的合作相互呼应，显示其正以"平台化"战略为IPO叙事构建更宽的竞争护城河。
+    </div>
+    <div class="tags">
+      <span class="tag">Anthropic</span>
+      <span class="tag">Claude Design</span>
+      <span class="tag">设计工具</span>
+      <span class="tag">产品扩张</span>
+    </div>
+    <div class="read-more">点击查看原文 →</div>
+  </a>
+
+  <!-- Story 4 -->
+  <a class="card" href="https://www.buildfastwithai.com/blogs/ai-news-today-june-13-2026" target="_blank">
+    <div class="card-meta">
+      <span class="source-badge" style="background:#6c5ce7;">TechWire Asia</span>
+      <span class="date-text">6月13日</span>
+    </div>
+    <div class="card-title">Anthropic与亚马逊算力协议升级至5GW，同步扩大Google与Broadcom合作</div>
+    <div class="card-summary">
+      Anthropic宣布将与亚马逊的算力合作协议容量扩大至5吉瓦（GW），同时也进一步扩展了与Google和Broadcom的合作伙伴关系。5GW规模的算力承诺意味着Anthropic正在为未来数年的模型训练和大规模推理工作负载提前锁定资源，与其正在推进的IPO战略相辅相成。然而此举也引发投资者对公司营收口径的审视——Anthropic按毛营收披露，OpenAI则扣除支付给微软的费用后按净营收计，双方IPO估值将面临不同方法论的直接比较。
+    </div>
+    <div class="tags">
+      <span class="tag">Anthropic</span>
+      <span class="tag">Amazon</span>
+      <span class="tag">算力</span>
+      <span class="tag">IPO准备</span>
+    </div>
+    <div class="read-more">点击查看原文 →</div>
+  </a>
+
+  <!-- Story 5 -->
+  <a class="card" href="https://www.buildfastwithai.com/blogs/ai-news-today-june-13-2026" target="_blank">
+    <div class="card-meta">
+      <span class="source-badge" style="background:#6c5ce7;">Geeky Gadgets</span>
+      <span class="date-text">6月13日</span>
+    </div>
+    <div class="card-title">Claude Code新增Fork命令，支持多路对话分支与复杂工作流并行探索</div>
+    <div class="card-summary">
+      Anthropic为Claude Code推出Fork命令和新的CLI功能更新，允许开发者在同一对话的任意节点创建独立分支，同步探索多条解决路径而无需丢失历史上下文。这是继嵌套子智能体（nested sub-agents）功能更新之后的又一重要产品迭代，尤其适用于重构设计、架构决策、安全审查等需要对比多方案的复杂编程场景。该功能被业界视为Anthropic在AI编程工具市场对抗Cursor、GitHub Copilot的关键差异化举措。
+    </div>
+    <div class="tags">
+      <span class="tag">Claude Code</span>
+      <span class="tag">Anthropic</span>
+      <span class="tag">开发工具</span>
+      <span class="tag">Fork功能</span>
+    </div>
+    <div class="read-more">点击查看原文 →</div>
+  </a>
+
+  <!-- Story 6 -->
+  <a class="card" href="https://llm-stats.com/ai-news" target="_blank">
+    <div class="card-meta">
+      <span class="source-badge" style="background:#00b894;">LLM Stats</span>
+      <span class="date-text">6月12日</span>
+    </div>
+    <div class="card-title">月之暗面开源Kimi K2.7-Code，256K上下文窗口推理Token消耗降30%</div>
+    <div class="card-summary">
+      月之暗面（Moonshot AI）于6月12日发布并开源Kimi K2.7-Code，这是一款专注于编程任务的大模型，基于Kimi K2.6架构构建，支持256K超长上下文窗口，推理Token消耗较前代降低约30%。与此同时，月之暗面正寻求高达20亿美元的新一轮融资，目标估值300亿美元，较6个月前约40-50亿美元估值实现约6-7倍增长，成为中国头部大模型公司资本快速聚集趋势的最新例证。
+    </div>
+    <div class="tags">
+      <span class="tag">月之暗面</span>
+      <span class="tag">Kimi K2.7-Code</span>
+      <span class="tag">开源</span>
+      <span class="tag">中国大模型</span>
+    </div>
+    <div class="read-more">点击查看原文 →</div>
+  </a>
+
+  <!-- Story 7 -->
+  <a class="card" href="https://www.buildfastwithai.com/blogs/ai-news-today-june-13-2026" target="_blank">
+    <div class="card-meta">
+      <span class="source-badge" style="background:#e17055;">Bloomberg / TNW</span>
+      <span class="date-text">6月12日</span>
+    </div>
+    <div class="card-title">EngineAI秘密赴港IPO申报，中国人形机器人上市潮席卷资本市场</div>
+    <div class="card-summary">
+      深圳人形机器人制造商EngineAI已秘密向香港联交所递交IPO申请，最新B轮融资后估值约15亿美元，SE01人形机器人已建立年产1万台的量产生产线。同日，宇树科技（Unitree）正筹划目标估值72亿美元的上市计划，PaXini、追觅（Dreame）、Linkerbot等多家企业竞相布局港股和A股。中国人形机器人赛道正从技术验证阶段快速进入资本化新阶段，SpaceX IPO的成功示范效应被认为是这波上市潮的重要背景。
+    </div>
+    <div class="tags">
+      <span class="tag">EngineAI</span>
+      <span class="tag">人形机器人</span>
+      <span class="tag">港交所IPO</span>
+      <span class="tag">宇树科技</span>
+    </div>
+    <div class="read-more">点击查看原文 →</div>
+  </a>
+
+  <!-- Story 8 -->
+  <a class="card" href="https://llm-stats.com/ai-news" target="_blank">
+    <div class="card-meta">
+      <span class="source-badge" style="background:#0078d4;">LLM Stats</span>
+      <span class="date-text">6月4日</span>
+    </div>
+    <div class="card-title">Anthropic Claude Fable 5上线：SWE-bench准确率95%，因美国出口限制临时下线</div>
+    <div class="card-summary">
+      Anthropic于6月4日推出Claude Fable 5，其Mythos级别旗舰模型在SWE-bench Verified基准上达到95%准确率，在FrontierMath最难层级达88%，超越GPT-5.5约13个百分点。定价为每百万Token输入$10/输出$50。然而Anthropic随后临时将Fable 5及Mythos 5下线，以遵守特朗普政府针对前沿AI模型的出口管制新规——要求对外国国籍用户访问设限，此举引发全球AI开发者社区广泛讨论，并被视为AI地缘政治博弈升级的又一信号。
+    </div>
+    <div class="tags">
+      <span class="tag">Anthropic</span>
+      <span class="tag">Claude Fable 5</span>
+      <span class="tag">SWE-bench</span>
+      <span class="tag">出口管制</span>
+    </div>
+    <div class="read-more">点击查看原文 →</div>
+  </a>
+
+  <!-- Story 9 -->
+  <a class="card" href="https://www.crescendo.ai/news/latest-ai-news-and-updates" target="_blank">
+    <div class="card-meta">
+      <span class="source-badge" style="background:#76b900;">Crescendo.ai</span>
+      <span class="date-text">6月8日</span>
+    </div>
+    <div class="card-title">NVIDIA与现代汽车深化AI机器人合作，Boston Dynamics成物理AI核心落地平台</div>
+    <div class="card-summary">
+      NVIDIA CEO Jensen Huang与现代汽车集团会长郑义宣就扩大合作签署协议，围绕移动出行、智能制造和机器人三大方向深化战略布局。合作核心在于通过现代旗下波士顿动力（Boston Dynamics）子公司落地"物理AI"（Physical AI）应用，并在韩国联合建立AI研究中心。这是NVIDIA密集构建全球AI制造业伙伴矩阵的最新进展，同周内NVIDIA还与SK hynix签署多年内存技术合作协议，与SK电讯、NAVER分别达成吉瓦级AI工厂建设协议。
+    </div>
+    <div class="tags">
+      <span class="tag">NVIDIA</span>
+      <span class="tag">现代汽车</span>
+      <span class="tag">Boston Dynamics</span>
+      <span class="tag">物理AI</span>
+    </div>
+    <div class="read-more">点击查看原文 →</div>
+  </a>
+
+  <!-- Story 10 -->
+  <a class="card" href="https://www.crescendo.ai/news/latest-ai-news-and-updates" target="_blank">
+    <div class="card-meta">
+      <span class="source-badge" style="background:#00b894;">Crescendo.ai</span>
+      <span class="date-text">6月8日</span>
+    </div>
+    <div class="card-title">AI数据中心耗水激增与美西干旱激化"水资源战"，微软谷歌亚马逊承压</div>
+    <div class="card-summary">
+      随着AI数据中心建设加速扩张，微软、谷歌、亚马逊运营的服务器冷却系统正消耗数亿加仑水资源，与美国多州持续恶化的干旱状况形成正面冲突。当地社区居民、农业用水方和环保组织与科技巨头之间围绕水资源分配的矛盾日趋激化，部分地区已出现限制数据中心选址扩张的政策讨论。这一议题正成为AI快速扩张阶段不可回避的社会成本代价，也将深刻影响未来数据中心的选址规划与冷却技术路线选择。
+    </div>
+    <div class="tags">
+      <span class="tag">数据中心</span>
+      <span class="tag">水资源</span>
+      <span class="tag">环境成本</span>
+      <span class="tag">可持续发展</span>
+    </div>
+    <div class="read-more">点击查看原文 →</div>
+  </a>
+
+  <div class="footer">
+    <div class="stats">由 AI 自动采集整理 | 共收录 <span>10</span> 条资讯</div>
+    <div class="meta">生成时间：2026-06-14 &nbsp;|&nbsp; Steven学长的每日AI日报</div>
+  </div>
+
+</div>
+</body>
+</html>
